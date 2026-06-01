@@ -1,11 +1,5 @@
-import React, { useMemo, useState } from "react";
-
-export default function App() {
-  const [query, setQuery] = useState("");
-  const [activeStory, setActiveStory] = useState("Dama");
-  const [filter, setFilter] = useState("Todos");
-
-  const perfumes = [
+import React, { useState } from "react";
+ const perfumes = [
 
   // 🆕 NUEVOS (SOLO AQUÍ)
   { id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=9PM" },
@@ -45,23 +39,24 @@ export default function App() {
   }))
 ];
 
-  const filtered = useMemo(() => {
-  return perfumes.filter((p) => {
+export default function App() {
 
-    const matchName = p.name.toLowerCase().includes(query.toLowerCase());
+  const [query, setQuery] = useState("");
+  const [activeStory, setActiveStory] = useState("Dama");
+  const [filter, setFilter] = useState("Todos");
 
-    if (filter === "Todos") return matchName;
+/* filtro correcto */
+  const filtered = perfumes.filter((p) => {
+  const matchName = p.name.toLowerCase().includes(query.toLowerCase());
 
-    if (filter === "Nuevos") return matchName && p.category === "Nuevos";
+  if (filter === "Todos") return matchName;
+  if (filter === "Nuevos") return matchName && p.category === "Nuevos";
+  if (filter === "Dama") return matchName && p.gender === "Dama" && p.category !== "Nuevos";
+  if (filter === "Caballero") return matchName && p.gender === "Caballero" && p.category !== "Nuevos";
 
-    if (filter === "Dama") return matchName && p.gender === "Dama" && p.category !== "Nuevos";
+  return matchName;
+});
 
-    if (filter === "Caballero") return matchName && p.gender === "Caballero" && p.category !== "Nuevos";
-
-    return matchName;
-
-  });
-}, [query, filter]);
   return (
     <div style={{ background: "#f5f5f5", minHeight: "100vh", padding: "20px" }}>
 
