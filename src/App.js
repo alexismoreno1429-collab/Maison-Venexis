@@ -44,6 +44,23 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [activeStory, setActiveStory] = useState("Dama");
   const [filter, setFilter] = useState("Todos");
+  // CARRITO DE COMPRAS ACUMULABLE
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+  
+  const total = cart.reduce((acc, item) => acc + item.price, 0);
+  const whatsappMessage = encodeURIComponent(
+  `Hola, quiero hacer un pedido:\n\n` +
+  cart.map((item, i) => `${i + 1}. ${item.name} - S/ ${item.price}`).join("\n") +
+  `\n\nTotal: S/ ${total}`
+);
+
+  const addToCart = (perfume) => {
+  setCart((prevCart) => [...prevCart, perfume]);
+};
+  const removeFromCart = (index) => {
+  setCart((prevCart) => prevCart.filter((_, i) => i !== index));
+};
 
 /* filtro correcto */
   const filtered = perfumes.filter((p) => {
@@ -88,6 +105,30 @@ export default function App() {
   }}></div>
 
 </div>
+
+
+
+{/* VER EL CARRITO DE COMPRAS */}
+
+<div
+  onClick={() => setShowCart(!showCart)}
+  style={{
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    background: "black",
+    color: "white",
+    padding: "10px 15px",
+    borderRadius: "10px",
+    zIndex: 1000,
+    cursor: "pointer"
+  }}
+>
+  🛒 {cart.length}
+</div>
+
+
+
 
 {/* STORIES TIPO INSTAGRAM */}
 <div style={{
@@ -233,6 +274,23 @@ export default function App() {
           S/ {perfume.price}
         </strong>
 
+        <button
+  onClick={() => addToCart(perfume)}
+  style={{
+    width: "100%",
+    padding: "8px",
+    borderRadius: "8px",
+    border: "none",
+    background: "#c9a96e",
+    color: "#000",
+    fontWeight: "bold",
+    marginBottom: "5px",
+    cursor: "pointer"
+  }}
+>
+  Agregar al carrito
+</button>
+
         <a
           href={`https://wa.me/51974374060?text=Hola,%20vi%20tu%20página%20Maison%20Venexis%20y%20quiero%20comprar:%20${encodeURIComponent(perfume.name)}%20¿Está%20disponible?`}
           target="_blank"
@@ -314,6 +372,105 @@ export default function App() {
   />
 </a>
 
+
+{/* CARRITO DESPLEGABLE */}
+{showCart && (
+  <div style={{
+    position: "fixed",
+    right: "20px",
+    top: "80px",
+    width: "260px",
+    background: "white",
+    borderRadius: "10px",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
+    padding: "10px",
+    zIndex: 1000
+  }}>
+
+    <h4 style={{ textAlign: "center" }}>🛒 Carrito</h4>
+
+    {cart.length === 0 ? (
+      <p style={{ fontSize: "12px", textAlign: "center" }}>
+        Vacío
+      </p>
+    ) : (
+      <>
+        {cart.map((item, index) => (
+          <div key={index} style={{
+            borderBottom: "1px solid #eee",
+            padding: "8px 0",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}>
+
+            <div>
+              <div style={{ fontSize: "12px" }}>{item.name}</div>
+              <strong style={{ fontSize: "12px" }}>
+                S/ {item.price}
+              </strong>
+            </div>
+
+            <button
+              onClick={() => removeFromCart(index)}
+              style={{
+                background: "red",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                padding: "3px 6px",
+                fontSize: "10px",
+                cursor: "pointer"
+              }}
+            >
+              X
+            </button>
+
+          </div>
+        ))}
+
+        {/* TOTAL + WHATSAPP */}
+        <div style={{ marginTop: "10px", textAlign: "center" }}>
+          <strong>Total: S/ {total}</strong>
+        </div>
+
+        <a
+          href={`https://wa.me/51974374060?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <button style={{
+            width: "100%",
+            marginTop: "10px",
+            padding: "10px",
+            background: "#25D366",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}>
+            Finalizar pedido por WhatsApp
+          </button>
+        </a>
+
+      </>
+    )}
+
+  </div>
+)}
+{/* TOTAL + WHATSAPP */}
+<div style={{ marginTop: "10px", textAlign: "center" }}>
+  <strong>Total: S/ {total}</strong>
 </div>
+
+<a
+  href={`https://wa.me/51974374060?text=${whatsappMessage}`}
+  target="_blank"
+  rel="noreferrer"
+>
+  <button>Finalizar pedido por WhatsApp</button>
+</a>
+  </div>
 );
 }
