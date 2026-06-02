@@ -234,7 +234,7 @@ export default function App() {
         </strong>
 
         <a
-          href={`https://wa.me/51974374060?text=Hola quiero comprar ${perfume.name}`}
+          href={`https://wa.me/51974374060?text=Hola,%20vi%20tu%20página%20Maison%20Venexis%20y%20quiero%20comprar:%20${encodeURIComponent(perfume.name)}%20¿Está%20disponible?`}
           target="_blank"
           rel="noreferrer"
         >
