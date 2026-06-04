@@ -2,7 +2,7 @@ import React, { useState } from "react";
  const perfumes = [
 
   // 🆕 NUEVOS (SOLO AQUÍ)
-  { id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=9PM" },
+  { id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/9PM.jpeg" },
   { id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Club+Nuit" },
   { id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Odyssey+Mega" },
   { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Asad" },
@@ -17,7 +17,7 @@ import React, { useState } from "react";
   { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Mandarin+Sky" },
   { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Khamrah" },
 
-  //  NORMALES (los tuyos anteriores)
+    //  NORMALES (los tuyos anteriores)
   ...[
     "212 HEROES","AMARIGE","AQUA KISS","ACQUA DI GIOIA","YARA","BORN IN ROMA YELLOW",
     "BURBERRY","CAROLINA HERRERA","CLOUD PINK","COCO CHANEL","COCONUT","FANTASY",
@@ -35,7 +35,7 @@ import React, { useState } from "react";
     gender: i < 24 ? "Dama" : "Caballero",
     category: "Normal",
     price: 45,
-    img: `https://dummyimage.com/400x500/ffffff/000000&text=${name.replace(/ /g,"+")}`
+    img: `/perfumes/${name.toLowerCase().replace(/ /g,"-")}.jpg`
   }))
 ];
 
@@ -248,14 +248,17 @@ export default function App() {
 
       {/* IMAGEN */}
       <img
-        src={perfume.img}
-        alt={perfume.name}
-        style={{
-          width: "100%",
-          height: "200px",
-          objectFit: "cover"
-        }}
-      />
+  src={perfume.img}
+  alt={perfume.name}
+  onError={(e) => {
+    e.target.src = `https://dummyimage.com/400x500/ffffff/000000&text=${perfume.name.replace(/ /g,"+")}`;
+  }}
+  style={{
+    width: "100%",
+    height: "260px",
+    objectFit: "cover"
+  }}
+/>
 
       {/* INFO */}
       <div style={{ padding: "12px", textAlign: "center" }}>
