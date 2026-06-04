@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
  const perfumes = [
 
   // 🆕 NUEVOS (SOLO AQUÍ)
@@ -24,7 +24,7 @@ import React, { useState } from "react";
     "GOOD GIRL","GOOD GIRL BLUSH","J ADORE","MANGO TEMPTATION","MISS DIOR EDP2017",
     "MOD VANILLA","OLYMPEA","PARIS HILTON","S SHAKIRA","SCANDAL","SWEET LIKE CANDY","VANILLA DIORAMA",
 
-    "ONE MILLION ELIXIR","ONE MILLION","212 VIP","ACQUA DI GIÒ","ACQUA DI GIÒ PROFUMO",
+    "ONE MILLION ELIXIR","ONE MILLION","212 VIP","ACQUA DI GIO","ACQUA DI GIO PROFUMO",
     "BAD BOY","BOSS BOTTLED NIGHT","EROS","EROS FLAME","HUGO","INVICTUS",
     "INVICTUS VICTORY","LE MALE","LE MALE ELIXIR","ODYSSEY MANDARIN SKY",
     "PLAY INTENSE","SAUVAGE","SAUVAGE ELIXIR","SCANDAL MEN","ULTRA MALE",
@@ -41,6 +41,86 @@ import React, { useState } from "react";
 
 export default function App() {
 
+  const [cart, setCart] = useState(() => {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+});
+
+const [ratingData, setRatingData] = useState(() => {
+  return JSON.parse(localStorage.getItem("ratingData")) || {};
+});
+
+const [comments, setComments] = useState(() => {
+  return JSON.parse(localStorage.getItem("comments")) || {};
+});
+
+  useEffect(() => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}, [cart]);
+
+useEffect(() => {
+  localStorage.setItem("ratingData", JSON.stringify(ratingData));
+}, [ratingData]);
+
+useEffect(() => {
+  localStorage.setItem("comments", JSON.stringify(comments));
+}, [comments]);
+
+  const [ratingData, setRatingData] = useState(() => {
+  return JSON.parse(localStorage.getItem("ratings")) || {};
+});
+
+const [comments, setComments] = useState(() => {
+  return JSON.parse(localStorage.getItem("comments")) || {};
+});
+
+  const [ratings, setRatings] = useState({});
+  const [commentText, setCommentText] = useState("");
+
+  const handleRating = (perfumeId, value) => {
+  setRatingData((prev) => {
+    const current = prev[perfumeId] || {
+      total: 0,
+      sum: 0,
+      average: 0
+    };
+
+    const newTotal = current.total + 1;
+    const newSum = current.sum + value;
+    const newAverage = newSum / newTotal;
+
+    return {
+      ...prev,
+      [perfumeId]: {
+        total: newTotal,
+        sum: newSum,
+        average: newAverage
+      }
+    };
+  });
+};
+const addComment = (perfumeId) => {
+  if (!commentText.trim()) return;
+
+  setComments((prev) => ({
+    ...prev,
+    [perfumeId]: [
+      ...(prev[perfumeId] || []),
+      commentText
+    ]
+  }));
+
+  setCommentText("");
+};
+
+  useEffect(() => {
+  localStorage.setItem("ratings", JSON.stringify(ratingData));
+}, [ratingData]);
+
+useEffect(() => {
+  localStorage.setItem("comments", JSON.stringify(comments));
+}, [comments]);
+
+  const [selectedPerfume, setSelectedPerfume] = useState(null);
   const [query, setQuery] = useState("");
   const [activeStory, setActiveStory] = useState("Dama");
   const [filter, setFilter] = useState("Todos");
@@ -230,6 +310,7 @@ export default function App() {
   {filtered.map((perfume) => (
     <div
       key={perfume.id}
+      onClick={() => setSelectedPerfume(perfume)}
       style={{
         background: "white",
         borderRadius: "15px",
@@ -277,8 +358,11 @@ export default function App() {
           S/ {perfume.price}
         </strong>
 
-        <button
-  onClick={() => addToCart(perfume)}
+       <button
+  onClick={(e) => {
+    e.stopPropagation();
+    addToCart(perfume);
+  }}
   style={{
     width: "100%",
     padding: "8px",
@@ -323,6 +407,17 @@ export default function App() {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes slideUpModal {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
@@ -462,18 +557,156 @@ export default function App() {
 
   </div>
 )}
-{/* TOTAL + WHATSAPP */}
-<div style={{ marginTop: "10px", textAlign: "center" }}>
-  <strong>Total: S/ {total}</strong>
+
+{selectedPerfume && (
+  <div style={{
+  position: "fixed",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+
+  background: "rgba(0,0,0,0.4)",
+
+  backdropFilter: "blur(10px)",
+  WebkitBackdropFilter: "blur(10px)",
+
+  zIndex: 2000,
+
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+}}>
+
+    <div style={{
+  background: "white",
+  width: "90%",
+  maxWidth: "400px",
+  borderRadius: "25px",
+  padding: "20px",
+  animation: "slideUpModal 0.4s ease",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+  
+  maxHeight: "90vh",   // 👈 IMPORTANTE
+  overflowY: "auto"    // 👈 ESTO ACTIVA EL SCROLL
+}}>
+
+      {/* HEADER */}
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between",
+        marginBottom: "10px"
+      }}>
+        <button onClick={() => setSelectedPerfume(null)}>← Volver</button>
+        <strong>{selectedPerfume.name}</strong>
+        <div></div>
+      </div>
+
+
+      {/* CONTENIDO */}
+      <img
+        src={selectedPerfume.img}
+        alt={selectedPerfume.name}
+        style={{ width: "100%", borderRadius: "12px" }}
+      />
+
+      <h2>{selectedPerfume.name}</h2>
+      <h3>S/ {selectedPerfume.price}</h3>
+
+<div style={{ marginTop: "10px" }}>
+  <strong>Califica este perfume:</strong>
+
+  <div style={{ fontSize: "25px", cursor: "pointer" }}>
+    {[1, 2, 3, 4, 5].map((star) => (
+      <span
+        key={star}
+        onClick={() => handleRating(selectedPerfume.id, star)}
+        style={{
+         color:
+  star <= Math.round(ratingData[selectedPerfume.id]?.average || 0)
+    ? "#f5b301"
+    : "#ccc"
+        }}
+      >
+        ★
+      </span>
+    ))}
+  </div>
+
+<div style={{ fontSize: "14px", marginTop: "5px" }}>
+    ⭐ {ratingData[selectedPerfume.id]?.average?.toFixed(2) || "0.00"} / 5
+  </div>
 </div>
 
-<a
-  href={`https://wa.me/51974374060?text=${whatsappMessage}`}
-  target="_blank"
-  rel="noreferrer"
->
-  <button>Finalizar pedido por WhatsApp</button>
-</a>
+<div style={{ marginTop: "20px" }}>
+  <strong>Comentarios:</strong>
+
+  <input
+    value={commentText}
+    onChange={(e) => setCommentText(e.target.value)}
+    placeholder="Escribe tu opinión..."
+    style={{
+      width: "100%",
+      padding: "8px",
+      marginTop: "10px",
+      borderRadius: "8px",
+      border: "1px solid #ccc"
+    }}
+  />
+
+  <button
+    onClick={() => addComment(selectedPerfume.id)}
+    style={{
+      marginTop: "5px",
+      width: "100%",
+      padding: "8px",
+      background: "#000",
+      color: "#fff",
+      border: "none",
+      borderRadius: "8px"
+    }}
+  >
+    Enviar comentario
+  </button>
+
+  <div style={{ marginTop: "10px" }}>
+    {(comments[selectedPerfume.id] || []).map((c, i) => (
+      <div
+        key={i}
+        style={{
+          background: "#f5f5f5",
+          padding: "8px",
+          borderRadius: "8px",
+          marginBottom: "5px"
+        }}
+      >
+        💬 {c}
+      </div>
+    ))}
   </div>
-);
+</div>
+
+      <a
+        href={`https://wa.me/51974374060?text=Quiero comprar ${selectedPerfume.name}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <button style={{
+          width: "100%",
+          padding: "10px",
+          background: "#25D366",
+          color: "white",
+          border: "none",
+          borderRadius: "10px"
+        }}>
+          Comprar
+        </button>
+      </a>
+
+    </div>
+  </div>
+)}
+
+    </div>
+  );
 }
