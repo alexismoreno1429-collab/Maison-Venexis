@@ -17,7 +17,7 @@ import React, { useState } from "react";
   { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Mandarin+Sky" },
   { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Khamrah" },
 
-  // 🧴 NORMALES (los tuyos anteriores)
+  //  NORMALES (los tuyos anteriores)
   ...[
     "212 HEROES","AMARIGE","AQUA KISS","ACQUA DI GIOIA","YARA","BORN IN ROMA YELLOW",
     "BURBERRY","CAROLINA HERRERA","CLOUD PINK","COCO CHANEL","COCONUT","FANTASY",
@@ -222,7 +222,7 @@ export default function App() {
      {/* GRID ESTILO INSTAGRAM */}
 <div style={{
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fill, minmax(220px, 220px))",
+  gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
   justifyContent: "center",
   gap: "20px",
   padding: "10px"
@@ -252,7 +252,7 @@ export default function App() {
         alt={perfume.name}
         style={{
           width: "100%",
-          height: "260px",
+          height: "200px",
           objectFit: "cover"
         }}
       />
