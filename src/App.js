@@ -48,6 +48,18 @@ import React, { useState, useEffect } from "react";
   price: 45, 
   img: "/perfumes/valentino.jpg" 
 },
+
+{ 
+  id: 203, 
+  name: "LE BEU", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/le-beu.jpg" 
+},
+
+
+
     //  NORMALES (los tuyos anteriores)
   ...[
     "212 HEROES","AMARIGE","AQUA KISS","ACQUA DI GIOIA","YARA","BORN IN ROMA YELLOW",
