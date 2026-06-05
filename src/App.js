@@ -17,6 +17,37 @@ import React, { useState, useEffect } from "react";
   { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Mandarin+Sky" },
   { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Khamrah" },
 
+    //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
+    // (MUJERES)
+{ 
+  id: 201, 
+  name: "DEVOTION", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/devotion.jpg" 
+},
+
+{ 
+  id: 202, 
+  name: "FAME", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/fame.jpg" 
+},
+
+
+    //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
+    // (HOMBRES)
+    { 
+  id: 200, 
+  name: "VALENTINO", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/valentino.jpg" 
+},
     //  NORMALES (los tuyos anteriores)
   ...[
     "212 HEROES","AMARIGE","AQUA KISS","ACQUA DI GIOIA","YARA","BORN IN ROMA YELLOW",
@@ -40,120 +71,115 @@ import React, { useState, useEffect } from "react";
 ];
 
 export default function App() {
-
-  const [cart, setCart] = useState(() => {
-  return JSON.parse(localStorage.getItem("cart")) || [];
-});
-
-const [ratingData, setRatingData] = useState(() => {
-  return JSON.parse(localStorage.getItem("ratingData")) || {};
-});
-
-const [comments, setComments] = useState(() => {
-  return JSON.parse(localStorage.getItem("comments")) || {};
-});
-
-  useEffect(() => {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}, [cart]);
-
-useEffect(() => {
-  localStorage.setItem("ratingData", JSON.stringify(ratingData));
-}, [ratingData]);
-
-useEffect(() => {
-  localStorage.setItem("comments", JSON.stringify(comments));
-}, [comments]);
-
-  const [ratingData, setRatingData] = useState(() => {
-  return JSON.parse(localStorage.getItem("ratings")) || {};
-});
-
-const [comments, setComments] = useState(() => {
-  return JSON.parse(localStorage.getItem("comments")) || {};
-});
-
-  const [ratings, setRatings] = useState({});
-  const [commentText, setCommentText] = useState("");
-
-  const handleRating = (perfumeId, value) => {
-  setRatingData((prev) => {
-    const current = prev[perfumeId] || {
-      total: 0,
-      sum: 0,
-      average: 0
-    };
-
-    const newTotal = current.total + 1;
-    const newSum = current.sum + value;
-    const newAverage = newSum / newTotal;
-
-    return {
-      ...prev,
-      [perfumeId]: {
-        total: newTotal,
-        sum: newSum,
-        average: newAverage
-      }
-    };
-  });
-};
-const addComment = (perfumeId) => {
-  if (!commentText.trim()) return;
-
-  setComments((prev) => ({
-    ...prev,
-    [perfumeId]: [
-      ...(prev[perfumeId] || []),
-      commentText
-    ]
-  }));
-
-  setCommentText("");
-};
-
-  useEffect(() => {
-  localStorage.setItem("ratings", JSON.stringify(ratingData));
-}, [ratingData]);
-
-useEffect(() => {
-  localStorage.setItem("comments", JSON.stringify(comments));
-}, [comments]);
+  /* =========================
+     1. ESTADOS PRINCIPALES
+  ========================= */
 
   const [selectedPerfume, setSelectedPerfume] = useState(null);
   const [query, setQuery] = useState("");
   const [activeStory, setActiveStory] = useState("Dama");
   const [filter, setFilter] = useState("Todos");
-  // CARRITO DE COMPRAS ACUMULABLE
-  const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
-  
+
+  const [commentText, setCommentText] = useState("");
+
+  const [cart, setCart] = useState(() => {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  });
+
+  const [ratingData, setRatingData] = useState(() => {
+    return JSON.parse(localStorage.getItem("ratingData")) || {};
+  });
+
+  const [comments, setComments] = useState(() => {
+    return JSON.parse(localStorage.getItem("comments")) || {};
+  });
+
+  /* =========================
+     2. EFFECTS (LOCALSTORAGE)
+  ========================= */
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem("ratingData", JSON.stringify(ratingData));
+  }, [ratingData]);
+
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [comments]);
+
+  /* =========================
+     3. CÁLCULOS DERIVADOS
+  ========================= */
+
   const total = cart.reduce((acc, item) => acc + item.price, 0);
+
   const whatsappMessage = encodeURIComponent(
-  `Hola, quiero hacer un pedido:\n\n` +
-  cart.map((item, i) => `${i + 1}. ${item.name} - S/ ${item.price}`).join("\n") +
-  `\n\nTotal: S/ ${total}`
-);
+    `Hola, quiero hacer un pedido:\n\n` +
+      cart.map((item, i) => `${i + 1}. ${item.name} - S/ ${item.price}`).join("\n") +
+      `\n\nTotal: S/ ${total}`
+  );
+
+  const filtered = perfumes.filter((p) => {
+    const matchName = p.name.toLowerCase().includes(query.toLowerCase());
+
+    if (filter === "Todos") return matchName;
+    if (filter === "Nuevos") return matchName && p.category === "Nuevos";
+    if (filter === "Dama") return matchName && p.gender === "Dama" && p.category !== "Nuevos";
+    if (filter === "Caballero") return matchName && p.gender === "Caballero" && p.category !== "Nuevos";
+
+    return matchName;
+  });
+
+  /* =========================
+     4. FUNCIONES
+  ========================= */
 
   const addToCart = (perfume) => {
-  setCart((prevCart) => [...prevCart, perfume]);
-};
+    setCart((prev) => [...prev, perfume]);
+  };
+
   const removeFromCart = (index) => {
-  setCart((prevCart) => prevCart.filter((_, i) => i !== index));
-};
+    setCart((prev) => prev.filter((_, i) => i !== index));
+  };
 
-/* filtro correcto */
-  const filtered = perfumes.filter((p) => {
-  const matchName = p.name.toLowerCase().includes(query.toLowerCase());
+  const handleRating = (perfumeId, value) => {
+    setRatingData((prev) => {
+      const current = prev[perfumeId] || {
+        total: 0,
+        sum: 0,
+        average: 0,
+      };
 
-  if (filter === "Todos") return matchName;
-  if (filter === "Nuevos") return matchName && p.category === "Nuevos";
-  if (filter === "Dama") return matchName && p.gender === "Dama" && p.category !== "Nuevos";
-  if (filter === "Caballero") return matchName && p.gender === "Caballero" && p.category !== "Nuevos";
+      const newTotal = current.total + 1;
+      const newSum = current.sum + value;
+      const newAverage = newSum / newTotal;
 
-  return matchName;
-});
+      return {
+        ...prev,
+        [perfumeId]: {
+          total: newTotal,
+          sum: newSum,
+          average: newAverage,
+        },
+      };
+    });
+  };
 
+  const addComment = (perfumeId) => {
+    if (!commentText.trim()) return;
+
+    setComments((prev) => ({
+      ...prev,
+      [perfumeId]: [...(prev[perfumeId] || []), commentText],
+    }));
+
+    setCommentText("");
+  };
+ 
   return (
     <div style={{ background: "#f5f5f5", minHeight: "100vh", padding: "20px" }}>
 
