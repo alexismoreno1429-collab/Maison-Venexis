@@ -58,7 +58,14 @@ import React, { useState, useEffect } from "react";
   img: "/perfumes/le-beu.jpg" 
 },
 
-
+{ 
+  id: 204, 
+  name: "ASAD", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/asad.jpg" 
+},
 
     //  NORMALES (los tuyos anteriores)
   ...[
@@ -222,6 +229,58 @@ export default function App() {
     margin: "10px auto" 
   }}></div>
 
+</div>
+
+
+
+{/* 🔥 PROMOCIÓN CON BOTÓN WHATSAPP */}
+<div style={{
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: "30px"
+}}>
+  <div style={{
+    position: "relative",
+    width: "100%",
+    maxWidth: "420px"
+  }}>
+    
+    <img
+      src="/promocion.jpg"
+      alt="Promoción"
+      style={{
+        width: "100%",
+        borderRadius: "20px",
+        objectFit: "contain"
+      }}
+    />
+
+    <a
+      href="https://wa.me/51974374060?text=Hola quiero la promoción"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        position: "absolute",
+        bottom: "15px",
+        left: "50%",
+        transform: "translateX(-50%)"
+      }}
+    >
+      <button style={{
+        background: "#25D366",
+        color: "white",
+        border: "none",
+        padding: "10px 20px",
+        borderRadius: "25px",
+        fontWeight: "bold",
+        cursor: "pointer"
+      }}>
+        Pedir por WhatsApp
+      </button>
+    </a>
+
+  </div>
 </div>
 
 
