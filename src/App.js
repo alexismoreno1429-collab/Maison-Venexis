@@ -248,7 +248,7 @@ export default function App() {
   }}>
     
     <img
-      src="/promocion.jpg?v=2"
+      src="/promocion.jpg"
       alt="Promoción"
       style={{
         width: "100%",
