@@ -252,7 +252,8 @@ export default function App() {
       style={{
         width: "100%",
         borderRadius: "20px",
-        objectFit: "contain"
+        objectFit: "contain",
+        animation: "zoomPromo 0.8s ease, floatPromo 3s ease-in-out infinite"
       }}
     />
 
@@ -269,6 +270,7 @@ export default function App() {
     >
       <button style={{
         background: "#25D366",
+        animation: "pulse 1.5s infinite",
         color: "white",
         border: "none",
         padding: "10px 20px",
@@ -528,12 +530,29 @@ export default function App() {
   }
 }
 
-/* 👇 AQUÍ VA EL NUEVO */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
+
+@keyframes zoomPromo {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatPromo {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
 `}
 </style>
   {/* BOTÓN FLOTANTE WHATSAPP */}
