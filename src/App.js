@@ -99,7 +99,8 @@ export default function App() {
   const [activeStory, setActiveStory] = useState("Dama");
   const [filter, setFilter] = useState("Todos");
   const [showCart, setShowCart] = useState(false);
-
+  const [showPromo, setShowPromo] = useState(true);
+  
   const [commentText, setCommentText] = useState("");
 
   const [cart, setCart] = useState(() => {
@@ -674,6 +675,7 @@ export default function App() {
   </div>
 )}
 
+{/* MODAL DEL PERFUME */}
 {selectedPerfume && (
   <div style={{
   position: "fixed",
@@ -816,6 +818,81 @@ export default function App() {
           borderRadius: "10px"
         }}>
           Comprar
+        </button>
+      </a>
+
+    </div>
+  </div>
+)}
+
+{/* 👇 AQUÍ EL POPUP */}
+{showPromo && (
+  <div style={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.6)",
+    backdropFilter: "blur(5px)",
+    zIndex: 3000,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  }}>
+
+    <div style={{
+      position: "relative",
+      width: "90%",
+      maxWidth: "420px",
+      animation: "zoomPromo 0.5s ease"
+    }}>
+
+      <button
+        onClick={() => setShowPromo(false)}
+        style={{
+          position: "absolute",
+          top: "-10px",
+          right: "-10px",
+          background: "red",
+          color: "white",
+          border: "none",
+          borderRadius: "50%",
+          width: "30px",
+          height: "30px",
+          cursor: "pointer",
+          fontWeight: "bold"
+        }}
+      >
+        X
+      </button>
+
+      <img
+        src="/promocion.jpg"
+        alt="Promoción"
+        style={{
+          width: "100%",
+          borderRadius: "20px"
+        }}
+      />
+
+      <a
+        href="https://wa.me/51974374060?text=Hola quiero la promoción"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <button style={{
+          width: "100%",
+          marginTop: "10px",
+          padding: "12px",
+          background: "#25D366",
+          color: "white",
+          border: "none",
+          borderRadius: "10px",
+          fontWeight: "bold",
+          cursor: "pointer"
+        }}>
+          Pedir por WhatsApp
         </button>
       </a>
 
