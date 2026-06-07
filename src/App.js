@@ -900,6 +900,92 @@ export default function App() {
   </div>
 )}
 
+{/* 🔥 FOOTER PREMIUM */}
+<div style={{
+  width: "100%",
+  background: "#000",
+  color: "#fff",
+  marginTop: "40px",
+  padding: "40px 20px",
+  textAlign: "center"
+}}>
+
+  {/* LÍNEA DORADA */}
+  <div style={{
+    width: "80px",
+    height: "2px",
+    background: "#c9a96e",
+    margin: "0 auto 20px auto"
+  }}></div>
+
+  <h3 style={{ 
+    marginBottom: "10px", 
+    letterSpacing: "4px",
+    fontWeight: "300"
+  }}>
+    NUESTRA MARCA
+  </h3>
+
+  <h2 style={{ 
+    marginBottom: "15px",
+    color: "#c9a96e",
+    fontWeight: "bold"
+  }}>
+    Maison Venexis
+  </h2>
+
+  <p style={{ margin: "5px 0" }}>
+    +51 974 374 060
+  </p>
+
+  <p style={{ margin: "5px 0" }}>
+    maisonvenexis@gmail.com
+  </p>
+
+  {/* REDES SOCIALES */}
+  <div style={{
+    marginTop: "20px",
+    display: "flex",
+    justifyContent: "center",
+    gap: "25px"
+  }}>
+
+    {/* INSTAGRAM */}
+    <a
+      href="https://www.instagram.com/maison_venexis.18/"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+        alt="Instagram"
+        style={{
+          width: "32px",
+          transition: "0.3s"
+        }}
+      />
+    </a>
+
+    {/* TIKTOK */}
+    <a
+      href="https://www.tiktok.com/@masion_venexis.18"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png"
+        alt="TikTok"
+        style={{
+          width: "32px",
+          transition: "0.3s"
+        }}
+      />
+    </a>
+
+  </div>
+
+</div>
+
     </div>
   );
 }
