@@ -854,8 +854,8 @@ export default function App() {
           position: "absolute",
           top: "-10px",
           right: "-10px",
-          background: "red",
-          color: "white",
+          background: "linear-gradient(45deg, gold, #c9a96e)",
+color: "#000",
           border: "none",
           borderRadius: "50%",
           width: "30px",
@@ -867,17 +867,37 @@ export default function App() {
         X
       </button>
 
+<div style={{
+  position: "absolute",
+  top: "10px",
+  left: "10px",
+  background: "#c9a96e",
+  color: "#000",
+  padding: "5px 12px",
+  borderRadius: "10px",
+  fontWeight: "bold",
+  fontSize: "12px",
+  animation: "pulse 1.5s infinite",
+  zIndex: 1
+}}>
+  OFERTA LIMITADA
+</div>
+
       <img
-        src="/promocion.jpg"
-        alt="Promoción"
-        style={{
-          width: "100%",
-          borderRadius: "20px"
-        }}
-      />
+  src="/promo-dia-padre.jpg?v=2"
+  alt="Promoción"
+  style={{
+    width: "100%",
+    height: "550px",              // 🔥 altura fija
+    objectFit: "cover",           // 🔥 recorte elegante
+    borderRadius: "30px",
+    animation: "zoomPromo 0.8s ease, floatPromo 3s ease-in-out infinite"
+  }}
+  
+/>
 
       <a
-        href="https://wa.me/51974374060?text=Hola quiero la promoción"
+        href="https://wa.me/51974374060?text=Hola me puedes dar mas informacion la promoción del dia del padre"
         target="_blank"
         rel="noreferrer"
       >
