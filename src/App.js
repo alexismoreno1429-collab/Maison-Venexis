@@ -131,6 +131,29 @@ export default function App() {
     localStorage.setItem("comments", JSON.stringify(comments));
   }, [comments]);
 
+  //  NUEVO EFECTO
+  useEffect(() => {
+  const elements = document.querySelectorAll(".reveal");
+   elements.forEach((el) => {
+    el.classList.remove("active"); // 🔥 resetear animación
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  elements.forEach((el) => observer.observe(el));
+
+  return () => observer.disconnect();
+}, [filter]);
+
   /* =========================
      3. CÁLCULOS DERIVADOS
   ========================= */
@@ -201,38 +224,66 @@ export default function App() {
   };
  
   return (
-    <div style={{ background: "#f5f5f5", minHeight: "100vh", padding: "20px" }}>
+    <div style={{ 
+  background: "linear-gradient(180deg, #0f0f0f, #1a1a1a)",
+  minHeight: "100vh", 
+  padding: "20px",
+  color: "white"
+}}>
 
-      {/* HEADER CON LOGO */}
-<div  
-  style={{ 
-    textAlign: "center", 
-    marginBottom: "30px",
-    animation: "fadeIn 1.5s ease"
+    {/* HERO BANNER ANIMADO */}
+    <div className="hero">
+
+      <img
+  src="/hero.jpg"
+  alt="Hero"
+  className="hero-img"
+  style={{
+    filter: "brightness(0.4) contrast(1.2) blur(2px)",
+    transform: "scale(1.1)",
+    transition: "1.5s ease"
+  }}
+/>
+
+      <div
+  className="hero-overlay"
+  style={{
+    background: "linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.7))",
+    backdropFilter: "blur(2px)"
   }}
 >
-  
-  <img 
-    src="/logo.png" 
-    alt="Logo Maison Venexis"
-    style={{ 
-      width: "100%",
-      maxWidth: "800px",
-      marginBottom: "10px",
-      animation: "slideUp 1.2s ease"
-    }} 
-  />
 
-  <div style={{ 
-    width: "60px", 
-    height: "2px", 
-    background: "#c9a96e", 
-    margin: "10px auto" 
-  }}></div>
+        <h1 className="hero-title">
+        MAISON VENEXIS
+      </h1>
 
+        <p className="hero-subtitle">
+          Fragancias exclusivas • Estilo premium
+        </p>
+
+        <div className="hero-line"></div>
+
+        <a
+          href="https://wa.me/51974374060?text=Hola quiero información de perfumes"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <button className="hero-btn">
+            Comprar ahora
+          </button>
+        </a>
+
+      </div>
+
+    </div>
+
+    {/* ✨ PARTÍCULAS */}
+{/* 🌫 HUMO ELEGANTE */}
+<div className="smoke">
+  {Array.from({ length: 8 }).map((_, i) => (
+    <span key={i} className="smoke-particle"></span>
+  ))}
 </div>
-
-
 
 {/* 🔥 PROMOCIÓN CON BOTÓN WHATSAPP */}
 <div style={{
@@ -350,6 +401,7 @@ export default function App() {
           height: "100%",
           borderRadius: "50%",
           background: "#fff",
+          color: "black",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -361,9 +413,13 @@ export default function App() {
 
       </div>
 
-      <div style={{ fontSize: "12px", marginTop: "5px" }}>
-        {item}
-      </div>
+      <div style={{ 
+  fontSize: "12px", 
+  marginTop: "5px",
+  color: "white"
+}}>
+  {item}
+</div>
 
     </div>
   ))}
@@ -407,99 +463,150 @@ export default function App() {
   gap: "20px",
   padding: "10px"
 }}>
+
   {filtered.map((perfume) => (
-    <div
-      key={perfume.id}
-      onClick={() => setSelectedPerfume(perfume)}
-      style={{
-        background: "white",
-        borderRadius: "15px",
-        overflow: "hidden",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-        transition: "0.3s",
-        cursor: "pointer"
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-      }}
-    >
-
-      {/* IMAGEN */}
-      <img
-  src={perfume.img}
-  alt={perfume.name}
-  onError={(e) => {
-    e.target.src = `https://dummyimage.com/400x500/ffffff/000000&text=${perfume.name.replace(/ /g,"+")}`;
-  }}
+  <div
+    className="reveal"
+  key={perfume.id}
+  onClick={() => setSelectedPerfume(perfume)}
   style={{
-    width: "100%",
-    height: "260px",
-    objectFit: "cover"
+    background: "#111",
+    borderRadius: "20px",
+    overflow: "hidden",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+    transition: "0.4s",
+    cursor: "pointer",
+    position: "relative"
   }}
-/>
-
-      {/* INFO */}
-      <div style={{ padding: "12px", textAlign: "center" }}>
-        
-        <h4 style={{ margin: "5px 0" }}>{perfume.name}</h4>
-
-        <div style={{
-          fontSize: "12px",
-          marginBottom: "5px",
-          color: perfume.gender === "Dama" ? "#e91e63" : "#2196f3"
-        }}>
-          {perfume.gender}
-        </div>
-
-        <strong style={{ display: "block", marginBottom: "10px" }}>
-          S/ {perfume.price}
-        </strong>
-
-       <button
-  onClick={(e) => {
-    e.stopPropagation();
-    addToCart(perfume);
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = "translateY(-10px) scale(1.02)";
   }}
-  style={{
-    width: "100%",
-    padding: "8px",
-    borderRadius: "8px",
-    border: "none",
-    background: "#c9a96e",
-    color: "#000",
-    fontWeight: "bold",
-    marginBottom: "5px",
-    cursor: "pointer"
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = "translateY(0) scale(1)";
   }}
 >
-  Agregar al carrito
-</button>
 
-        <a
-          href={`https://wa.me/51974374060?text=Hola,%20vi%20tu%20página%20Maison%20Venexis%20y%20quiero%20comprar:%20${encodeURIComponent(perfume.name)}%20¿Está%20disponible?`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button style={{
-            width: "100%",
-            padding: "10px",
-            borderRadius: "8px",
-            border: "none",
-            background: "#000",
-            color: "#fff",
-            fontWeight: "bold",
-            cursor: "pointer"
-          }}>
-            Comprar
-          </button>
-        </a>
+{perfume.category === "Nuevos" && (
+  <div style={{
+    position: "absolute",
+    top: "10px",
+    left: "10px",
+    background: "#c9a96e",
+    color: "#000",
+    padding: "5px 10px",
+    borderRadius: "10px",
+    fontSize: "10px",
+    fontWeight: "bold"
+  }}>
+    NUEVO
+  </div>
+)}
 
-      </div>
 
+
+  {/* IMAGEN */}
+  <div style={{
+    width: "100%",
+    height: "260px",
+    background: "#000",
+    overflow: "hidden"
+  }}>
+    <img
+      src={perfume.img}
+      alt={perfume.name}
+      onError={(e) => {
+        e.target.src = `https://dummyimage.com/400x500/000/fff&text=${perfume.name}`;
+      }}
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        transition: "0.5s"
+      }}
+    />
+  </div>
+
+  {/* CONTENIDO */}
+  <div style={{ padding: "15px", textAlign: "center" }}>
+
+    {/* NOMBRE */}
+    <h4 style={{
+      margin: "5px 0",
+      color: "#fff",
+      fontFamily: "'Playfair Display', serif",
+      fontWeight: "600",
+      letterSpacing: "1px"
+    }}>
+      {perfume.name}
+    </h4>
+
+    {/* GÉNERO */}
+    <div style={{
+      fontSize: "11px",
+      marginBottom: "8px",
+      fontFamily: "'Montserrat', sans-serif",
+      letterSpacing: "2px",
+      textTransform: "uppercase",
+      color: "#aaa"
+    }}>
+      {perfume.gender}
     </div>
+
+    {/* PRECIO */}
+    <div style={{
+      color: "#c9a96e",
+      fontSize: "16px",
+      fontWeight: "600",
+      marginBottom: "12px",
+      letterSpacing: "1px"
+    }}>
+      S/ {perfume.price}
+    </div>
+
+    {/* BOTONES */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        addToCart(perfume);
+      }}
+      style={{
+        width: "100%",
+        padding: "10px",
+        borderRadius: "10px",
+        border: "none",
+        background: "linear-gradient(45deg, #c9a96e, #f5d28c)",
+        color: "#000",
+        fontWeight: "bold",
+        marginBottom: "8px",
+        cursor: "pointer",
+        transition: "0.3s"
+      }}
+    >
+      Agregar
+    </button>
+
+    <a
+      href={`https://wa.me/51974374060?text=Hola,%20quiero%20comprar%20${encodeURIComponent(perfume.name)}`}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <button style={{
+        width: "100%",
+        padding: "10px",
+        borderRadius: "10px",
+        border: "1px solid #c9a96e",
+        background: "transparent",
+        color: "#c9a96e",
+        fontWeight: "bold",
+        cursor: "pointer"
+      }}>
+        Comprar
+      </button>
+    </a>
+
+  </div>
+
+</div>
   ))}
 </div>
 <style>
@@ -554,6 +661,219 @@ export default function App() {
   100% { transform: translateY(0px); }
 }
 
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) contrast(1.2);
+  transform: scale(1.1);
+  animation: heroZoom 1.5s ease forwards;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  text-align: center;
+  color: white;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: clamp(30px, 6vw, 70px);
+  font-weight: 900;
+  letter-spacing: 3px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.hero-subtitle {
+  font-size: clamp(14px, 2vw, 20px);
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 1s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.hero-line {
+  width: 60px;
+  height: 3px;
+  background: radial-gradient(circle, #fff, #c9a96e);
+box-shadow: 0 0 8px #c9a96e;
+  margin: 20px auto;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1s;
+}
+
+.hero-btn {
+  background: white;
+  color: black;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 1s ease forwards;
+  animation-delay: 1.2s;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.hero-img {
+  animation: cinematicZoom 6s ease forwards;
+}
+
+@keyframes cinematicZoom {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #c9a96e;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatParticles 8s linear infinite;
+}
+
+/* posiciones aleatorias */
+.particle:nth-child(1) { left: 10%; animation-duration: 6s; }
+.particle:nth-child(2) { left: 20%; animation-duration: 8s; }
+.particle:nth-child(3) { left: 30%; animation-duration: 7s; }
+.particle:nth-child(4) { left: 40%; animation-duration: 9s; }
+.particle:nth-child(5) { left: 50%; animation-duration: 6s; }
+.particle:nth-child(6) { left: 60%; animation-duration: 10s; }
+.particle:nth-child(7) { left: 70%; animation-duration: 7s; }
+.particle:nth-child(8) { left: 80%; animation-duration: 8s; }
+.particle:nth-child(9) { left: 90%; animation-duration: 6s; }
+
+/* animación */
+@keyframes floatParticles {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.smoke {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.smoke-particle {
+  position: absolute;
+  bottom: -100px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.4;
+  animation: smokeRise 12s linear infinite;
+}
+
+/* posiciones distintas */
+.smoke-particle:nth-child(1) { left: 10%; animation-duration: 14s; }
+.smoke-particle:nth-child(2) { left: 25%; animation-duration: 12s; }
+.smoke-particle:nth-child(3) { left: 40%; animation-duration: 16s; }
+.smoke-particle:nth-child(4) { left: 55%; animation-duration: 13s; }
+.smoke-particle:nth-child(5) { left: 70%; animation-duration: 15s; }
+.smoke-particle:nth-child(6) { left: 80%; animation-duration: 11s; }
+.smoke-particle:nth-child(7) { left: 35%; animation-duration: 17s; }
+.smoke-particle:nth-child(8) { left: 60%; animation-duration: 14s; }
+
+/* animación */
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-200px) scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-500px) scale(1.3);
+    opacity: 0;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 `}
 </style>
   {/* BOTÓN FLOTANTE WHATSAPP */}
@@ -596,13 +916,16 @@ export default function App() {
     top: "80px",
     width: "260px",
     background: "white",
+    color: "#1a1a1a",
     borderRadius: "10px",
     boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
     padding: "10px",
     zIndex: 1000
   }}>
 
-    <h4 style={{ textAlign: "center" }}>🛒 Carrito</h4>
+    <h4 style={{ textAlign: "center", color: "#c9a96e" }}>
+        🛒 Carrito
+    </h4>
 
     {cart.length === 0 ? (
       <p style={{ fontSize: "12px", textAlign: "center" }}>
@@ -697,7 +1020,8 @@ export default function App() {
 }}>
 
     <div style={{
-  background: "white",
+  background: "#1c1c1c",
+  color: "white",
   width: "90%",
   maxWidth: "400px",
   borderRadius: "25px",
@@ -716,10 +1040,7 @@ export default function App() {
         marginBottom: "10px"
       }}>
         <button onClick={() => setSelectedPerfume(null)}>← Volver</button>
-        <strong>{selectedPerfume.name}</strong>
-        <div></div>
       </div>
-
 
       {/* CONTENIDO */}
       <img
@@ -727,9 +1048,12 @@ export default function App() {
         alt={selectedPerfume.name}
         style={{ width: "100%", borderRadius: "12px" }}
       />
-
-      <h2>{selectedPerfume.name}</h2>
+      
+      <h2 style={{ color: "#fff", textAlign: "center", letterSpacing: "1px" }}>
+  {selectedPerfume.name}
+</h2>
       <h3>S/ {selectedPerfume.price}</h3>
+
 
 <div style={{ marginTop: "10px" }}>
   <strong>Califica este perfume:</strong>
@@ -742,8 +1066,8 @@ export default function App() {
         style={{
          color:
   star <= Math.round(ratingData[selectedPerfume.id]?.average || 0)
-    ? "#f5b301"
-    : "#ccc"
+    ? "#FFD700"   // dorado fuerte
+    : "#555"      // gris oscuro visible
         }}
       >
         ★
