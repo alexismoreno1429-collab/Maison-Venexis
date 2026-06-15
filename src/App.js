@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 
   // 🆕 NUEVOS (SOLO AQUÍ)
   { id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/9PM.jpeg" },
-  { id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Club+Nuit" },
-  { id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Odyssey+Mega" },
-  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Asad" },
-  { id: 7, name: "Asad Bourbon", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Asad+Bourbon" },
-  { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Zanzibar" },
+  { id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/club-de-nuit-intense-les.jpg" },
+  { id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/odyssey-mega-man.jpg" },
+  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/asad-les.jpg" },
+  { id: 7, name: "Asad Bourbon", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/asad-bourbon.jpg" },
+  { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/asad-zanz%C3%ADbar-les.jpg" },
 
-  { id: 9, name: "Odyssey Candee Les", gender: "Dama", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Candee" },
-  { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Yum+Yum" },
-  { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Island+Bliss" },
+  { id: 9, name: "Odyssey Candee Les", gender: "Dama", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/odyssey-candee-les.jpg" },
+  { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/yum-yum-les.jpg" },
+  { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/island-bliss-les.jpg" },
 
-  { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Amber+Oud" },
-  { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Mandarin+Sky" },
-  { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "https://dummyimage.com/400x500/fff/000&text=Khamrah" },
+  { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/amber-oud-les.jpg" },
+  { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/odyssey-mandarin-sky-les.jpg" },
+  { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/khamrah-les.jpg" },
 
     //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
     // (MUJERES)
@@ -165,9 +165,9 @@ export default function App() {
       cart.map((item, i) => `${i + 1}. ${item.name} - S/ ${item.price}`).join("\n") +
       `\n\nTotal: S/ ${total}`
   );
-
-  const filtered = perfumes.filter((p) => {
-    const matchName = p.name.toLowerCase().includes(query.toLowerCase());
+    const normalizedQuery = query.toLowerCase().trim();
+    const filtered = perfumes.filter((p) => {
+    const matchName = p.name.toLowerCase().includes(normalizedQuery);
 
     if (filter === "Todos") return matchName;
     if (filter === "Nuevos") return matchName && p.category === "Nuevos";
@@ -458,6 +458,8 @@ export default function App() {
      {/* GRID ESTILO INSTAGRAM */}
 <div style={{
   display: "grid",
+  position: "relative",
+  zIndex: 1, // ESTO ARREGLA QUE NO SE VEAN
   gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
   justifyContent: "center",
   gap: "20px",
@@ -466,23 +468,28 @@ export default function App() {
 
   {filtered.map((perfume) => (
   <div
-    className="reveal"
-  key={perfume.id}
+  key={perfume.id + filter}
   onClick={() => setSelectedPerfume(perfume)}
   style={{
-    background: "#111",
-    borderRadius: "20px",
+    background: "linear-gradient(145deg, #1a1a1a, #0f0f0f)",
+    color: "white",
+    borderRadius: "18px",
     overflow: "hidden",
     boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
-    transition: "0.4s",
+    transition: "all 0.4s ease",
     cursor: "pointer",
-    position: "relative"
+    position: "relative",
+    zIndex: 0,
   }}
+
   onMouseEnter={(e) => {
-    e.currentTarget.style.transform = "translateY(-10px) scale(1.02)";
+    e.currentTarget.style.transform = "translateY(-10px) scale(1.03)";
+    e.currentTarget.style.boxShadow = "0 20px 50px rgba(201,169,110,0.25)";
   }}
+
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "translateY(0) scale(1)";
+    e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.4)";
   }}
 >
 
@@ -502,7 +509,19 @@ export default function App() {
   </div>
 )}
 
-
+{/* EFECTO BRILLO PREMIUM */}
+<div style={{
+  position: "absolute",
+  top: 0,
+  left: "-75%",
+  width: "50%",
+  height: "100%",
+  background: "linear-gradient(120deg, transparent, rgba(255,255,255,0.15), transparent)",
+  transform: "skewX(-25deg)",
+  pointerEvents: "none",
+  transition: "0.5s",
+  zIndex: 1 // 🔥 IMPORTANTE
+}} className="shine-effect"></div>
 
   {/* IMAGEN */}
   <div style={{
@@ -527,12 +546,17 @@ export default function App() {
   </div>
 
   {/* CONTENIDO */}
-  <div style={{ padding: "15px", textAlign: "center" }}>
+  <div style={{ 
+  padding: "15px", 
+  textAlign: "center",
+  position: "relative",
+  zIndex: 2 // 🔥 MÁS ARRIBA QUE EL BRILLO
+}}>
 
     {/* NOMBRE */}
     <h4 style={{
-      margin: "5px 0",
-      color: "#fff",
+        margin: "5px 0",
+      color: "white",
       fontFamily: "'Playfair Display', serif",
       fontWeight: "600",
       letterSpacing: "1px"
@@ -874,6 +898,16 @@ box-shadow: 0 0 8px #c9a96e;
   transform: translateY(0);
 }
 
+.shine-effect {
+  opacity: 0;
+}
+
+.card-premium:hover .shine-effect {
+  left: 130%;
+  opacity: 1;
+  transition: 0.8s;
+}
+
 `}
 </style>
   {/* BOTÓN FLOTANTE WHATSAPP */}
@@ -1029,8 +1063,8 @@ box-shadow: 0 0 8px #c9a96e;
   animation: "slideUpModal 0.4s ease",
   boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
   
-  maxHeight: "90vh",   // 👈 IMPORTANTE
-  overflowY: "auto"    // 👈 ESTO ACTIVA EL SCROLL
+  maxHeight: "90vh",   //  IMPORTANTE
+  overflowY: "auto"    //  ESTO ACTIVA EL SCROLL
 }}>
 
       {/* HEADER */}
