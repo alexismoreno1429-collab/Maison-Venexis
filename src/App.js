@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
   { id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/9PM.jpeg" },
   { id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/club-de-nuit-intense-les.jpg" },
   { id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/odyssey-mega-man.jpg" },
-  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/Asad-les.jpg" },
+  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/asad-les.jpg" },
   { id: 7, name: "Asad Bourbon", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/asad-bourbon.jpg" },
   { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/asad-zanzíbar-les.jpg" },
 
