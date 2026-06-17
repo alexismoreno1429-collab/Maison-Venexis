@@ -3,19 +3,18 @@ import React, { useState, useEffect } from "react";
 
   // 🆕 NUEVOS (SOLO AQUÍ)
   { id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/9PM.jpeg" },
-  { id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/club-de-nuit-intense-les.jpg" },
-  { id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/odyssey-mega-man.jpg" },
-  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/asad-les.jpg" },
-  { id: 7, name: "Asad Bourbon", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/asad-bourbon.jpg" },
-  { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/asad-zanz%C3%ADbar-les.jpg" },
+  { id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/club-de-nuit-intense-les.jpg" },
+  { id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/odyssey-mega-man.jpg" },
+  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/Asad-les.jpg" },
+  { id: 7, name: "Asad Bourbon", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/asad-bourbon.jpg" },
+  { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/asad-zanzíbar-les.jpg" },
 
-  { id: 9, name: "Odyssey Candee Les", gender: "Dama", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/odyssey-candee-les.jpg" },
-  { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/yum-yum-les.jpg" },
-  { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/island-bliss-les.jpg" },
-
-  { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/amber-oud-les.jpg" },
-  { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/odyssey-mandarin-sky-les.jpg" },
-  { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "http://localhost:3000/perfumes/khamrah-les.jpg" },
+  { id: 9, name: "Odyssey Candee Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/odyssey-candee-les.jpg" },
+  { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/yum-yum-les.jpg" },
+  { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/island-bliss-les.jpg" },
+  { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/amber-oud-les.jpg" },
+  { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/odyssey-mandarin-sky-les.jpg" },
+  { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/khamrah-les.jpg" },
 
     //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
     // (MUJERES)
