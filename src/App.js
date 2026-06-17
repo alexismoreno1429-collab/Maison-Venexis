@@ -694,6 +694,14 @@ export default function App() {
   margin-bottom: 40px;
 }
 
+/* 📱 RESPONSIVE CELULAR */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh; /* 🔥 más pequeño en celular */
+    border-radius: 15px;
+  }
+}
+
 .hero-img {
   width: 100%;
   height: 100%;
