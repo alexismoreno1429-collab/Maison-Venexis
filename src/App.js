@@ -36,6 +36,49 @@ import React, { useState, useEffect } from "react";
   img: "/perfumes/fame.jpg" 
 },
 
+{ 
+  id: 301, 
+  name: "COCONUT", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 50, 
+  oldPrice: 60,
+  bestSeller: true,
+  img: "/perfumes/coconut.jpg" 
+},
+
+{ 
+  id: 302, 
+  name: "MANGO TEMPTATION", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 60, 
+  oldPrice: 70,
+  recommended: true,
+  img: "/perfumes/mango-temptation.jpg" 
+},
+
+{ 
+  id: 303, 
+  name: "GOOD GIRL", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 55, 
+  oldPrice: 65,
+  bestSeller: true,
+  img: "/perfumes/good-girl.jpg" 
+},
+
+{ 
+  id: 304, 
+  name: "S SHAKIRA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 60, 
+  oldPrice: 70,
+  recommended: true,
+  img: "/perfumes/s-shakira.jpg" 
+},
 
     //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
     // (HOMBRES)
@@ -44,8 +87,21 @@ import React, { useState, useEffect } from "react";
   name: "VALENTINO", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 45, 
+  price: 60,
+  oldPrice: 70,
+  recommended: true,
   img: "/perfumes/valentino.jpg" 
+},
+
+{ 
+  id: 206, 
+  name: "SAUVAGE ELIXIR", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 55,
+  oldPrice: 65, 
+  bestSeller: true, 
+  img: "/perfumes/sauvage-elixir.jpg" 
 },
 
 { 
@@ -53,7 +109,9 @@ import React, { useState, useEffect } from "react";
   name: "LE BEU", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 45, 
+  price: 55,
+  oldPrice: 65, 
+  recommended: true,
   img: "/perfumes/le-beu.jpg" 
 },
 
@@ -62,22 +120,34 @@ import React, { useState, useEffect } from "react";
   name: "ASAD", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 45, 
+  price: 50,
+  oldPrice: 60, 
+  bestSeller: true, 
   img: "/perfumes/asad.jpg" 
+},
+
+{ 
+  id: 205, 
+  name: "KHAMRAH", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 55,
+  oldPrice: 65, 
+  bestSeller: true, 
+  img: "/perfumes/khamrah.jpg" 
 },
 
     //  NORMALES (los tuyos anteriores)
   ...[
     "212 HEROES","AMARIGE","AQUA KISS","ACQUA DI GIOIA","YARA","BORN IN ROMA YELLOW",
-    "BURBERRY","CAROLINA HERRERA","CLOUD PINK","COCO CHANEL","COCONUT","FANTASY",
-    "GOOD GIRL","GOOD GIRL BLUSH","J ADORE","MANGO TEMPTATION","MISS DIOR EDP2017",
-    "MOD VANILLA","OLYMPEA","PARIS HILTON","S SHAKIRA","SCANDAL","SWEET LIKE CANDY","VANILLA DIORAMA",
+    "BURBERRY","CAROLINA HERRERA","CLOUD PINK","COCO CHANEL","FANTASY","GOOD GIRL BLUSH","J ADORE","MISS DIOR EDP2017",
+    "MOD VANILLA","OLYMPEA","PARIS HILTON","SCANDAL","SWEET LIKE CANDY","VANILLA DIORAMA",
 
     "ONE MILLION ELIXIR","ONE MILLION","212 VIP","ACQUA DI GIO","ACQUA DI GIO PROFUMO",
     "BAD BOY","BOSS BOTTLED NIGHT","EROS","EROS FLAME","HUGO","INVICTUS",
     "INVICTUS VICTORY","LE MALE","LE MALE ELIXIR","ODYSSEY MANDARIN SKY",
-    "PLAY INTENSE","SAUVAGE","SAUVAGE ELIXIR","SCANDAL MEN","ULTRA MALE",
-    "THE ONE FOR MEN","VALENTINO UOMO BORN IN ROMA","KHAMRAH","ERBA PURA"
+    "PLAY INTENSE","SAUVAGE","SCANDAL MEN","ULTRA MALE",
+    "THE ONE FOR MEN","VALENTINO UOMO BORN IN ROMA","ERBA PURA"
   ].map((name, i) => ({
     id: 100 + i,
     name,
@@ -275,6 +345,42 @@ export default function App() {
       </div>
 
     </div>
+
+  {/* 🔥 BARRA DE CONFIANZA */}
+  <div style={{
+  display: "flex",
+  justifyContent: "center",
+  gap: "20px",
+  flexWrap: "wrap",
+  marginBottom: "30px",
+  padding: "15px",
+  background: "linear-gradient(90deg, #1a1a1a, #0f0f0f)",
+  borderRadius: "15px",
+  border: "1px solid rgba(255,255,255,0.05)"
+}}>
+
+  <div style={{ textAlign: "center" }}>
+    <div style={{ fontSize: "20px" }}>🔥</div>
+    <div style={{ fontSize: "13px", color: "#fff", fontWeight: "500" }}>
+      Más de +100 clientes satisfechos
+    </div>
+  </div>
+
+  <div style={{ textAlign: "center" }}>
+    <div style={{ fontSize: "20px" }}>🚚</div>
+    <div style={{ fontSize: "13px", color: "#fff", fontWeight: "500" }}>
+      Envíos a todo Lima
+    </div>
+  </div>
+
+  <div style={{ textAlign: "center" }}>
+    <div style={{ fontSize: "20px" }}>💎</div>
+    <div style={{ fontSize: "13px", color: "#fff", fontWeight: "500" }}>
+      Calidad garantizada
+    </div>
+  </div>
+
+</div>
 
     {/* ✨ PARTÍCULAS */}
 {/* 🌫 HUMO ELEGANTE */}
@@ -492,7 +598,46 @@ export default function App() {
   }}
 >
 
-{perfume.category === "Nuevos" && (
+{/* 🔥 ETIQUETAS DINÁMICAS */}
+
+{/* 🔥 MÁS VENDIDO */}
+{perfume.bestSeller && (
+  <div style={{
+    position: "absolute",
+    top: "10px",
+    left: "10px",
+    background: "#ff3b3b",
+    color: "#fff",
+    padding: "5px 10px",
+    borderRadius: "10px",
+    fontSize: "10px",
+    fontWeight: "bold",
+    boxShadow: "0 0 10px rgba(255,0,0,0.5)"
+  }}>
+    🔥 Más vendido
+  </div>
+)}
+
+{/* ⭐ RECOMENDADO */}
+{!perfume.bestSeller && perfume.recommended && (
+  <div style={{
+    position: "absolute",
+    top: "10px",
+    left: "10px",
+    background: "#ffd700",
+    color: "#000",
+    padding: "5px 10px",
+    borderRadius: "10px",
+    fontSize: "10px",
+    fontWeight: "bold",
+    boxShadow: "0 0 10px rgba(255,215,0,0.6)"
+  }}>
+    ⭐ Recomendado
+  </div>
+)}
+
+{/* 🆕 NUEVO */}
+{!perfume.bestSeller && !perfume.recommended && perfume.category === "Nuevos" && (
   <div style={{
     position: "absolute",
     top: "10px",
@@ -507,7 +652,6 @@ export default function App() {
     NUEVO
   </div>
 )}
-
 {/* EFECTO BRILLO PREMIUM */}
 <div style={{
   position: "absolute",
@@ -576,15 +720,30 @@ export default function App() {
     </div>
 
     {/* PRECIO */}
+    <div style={{ marginBottom: "12px" }}>
+
+  {/* PRECIO ANTIGUO (tachado) */}
+  {perfume.oldPrice && (
     <div style={{
-      color: "#c9a96e",
-      fontSize: "16px",
-      fontWeight: "600",
-      marginBottom: "12px",
-      letterSpacing: "1px"
+      textDecoration: "line-through",
+      color: "#888",
+      fontSize: "13px"
     }}>
-      S/ {perfume.price}
+      S/ {perfume.oldPrice}
     </div>
+  )}
+
+  {/* PRECIO NUEVO */}
+  <div style={{
+    color: "#c9a96e",
+    fontSize: "18px",
+    fontWeight: "bold",
+    letterSpacing: "1px"
+  }}>
+    S/ {perfume.price}
+  </div>
+
+</div>
 
     {/* BOTONES */}
     <button
@@ -914,6 +1073,7 @@ box-shadow: 0 0 8px #c9a96e;
   opacity: 1;
   transition: 0.8s;
 }
+
 
 `}
 </style>
