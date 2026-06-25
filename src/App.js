@@ -1409,7 +1409,7 @@ color: "#000",
 </div>
 
       <img
-  src="/promo-dia-padre.jpg?v=2"
+  src="/promocion.jpg?v=2"
   alt="Promoción"
   style={{
     width: "100%",
