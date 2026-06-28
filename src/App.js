@@ -17,145 +17,631 @@ import React, { useState, useEffect } from "react";
   { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/khamrah-les.jpg" },
 
     //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
+    
     // (MUJERES)
-{ 
-  id: 201, 
+
+{ id: 2000, 
   name: "DEVOTION", 
   gender: "Dama", 
   category: "Normal", 
   price: 45, 
-  img: "/perfumes/devotion.jpg" 
+  img: "/perfumes/devotion.jpg",
+
+  inspiredBy: "Dolce & Gabbana Devotion",
+  description: "Fragancia dulce y elegante con notas cremosas y un toque gourmand muy femenino.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
 },
 
-{ 
-  id: 202, 
+{ id: 2001, 
   name: "FAME", 
   gender: "Dama", 
   category: "Normal", 
   price: 45, 
-  img: "/perfumes/fame.jpg" 
+  img: "/perfumes/fame.jpg",
+
+    inspiredBy: "Paco Rabanne Fame",
+  description: "Aroma moderno y brillante, mezcla de frutas y flores con estilo juvenil y llamativo.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
 },
 
-{ 
-  id: 301, 
+{ id: 2002, 
   name: "COCONUT", 
   gender: "Dama", 
   category: "Normal", 
   price: 50, 
   oldPrice: 60,
   bestSeller: true,
-  img: "/perfumes/coconut.jpg" 
+  img: "/perfumes/coconut.jpg",
+  
+  inspiredBy: "Fragancias tropicales tipo Victoria’s Secret",
+  description: "Aroma tropical dulce a coco, cremoso y relajante ideal para clima cálido.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
 },
 
-{ 
-  id: 302, 
+{ id: 2003, 
   name: "MANGO TEMPTATION", 
   gender: "Dama", 
   category: "Normal", 
   price: 60, 
   oldPrice: 70,
   recommended: true,
-  img: "/perfumes/mango-temptation.jpg" 
+  img: "/perfumes/mango-temptation.jpg",
+
+  inspiredBy: "Frutales tropicales tipo Escada",
+  description: "Fragancia frutal intensa de mango maduro, fresca, dulce y muy veraniega.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
 },
 
-{ 
-  id: 303, 
+{ id: 2004, 
   name: "GOOD GIRL", 
   gender: "Dama", 
   category: "Normal", 
   price: 55, 
   oldPrice: 65,
   bestSeller: true,
-  img: "/perfumes/good-girl.jpg" 
+  img: "/perfumes/good-girl.jpg",
+  
+   inspiredBy: "Good Girl Carolina Herrera",
+  description: "Aroma sensual y elegante con mezcla de dulzura y notas intensas femeninas.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
 },
 
-{ 
-  id: 304, 
+{ id: 2005, 
   name: "S SHAKIRA", 
   gender: "Dama", 
   category: "Normal", 
   price: 60, 
   oldPrice: 70,
   recommended: true,
-  img: "/perfumes/s-shakira.jpg" 
+  img: "/perfumes/s-shakira.jpg",
+
+  inspiredBy: "Shakira perfumes línea Dance",
+  description: "Fragancia dulce y juvenil con toque frutal y femenino muy suave.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
 },
 
-    //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
+{ id: 2006, 
+  name: "212 HEROES", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/212-heroes.jpg",
+  
+  inspiredBy: "Carolina Herrera 212 línea femenina",
+  description: "Fragancia juvenil y moderna con notas frescas y dulces, ideal para uso diario.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2007, 
+  name: "AMARIGE", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/amarige.jpg",
+
+  inspiredBy: "Givenchy Amarige",
+  description: "Aroma floral intenso, clásico y elegante con presencia femenina fuerte.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2008, 
+  name: "AQUA KISS", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/aqua-kiss.jpg",
+
+   inspiredBy: "Victoria’s Secret Aqua Kiss",
+  description: "Fragancia fresca y acuática con toque suave y limpio muy femenino.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2009, 
+  name: "ACQUA DI GIOIA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/acqua-di-gioia.jpg",
+
+  inspiredBy: "Giorgio Armani Acqua di Gioia",
+  description: "Aroma fresco marino con toque cítrico y elegante muy natural.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2010, 
+  name: "YARA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/yara.jpg",
+
+   inspiredBy: "Lattafa Yara",
+  description: "Fragancia dulce, cremosa y suave con toque oriental moderno.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2011, 
+  name: "BORN IN ROMA YELLOW", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/born-in-roma-yellow.jpg",
+
+   inspiredBy: "Valentino Born in Roma Yellow Dream",
+  description: "Aroma floral frutal brillante, juvenil y elegante.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2012, 
+  name: "BURBERRY", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/burberry.jpg",
+
+  inspiredBy: "Burberry Her",
+  description: "Fragancia dulce frutal con fresas y notas suaves muy femeninas.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2013, 
+  name: "CAROLINA HERRERA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/carolina-herrera.jpg",
+
+  inspiredBy: "Good Girl Carolina Herrera línea femenina",
+  description: "Aroma elegante, sensual y sofisticado con presencia fuerte.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2014, 
+  name: "CLOUD PINK", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/cloud-pink.jpg",
+
+  inspiredBy: "Ariana Grande Cloud Pink",
+  description: "Fragancia dulce, cremosa y moderna con toque juvenil y suave.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2015, 
+  name: "COCO CHANEL", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/coco-chanel.jpg",
+
+  inspiredBy: "Chanel Coco Mademoiselle",
+  description: "Aroma elegante, clásico y sofisticado con toque cítrico floral.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2016, 
+  name: "FANTASY", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/fantasy.jpg",
+
+  inspiredBy: "Britney Spears Fantasy",
+  description: "Fragancia dulce frutal con toque de caramelo y frutas rojas.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2017, 
+  name: "GOOD GIRL BLUSH", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45,
+  img: "/perfumes/good-girl-blush.jpg",
+
+  inspiredBy: "Good Girl Blush Carolina Herrera",
+  description: "Aroma floral suave, elegante y moderno con toque femenino delicado.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2018, 
+  name: "J ADORE", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/j-adore.jpg",
+
+  inspiredBy: "Dior J’adore",
+  description: "Fragancia floral elegante y lujosa con presencia femenina clásica.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2019, 
+  name: "MISS DIOR EDP 2017", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/miss-dior-edp-2017.jpg",
+
+  inspiredBy: "Miss Dior Eau de Parfum 2017",
+  description: "Aroma romántico, floral y dulce con elegancia juvenil.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2020, 
+  name: "MOD VANILLA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/mod-vanilla.jpg",
+
+   inspiredBy: "Ariana Grande Mod Vanilla",
+  description: "Fragancia dulce cremosa con vainilla intensa y moderna.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2021, 
+  name: "OLYMPEA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/olympea.jpg",
+
+  inspiredBy: "Paco Rabanne Olympea",
+  description: "Aroma dulce salado único con presencia fuerte y femenina.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2022, 
+  name: "PARIS HILTON", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/paris-hilton.jpg",
+
+  inspiredBy: "Paris Hilton Women",
+  description: "Fragancia frutal dulce juvenil con estilo glamoroso.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2023, 
+  name: "SCANDAL", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/scandal.jpg",
+
+  inspiredBy: "Jean Paul Gaultier Scandal",
+  description: "Aroma dulce intenso con miel y flores muy sensual.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2024, 
+  name: "SWEET LIKE CANDY", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/sweet-like-candy.jpg",
+
+  inspiredBy: "Ariana Grande Sweet Like Candy",
+  description: "Fragancia dulce tipo golosina con frutas y vainilla suave.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2025, 
+  name: "VANILLA DIORAMA", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/vanilla-diorama.jpg",
+
+  inspiredBy: "Dior Vanilla Diorama",
+  description: "Aroma cálido de vainilla con toque elegante y dulce sofisticado.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2028, 
+  name: "212 VIP", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/212-vip.jpg",
+
+  inspiredBy: "Carolina Herrera 212 VIP Women",
+  description: "Aroma dulce elegante de fiesta con estilo moderno y atractivo.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
+{ id: 2029, 
+  name: "ACQUA DI GIO", 
+  gender: "Dama", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/acqua-di-gio.jpg",
+
+  inspiredBy: "Giorgio Armani Acqua di Gio femenino",
+  description: "Fragancia fresca acuática con toque limpio y natural.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+    
     // (HOMBRES)
-    { 
-  id: 200, 
+   
+{ 
+  id: 1100, 
   name: "VALENTINO", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 60,
-  oldPrice: 70,
-  recommended: true,
+  price: 60, 
+  oldPrice: 70, 
+  recommended: true, 
   img: "/perfumes/valentino.jpg" 
 },
 
 { 
-  id: 206, 
+  id: 1101, 
   name: "SAUVAGE ELIXIR", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 55,
+  price: 55, 
   oldPrice: 65, 
   bestSeller: true, 
   img: "/perfumes/sauvage-elixir.jpg" 
 },
 
 { 
-  id: 203, 
-  name: "LE BEU", 
+  id: 1102, 
+  name: "LE BEAU", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 55,
+  price: 55, 
   oldPrice: 65, 
-  recommended: true,
-  img: "/perfumes/le-beu.jpg" 
-},
+  recommended: true, 
+  img: "/perfumes/le-beau.jpg" },
 
 { 
-  id: 204, 
-  name: "ASAD", 
-  gender: "Caballero", 
-  category: "Normal", 
-  price: 50,
-  oldPrice: 60, 
-  bestSeller: true, 
-  img: "/perfumes/asad.jpg" 
-},
-
-{ 
-  id: 205, 
+  id: 1104, 
   name: "KHAMRAH", 
   gender: "Caballero", 
   category: "Normal", 
-  price: 55,
+  price: 55, 
   oldPrice: 65, 
   bestSeller: true, 
   img: "/perfumes/khamrah.jpg" 
 },
 
-    //  NORMALES (los tuyos anteriores)
-  ...[
-    "212 HEROES","AMARIGE","AQUA KISS","ACQUA DI GIOIA","YARA","BORN IN ROMA YELLOW",
-    "BURBERRY","CAROLINA HERRERA","CLOUD PINK","COCO CHANEL","FANTASY","GOOD GIRL BLUSH","J ADORE","MISS DIOR EDP2017",
-    "MOD VANILLA","OLYMPEA","PARIS HILTON","SCANDAL","SWEET LIKE CANDY","VANILLA DIORAMA",
+{ 
+  id: 1105, 
+  name: "ACQUA DI GIO PROFUMO", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/acqua-di-gio-profumo.jpg" 
+},
 
-    "ONE MILLION ELIXIR","ONE MILLION","212 VIP","ACQUA DI GIO","ACQUA DI GIO PROFUMO",
-    "BAD BOY","BOSS BOTTLED NIGHT","EROS","EROS FLAME","HUGO","INVICTUS",
-    "INVICTUS VICTORY","LE MALE","LE MALE ELIXIR","ODYSSEY MANDARIN SKY",
-    "PLAY INTENSE","SAUVAGE","SCANDAL MEN","ULTRA MALE",
-    "THE ONE FOR MEN","VALENTINO UOMO BORN IN ROMA","ERBA PURA"
-  ].map((name, i) => ({
-    id: 100 + i,
-    name,
-    gender: i < 24 ? "Dama" : "Caballero",
-    category: "Normal",
-    price: 45,
-    img: `/perfumes/${name.toLowerCase().replace(/ /g,"-")}.jpg`
-  }))
+{ 
+  id: 1106, 
+  name: "BAD BOY", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/bad-boy.jpg" 
+},
+
+{ 
+  id: 1107, 
+  name: "BOSS BOTTLED NIGHT", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/boss-bottled-night.jpg" 
+},
+
+{ 
+  id: 1108, 
+  name: "EROS", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/eros.jpg" 
+},
+
+{ 
+  id: 1109, 
+  name: "EROS FLAME", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/eros-flame.jpg" 
+},
+
+{ 
+  id: 1110, 
+  name: "HUGO", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/hugo.jpg" 
+},
+
+{ 
+  id: 1111, 
+  name: "INVICTUS", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/invictus.jpg" 
+},
+
+{ 
+  id: 1112, 
+  name: "INVICTUS VICTORY", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/invictus-victory.jpg" 
+},
+
+{ 
+  id: 1113, 
+  name: "LE MALE", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/le-male.jpg" },
+
+{ 
+  id: 1114, 
+  name: "LE MALE ELIXIR", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/le-male-elixir.jpg" 
+},
+
+{ 
+  id: 1115, 
+  name: "ODYSSEY MANDARIN SKY", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/odyssey-mandarin-sky.jpg" 
+},
+
+{ 
+  id: 1116, 
+  name: "PLAY INTENSE", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/play-intense.jpg" 
+},
+
+{ 
+  id: 1117, 
+  name: "SAUVAGE", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/sauvage.jpg" 
+},
+
+{ 
+  id: 1118, 
+  name: "SCANDAL MEN", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/scandal-men.jpg" },
+
+{ 
+  id: 1119, 
+  name: "ULTRA MALE", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/ultra-male.jpg" 
+},
+
+{ 
+  id: 1120, 
+  name: "THE ONE FOR MEN", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/the-one-for-men.jpg" 
+},
+
+{ 
+  id: 1121, 
+  name: "VALENTINO UOMO BORN IN ROMA", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/valentino-uomo-born-in-roma.jpg" 
+},
+
+{ 
+  id: 1122, 
+  name: "ERBA PURA", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/erba-pura.jpg" 
+},
+
+{ 
+  id: 1023, 
+  name: "ONE MILLION ELIXIR", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/one-million-elixir.jpg" 
+},
+
+{ id: 1024, 
+  name: "ONE MILLION", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/one-million.jpg"
+},
+
 ];
 
 export default function App() {
@@ -570,6 +1056,7 @@ export default function App() {
   gap: "20px",
   padding: "10px"
 }}>
+
 
   {filtered.map((perfume) => (
   <div
@@ -1253,7 +1740,42 @@ box-shadow: 0 0 8px #c9a96e;
       <h2 style={{ color: "#fff", textAlign: "center", letterSpacing: "1px" }}>
   {selectedPerfume.name}
 </h2>
+
       <h3>S/ {selectedPerfume.price}</h3>
+
+      {selectedPerfume.inspiredBy && (
+  <p style={{
+    color: "#c9a96e",
+    textAlign: "center",
+    fontStyle: "italic",
+    marginTop: "-8px",
+    marginBottom: "15px"
+  }}>
+    Inspirado en {selectedPerfume.inspiredBy}
+  </p>
+)}
+
+{selectedPerfume.description && (
+  <div style={{
+    background: "#252525",
+    padding: "15px",
+    borderRadius: "12px",
+    marginBottom: "20px",
+    lineHeight: "1.7"
+  }}>
+
+    <p style={{ marginBottom: "15px" }}>
+      {selectedPerfume.description}
+    </p>
+
+    <div>⏳ <strong>Duración:</strong> {selectedPerfume.duration}</div>
+
+    <div>🌟 <strong>Fijación:</strong> {selectedPerfume.fixation}</div>
+
+    <div>👃 <strong>Similar al original:</strong> {selectedPerfume.similarity}</div>
+
+  </div>
+)}
 
 
 <div style={{ marginTop: "10px" }}>
