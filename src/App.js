@@ -669,10 +669,9 @@ export default function App() {
   const [filter, setFilter] = useState("Todos");
   const [showCart, setShowCart] = useState(false);
   
-  const [commentText, setCommentText] = useState("");
+  const [, setShowHeader] = useState(true);
 
-  const [showHeader, setShowHeader] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [commentText, setCommentText] = useState("");
 
   const [cart, setCart] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
@@ -725,27 +724,6 @@ export default function App() {
   return () => observer.disconnect();
 }, [filter]);
 
-useEffect(() => {
-
-  const handleScroll = () => {
-
-    if (window.scrollY < 80) {
-      setShowHeader(true);
-    } else if (window.scrollY > lastScrollY) {
-      setShowHeader(false);
-    } else {
-      setShowHeader(true);
-    }
-
-    setLastScrollY(window.scrollY);
-
-  };
-
-  window.addEventListener("scroll", handleScroll);
-
-  return () => window.removeEventListener("scroll", handleScroll);
-
-}, [lastScrollY]);
 
   /* =========================
      3. CÁLCULOS DERIVADOS
