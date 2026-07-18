@@ -1,4 +1,17 @@
 import React, { useState, useEffect } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCoverflow,
+} from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
  const perfumes = [
 
   // 🆕 NUEVOS (SOLO AQUÍ)
@@ -14,7 +27,7 @@ import React, { useState, useEffect } from "react";
   { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/island-bliss-les.jpg" },
   { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/amber-oud-les.jpg" },
   { id: 13, name: "Odyssey Mandarin Sky Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/odyssey-mandarin-sky-les.jpg" },
-  { id: 14, name: "Khamrah Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/khamrah-les.jpg" },
+  { id: 14, name: "Khamrah Qahwa", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/khamrah-qahwa.jpg" },
 
     //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
     
@@ -295,11 +308,11 @@ import React, { useState, useEffect } from "react";
 },
 
 { id: 2019, 
-  name: "MISS DIOR EDP 2017", 
+  name: "MISS DIOR", 
   gender: "Dama", 
   category: "Normal", 
   price: 45, 
-  img: "/perfumes/miss-dior-edp-2017.jpg",
+  img: "/perfumes/miss-dior.jpg",
 
   inspiredBy: "Miss Dior Eau de Parfum 2017",
   description: "Aroma romántico, floral y dulce con elegancia juvenil.",
@@ -401,20 +414,6 @@ import React, { useState, useEffect } from "react";
 
   inspiredBy: "Carolina Herrera 212 VIP Women",
   description: "Aroma dulce elegante de fiesta con estilo moderno y atractivo.",
-  duration: "6–8 horas",
-  fixation: "ALTA",
-  similarity: "ALTA"
-},
-
-{ id: 2029, 
-  name: "ACQUA DI GIO", 
-  gender: "Dama", 
-  category: "Normal", 
-  price: 45, 
-  img: "/perfumes/acqua-di-gio.jpg",
-
-  inspiredBy: "Giorgio Armani Acqua di Gio femenino",
-  description: "Fragancia fresca acuática con toque limpio y natural.",
   duration: "6–8 horas",
   fixation: "ALTA",
   similarity: "ALTA"
@@ -563,6 +562,20 @@ import React, { useState, useEffect } from "react";
   img: "/perfumes/odyssey-mandarin-sky.jpg" 
 },
 
+{ id: 2029, 
+  name: "ACQUA DI GIO", 
+  gender: "Caballero", 
+  category: "Normal", 
+  price: 45, 
+  img: "/perfumes/acqua-di-gio.jpg",
+
+  inspiredBy: "Giorgio Armani Acqua di Gio masculino",
+  description: "Fragancia fresca acuática con toque limpio y natural.",
+  duration: "6–8 horas",
+  fixation: "ALTA",
+  similarity: "ALTA"
+},
+
 { 
   id: 1116, 
   name: "PLAY INTENSE", 
@@ -608,15 +621,6 @@ import React, { useState, useEffect } from "react";
 },
 
 { 
-  id: 1121, 
-  name: "VALENTINO UOMO BORN IN ROMA", 
-  gender: "Caballero", 
-  category: "Normal", 
-  price: 45, 
-  img: "/perfumes/valentino-uomo-born-in-roma.jpg" 
-},
-
-{ 
   id: 1122, 
   name: "ERBA PURA", 
   gender: "Caballero", 
@@ -644,6 +648,16 @@ import React, { useState, useEffect } from "react";
 
 ];
 
+const featuredPerfumes = perfumes.filter((p) =>
+  [
+    "VALENTINO",
+    "LE BEAU",
+    "KHAMRAH",
+    "GOOD GIRL",
+    "COCONUT",
+  ].includes(p.name)
+);
+
 export default function App() {
   /* =========================
      1. ESTADOS PRINCIPALES
@@ -654,9 +668,11 @@ export default function App() {
   const [activeStory, setActiveStory] = useState("Dama");
   const [filter, setFilter] = useState("Todos");
   const [showCart, setShowCart] = useState(false);
-  const [showPromo, setShowPromo] = useState(true);
   
   const [commentText, setCommentText] = useState("");
+
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const [cart, setCart] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
@@ -708,6 +724,28 @@ export default function App() {
 
   return () => observer.disconnect();
 }, [filter]);
+
+useEffect(() => {
+
+  const handleScroll = () => {
+
+    if (window.scrollY < 80) {
+      setShowHeader(true);
+    } else if (window.scrollY > lastScrollY) {
+      setShowHeader(false);
+    } else {
+      setShowHeader(true);
+    }
+
+    setLastScrollY(window.scrollY);
+
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+
+}, [lastScrollY]);
 
   /* =========================
      3. CÁLCULOS DERIVADOS
@@ -779,14 +817,591 @@ export default function App() {
   };
  
   return (
-    <div style={{ 
-  background: "linear-gradient(180deg, #0f0f0f, #1a1a1a)",
-  minHeight: "100vh", 
+    <>
+    {selectedPerfume && (
+
+<div
+style={{
+position:"fixed",
+top:0,
+left:0,
+width:"100%",
+height:"100vh",
+
+background:"#f7f7f7",
+
+overflowY:"auto",
+
+zIndex:999999
+}}
+>
+
+{/* BOTÓN VOLVER */}
+
+<div
+style={{
+position:"sticky",
+top:0,
+
+background:"#fff",
+
+padding:"20px",
+
+boxShadow:"0 5px 20px rgba(0,0,0,.08)",
+
+zIndex:20
+}}
+>
+
+<button
+
+onClick={()=>setSelectedPerfume(null)}
+
+style={{
+
+padding:"10px 20px",
+
+border:"none",
+
+borderRadius:"12px",
+
+background:"#111",
+
+color:"#fff",
+
+cursor:"pointer",
+
+fontWeight:"bold"
+
+}}
+
+>
+
+← Volver
+
+</button>
+
+</div>
+
+{/* FOTO PREMIUM */}
+
+<div
+style={{
+width:"100%",
+height:"480px",
+
+display:"flex",
+justifyContent:"center",
+alignItems:"center",
+
+background:"linear-gradient(180deg,#ffffff,#f6f6f6)",
+
+borderBottomLeftRadius:"45px",
+borderBottomRightRadius:"45px",
+
+boxShadow:"0 15px 35px rgba(0,0,0,.08)"
+}}
+>
+
+<img
+
+src={selectedPerfume.img}
+
+alt={selectedPerfume.name}
+
+style={{
+
+width:"320px",
+
+maxWidth:"80%",
+
+maxHeight:"420px",
+
+objectFit:"contain",
+
+filter:"drop-shadow(0 30px 35px rgba(0,0,0,.18))"
+
+}}
+
+ />
+
+</div>
+
+{/* INFORMACIÓN */}
+
+<div
+style={{
+
+maxWidth:"900px",
+
+margin:"-40px auto 40px",
+
+background:"#fff",
+
+borderRadius:"35px",
+
+padding:"40px",
+
+boxShadow:"0 20px 50px rgba(0,0,0,.12)"
+
+}}
+>
+
+<h1
+style={{
+
+color:"#111",
+
+fontSize:"42px",
+
+fontFamily:"Playfair Display",
+
+textAlign:"center",
+
+marginBottom:"10px"
+
+}}
+>
+
+{selectedPerfume.name}
+
+</h1>
+
+<h2
+style={{
+
+color:"#c9a96e",
+
+fontSize:"45px",
+
+fontWeight:"bold",
+
+textAlign:"center",
+
+marginTop:"5px",
+
+marginBottom:"15px"
+
+}}
+>
+
+S/ {selectedPerfume.price}
+
+</h2>
+
+{selectedPerfume.inspiredBy && (
+
+<p
+style={{
+
+fontSize:"18px",
+
+color:"#777",
+
+textAlign:"center",
+
+fontStyle:"italic",
+
+marginBottom:"30px"
+
+}}
+>
+
+Inspirado en {selectedPerfume.inspiredBy}
+
+</p>
+
+)}
+
+<div
+style={{
+display:"flex",
+justifyContent:"center",
+alignItems:"center",
+gap:"10px",
+marginBottom:"30px"
+}}
+>
+
+<div
+style={{
+fontSize:"30px",
+color:"#FFD700",
+letterSpacing:"3px"
+}}
+>
+
+★★★★★
+
+</div>
+
+<div
+style={{
+fontSize:"18px",
+fontWeight:"bold",
+color:"#555"
+}}
+>
+
+⭐ {ratingData[selectedPerfume.id]?.average?.toFixed(2) || "5.00"}
+
+</div>
+
+</div>
+
+{/* DESCRIPCIÓN */}
+
+<div
+style={{
+background:"#fafafa",
+padding:"30px",
+borderRadius:"25px",
+marginBottom:"30px",
+boxShadow:"0 10px 25px rgba(0,0,0,.08)"
+}}
+>
+
+<h3
+style={{
+color:"#111",
+marginBottom:"20px",
+fontSize:"24px"
+}}
+>
+
+📖 Descripción
+
+</h3>
+
+<p
+style={{
+lineHeight:"1.9",
+fontSize:"17px",
+color:"#666"
+}}
+>
+
+{selectedPerfume.description}
+
+</p>
+
+</div>
+
+{/* INFORMACIÓN */}
+
+<div
+style={{
+background:"#fff",
+padding:"30px",
+borderRadius:"25px",
+boxShadow:"0 10px 25px rgba(0,0,0,.08)",
+marginBottom:"30px"
+}}
+>
+
+<p style={{fontSize:"17px"}}>
+⏳ <strong>Duración:</strong> {selectedPerfume.duration}
+</p>
+
+<hr style={{margin:"20px 0",opacity:.2}}/>
+
+<p style={{fontSize:"17px"}}>
+💎 <strong>Fijación:</strong> {selectedPerfume.fixation}
+</p>
+
+<hr style={{margin:"20px 0",opacity:.2}}/>
+
+<p style={{fontSize:"17px"}}>
+👃 <strong>Similaridad:</strong> {selectedPerfume.similarity}
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+)}
+
+  {/* FONDO FIJO */}
+  <div
+    style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+
+      backgroundImage: `
+        linear-gradient(
+          rgba(0,0,0,.75),
+          rgba(0,0,0,.75)
+        ),
+        url('/fondo-lujo.jpg')
+      `,
+
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+
+      zIndex: -2
+    }}
+  ></div>
+    <div style={{
+  minHeight: "100vh",
   padding: "20px",
-  color: "white"
+  color: "white",
+  position: "relative",
+  zIndex: 1
 }}>
 
     {/* HERO BANNER ANIMADO */}
+    
+    {/* ================= HEADER PREMIUM ================= */}
+
+<div
+style={{
+position:"fixed",
+top:0,
+left:0,
+width:"100%",
+zIndex:9999,
+background:"#3a3a49",
+color:"#fff"
+}}
+>
+
+{/* Barra superior */}
+
+<div
+style={{
+height:"34px",
+display:"flex",
+justifyContent:"center",
+alignItems:"center",
+fontSize:"13px",
+fontWeight:"bold",
+letterSpacing:"1px"
+}}
+>
+
+MAISON VENEXIS
+
+<a
+
+href="https://www.tiktok.com/@masion_venexis.18"
+
+target="_blank"
+
+rel="noreferrer"
+
+style={{
+color:"#fff",
+marginLeft:"8px",
+textDecoration:"none"
+}}
+
+>
+
+CONÓCENOS →
+
+</a>
+
+</div>
+
+{/* Barra principal */}
+
+<div
+style={{
+  position: "fixed",
+  top: "30px",
+  left: 0,
+  width: "100%",
+
+  zIndex: 9999,
+
+  background: "rgba(255,255,255,.95)",
+
+  backdropFilter: "blur(15px)",
+  WebkitBackdropFilter: "blur(15px)",
+
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+
+  padding: "10px 40px",
+
+  boxShadow: "0 8px 25px rgba(0,0,0,.10)"
+}}
+>
+
+{/* LOGO */}
+
+<img
+  src="/logo-maison-venexis.png"
+  alt="Maison Venexis"
+
+  onClick={() =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
+  style={{
+    width: "75px",
+    height: "75px",
+    objectFit: "contain",
+    cursor: "pointer",
+    transition: ".35s",
+    userSelect: "none"
+  }}
+
+  onMouseEnter={(e)=>{
+    e.currentTarget.style.transform="scale(1.08)";
+  }}
+
+  onMouseLeave={(e)=>{
+    e.currentTarget.style.transform="scale(1)";
+  }}
+/>
+
+{/* MENÚ */}
+
+<div
+style={{
+display:"flex",
+gap:"35px",
+fontSize:"15px",
+color:"#111",
+flex:1,
+justifyContent:"center"
+}}
+>
+
+<div
+style={{cursor:"pointer"}}
+onClick={()=>window.scrollTo({
+top:0,
+behavior:"smooth"
+})}
+>
+
+Inicio
+
+</div>
+
+<div
+style={{cursor:"pointer"}}
+>
+
+Perfumes
+
+</div>
+
+<div
+style={{cursor:"pointer"}}
+>
+
+Categorías
+
+</div>
+
+</div>
+
+{/* ICONOS */}
+
+<div
+style={{
+display:"flex",
+alignItems:"center",
+gap:"18px",
+minWidth:"90px",
+justifyContent:"flex-end",
+paddingRight:"60px"
+}}
+>
+
+{/* LUPA */}
+
+<div
+style={{
+fontSize:"24px",
+cursor:"pointer",
+transition:".3s"
+}}
+onMouseEnter={(e)=>{
+e.currentTarget.style.transform="scale(1.15)";
+}}
+onMouseLeave={(e)=>{
+e.currentTarget.style.transform="scale(1)";
+}}
+>
+🔍
+</div>
+
+{/* CARRITO */}
+
+<div
+onClick={()=>setShowCart(!showCart)}
+style={{
+position:"relative",
+fontSize:"24px",
+cursor:"pointer",
+transition:".3s"
+}}
+onMouseEnter={(e)=>{
+e.currentTarget.style.transform="scale(1.15)";
+}}
+onMouseLeave={(e)=>{
+e.currentTarget.style.transform="scale(1)";
+}}
+>
+🛒
+
+{cart.length > 0 && (
+<div
+style={{
+position:"absolute",
+top:"-8px",
+right:"-10px",
+
+minWidth:"20px",
+height:"20px",
+
+padding:"0 5px",
+
+borderRadius:"50%",
+
+background:"#ff2b2b",
+
+color:"#fff",
+
+display:"flex",
+justifyContent:"center",
+alignItems:"center",
+
+fontSize:"11px",
+fontWeight:"bold",
+
+border:"2px solid white",
+
+boxShadow:"0 3px 10px rgba(255,0,0,.4)"
+}}
+>
+{cart.length}
+</div>
+)}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+    
     <div className="hero">
 
       <img
@@ -868,6 +1483,259 @@ export default function App() {
 
 </div>
 
+{/* ⭐ PERFUMES MÁS VENDIDOS */}
+
+<div style={{ margin: "25px 0" }}>
+
+  <h2
+    style={{
+      textAlign: "center",
+      color: "#c9a96e",
+      fontSize: "34px",
+      marginBottom: "10px",
+      fontFamily: "'Playfair Display', serif"
+    }}
+  >
+    ⭐ Perfumes más vendidos
+  </h2>
+
+  <p
+    style={{
+      textAlign: "center",
+      color: "#bbb",
+      marginBottom: "15px"
+    }}
+  >
+    Los favoritos de nuestros clientes
+  </p>
+
+  <Swiper
+modules={[
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCoverflow
+]}
+
+effect="coverflow"
+
+grabCursor={true}
+
+centeredSlides={true}
+
+loop={true}
+
+slidesPerView={3}
+
+spaceBetween={25}
+
+coverflowEffect={{
+  rotate: 0,
+  stretch: 0,
+  depth: 100,
+  modifier: 1,
+  scale: 0.88,
+  slideShadows: false
+}}
+
+autoplay={{
+  delay: 2800,
+  disableOnInteraction: false
+}}
+
+navigation
+
+pagination={{
+  clickable: true
+}}
+
+style={{
+  paddingTop: "10px",
+  paddingBottom: "20px"
+}}
+>
+
+    {featuredPerfumes.map((perfume) => (
+
+<SwiperSlide
+  key={perfume.id}
+  style={{
+    width: "340px"
+  }}
+>
+
+<div
+style={{
+width:"320px",
+margin:"0 auto",
+
+background:"linear-gradient(180deg,#ffffff,#f8f8f8)",
+
+borderRadius:"22px",
+
+overflow:"hidden",
+
+position:"relative",
+
+boxShadow:"0 20px 55px rgba(0,0,0,.25)",
+
+transition:"all .45s ease",
+
+cursor:"pointer"
+
+}}
+
+onMouseEnter={(e)=>{
+
+e.currentTarget.style.transform="translateY(-12px) scale(1.03)";
+
+e.currentTarget.style.boxShadow="0 35px 80px rgba(201,169,110,.35)";
+
+}}
+
+onMouseLeave={(e)=>{
+
+e.currentTarget.style.transform="translateY(0px) scale(1)";
+
+e.currentTarget.style.boxShadow="0 20px 55px rgba(0,0,0,.25)";
+
+}}
+>
+
+<div
+style={{
+height:"250px",
+
+background:"linear-gradient(180deg,#ffffff,#fafafa)",
+
+display:"flex",
+
+justifyContent:"center",
+
+alignItems:"center",
+
+overflow:"hidden",
+
+position:"relative"
+}}
+>
+
+<div
+className="gold-shine"
+style={{
+position:"absolute",
+top:0,
+left:"-120%",
+width:"60%",
+height:"100%",
+background:"linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent)",
+transform:"skewX(-25deg)"
+}}
+></div>
+
+<img
+src={perfume.img}
+alt={perfume.name}
+style={{
+maxWidth:"88%",
+maxHeight:"90%",
+objectFit:"contain",
+transition:"transform .5s ease"
+}}
+/>
+
+</div>
+
+<div
+style={{
+padding:"22px"
+}}
+>
+
+<h3
+style={{
+margin:"0",
+fontSize:"22px",
+color:"#111",
+fontFamily:"Playfair Display"
+}}
+>
+{perfume.name}
+</h3>
+
+<div
+style={{
+marginTop:"12px"
+}}
+>
+
+{perfume.oldPrice && (
+
+<div
+style={{
+textDecoration:"line-through",
+color:"#888",
+fontSize:"14px"
+}}
+>
+
+S/ {perfume.oldPrice}
+
+</div>
+
+)}
+
+<div
+style={{
+fontSize:"28px",
+fontWeight:"bold",
+color:"#c9a96e"
+}}
+>
+
+S/ {perfume.price}
+
+</div>
+
+</div>
+
+<button
+
+onClick={()=>{
+setSelectedPerfume(perfume);
+}}
+
+style={{
+marginTop:"18px",
+width:"100%",
+padding:"13px",
+borderRadius:"12px",
+border:"none",
+background:"linear-gradient(45deg,#c9a96e,#f3d59a)",
+fontWeight:"bold",
+cursor:"pointer",
+fontSize:"15px"
+}}
+
+>
+
+Ver perfume
+
+</button>
+
+</div>
+
+</div>
+
+</SwiperSlide>
+
+    ))}
+
+  </Swiper>
+
+</div>
+
+
     {/* ✨ PARTÍCULAS */}
 {/* 🌫 HUMO ELEGANTE */}
 <div className="smoke">
@@ -927,30 +1795,6 @@ export default function App() {
 
   </div>
 </div>
-
-
-
-{/* VER EL CARRITO DE COMPRAS */}
-
-<div
-  onClick={() => setShowCart(!showCart)}
-  style={{
-    position: "fixed",
-    top: "20px",
-    right: "20px",
-    background: "black",
-    color: "white",
-    padding: "10px 15px",
-    borderRadius: "10px",
-    zIndex: 1000,
-    cursor: "pointer"
-  }}
->
-  🛒 {cart.length}
-</div>
-
-
-
 
 {/* STORIES TIPO INSTAGRAM */}
 <div style={{
@@ -1036,15 +1880,58 @@ export default function App() {
         ))}
       </div>
 
-      {/* BUSCADOR */}
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
-        <input
-          placeholder="Buscar perfume..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{ padding: "10px", width: "60%" }}
-        />
-      </div>
+      {/* BUSCADOR + CARRITO */}
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "15px",
+    marginBottom: "25px"
+  }}
+>
+
+  {/* BUSCADOR */}
+
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      background: "#fff",
+      borderRadius: "30px",
+      padding: "8px 15px",
+      width: "60%",
+      maxWidth: "500px",
+      boxShadow: "0 8px 25px rgba(0,0,0,.15)"
+    }}
+  >
+
+    <span
+      style={{
+        fontSize: "20px",
+        marginRight: "10px"
+      }}
+    >
+      🔍
+    </span>
+
+    <input
+      placeholder="Buscar perfume..."
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      style={{
+        border: "none",
+        outline: "none",
+        width: "100%",
+        fontSize: "15px",
+        background: "transparent"
+      }}
+    />
+
+  </div>
+
+</div>
 
      {/* GRID ESTILO INSTAGRAM */}
 <div style={{
@@ -1561,6 +2448,21 @@ box-shadow: 0 0 8px #c9a96e;
   transition: 0.8s;
 }
 
+.gold-shine{
+    animation: shineMove 4s infinite;
+}
+
+@keyframes shineMove{
+
+0%{
+left:-120%;
+}
+
+100%{
+left:180%;
+}
+
+}
 
 `}
 </style>
@@ -1687,7 +2589,7 @@ box-shadow: 0 0 8px #c9a96e;
 )}
 
 {/* MODAL DEL PERFUME */}
-{selectedPerfume && (
+{false && (
   <div style={{
   position: "fixed",
   top: 0,
@@ -1772,8 +2674,9 @@ box-shadow: 0 0 8px #c9a96e;
 
     <div>🌟 <strong>Fijación:</strong> {selectedPerfume.fixation}</div>
 
-    <div>👃 <strong>Similar al original:</strong> {selectedPerfume.similarity}</div>
-
+    <div>👃 <strong>Similar al original:</strong> {selectedPerfume.similarity}
+    
+  </div>
   </div>
 )}
 
@@ -1872,101 +2775,6 @@ box-shadow: 0 0 8px #c9a96e;
   </div>
 )}
 
-{/* 👇 AQUÍ EL POPUP */}
-{showPromo && (
-  <div style={{
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "rgba(0,0,0,0.6)",
-    backdropFilter: "blur(5px)",
-    zIndex: 3000,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  }}>
-
-    <div style={{
-      position: "relative",
-      width: "90%",
-      maxWidth: "420px",
-      animation: "zoomPromo 0.5s ease"
-    }}>
-
-      <button
-        onClick={() => setShowPromo(false)}
-        style={{
-          position: "absolute",
-          top: "-10px",
-          right: "-10px",
-          background: "linear-gradient(45deg, gold, #c9a96e)",
-color: "#000",
-          border: "none",
-          borderRadius: "50%",
-          width: "30px",
-          height: "30px",
-          cursor: "pointer",
-          fontWeight: "bold"
-        }}
-      >
-        X
-      </button>
-
-<div style={{
-  position: "absolute",
-  top: "10px",
-  left: "10px",
-  background: "#c9a96e",
-  color: "#000",
-  padding: "5px 12px",
-  borderRadius: "10px",
-  fontWeight: "bold",
-  fontSize: "12px",
-  animation: "pulse 1.5s infinite",
-  zIndex: 1
-}}>
-  OFERTA LIMITADA
-</div>
-
-      <img
-  src="/promocion.jpg?v=2"
-  alt="Promoción"
-  style={{
-    width: "100%",
-    height: "550px",              // 🔥 altura fija
-    objectFit: "cover",           // 🔥 recorte elegante
-    borderRadius: "30px",
-    animation: "zoomPromo 0.8s ease, floatPromo 3s ease-in-out infinite"
-  }}
-  
-/>
-
-      <a
-        href="https://wa.me/51974374060?text=Hola me puedes dar mas informacion la promoción del dia del padre"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <button style={{
-          width: "100%",
-          marginTop: "10px",
-          padding: "12px",
-          background: "#25D366",
-          color: "white",
-          border: "none",
-          borderRadius: "10px",
-          fontWeight: "bold",
-          cursor: "pointer"
-        }}>
-          Pedir por WhatsApp
-        </button>
-      </a>
-
-    </div>
-  </div>
-)}
-
 {/* 🔥 FOOTER PREMIUM */}
 <div style={{
   width: "100%",
@@ -2054,5 +2862,7 @@ color: "#000",
 </div>
 
     </div>
+</>
+
   );
 }
