@@ -669,7 +669,7 @@ export default function App() {
   const [filter, setFilter] = useState("Todos");
   const [showCart, setShowCart] = useState(false);
   
-  const [, setShowHeader] = useState(true);
+  const showHeader = true;
 
   const [commentText, setCommentText] = useState("");
 
