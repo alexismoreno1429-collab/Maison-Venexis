@@ -668,8 +668,6 @@ export default function App() {
   const [activeStory, setActiveStory] = useState("Dama");
   const [filter, setFilter] = useState("Todos");
   const [showCart, setShowCart] = useState(false);
-  
-  const showHeader = true;
 
   const [commentText, setCommentText] = useState("");
 
