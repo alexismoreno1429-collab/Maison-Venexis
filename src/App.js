@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -8,30 +7,22 @@ import {
   Autoplay,
   EffectCoverflow,
 } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 const perfumes = [
-
   // 🆕 NUEVOS (SOLO AQUÍ)
   {
     id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/9PM.jpeg", description: "Una fragancia dulce, cálida y seductora, con un inicio afrutado que evoluciona hacia un corazón aromático y una base cremosa de vainilla y ámbar. Ideal para quienes buscan un aroma llamativo, juvenil y perfecto para ocasiones especiales y salidas nocturnas.",
-
     duration: "8 - 10 horas",
     type: "Arabes",
-
     fixation: "Alta",
-
     similarity: "Afnan 9PM",
-
     gallery: [
        "/perfumes/9PM-2.jpg",
       "/perfumes/9PM-3.jpg",
       "/perfumes/9PM.jpeg"
       ],
-
   },
   {
     id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/club-de-nuit-intense-les.jpg", description:
@@ -47,7 +38,6 @@ const perfumes = [
       "Una fragancia cálida, envolvente y sofisticada, ideal para quienes disfrutan de aromas intensos y elegantes.", duration: "8 - 10 horas", fixation: "ALTA", similarity: "ALTA"
   },
   { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/asad-zanzíbar-les.jpg" },
-
   { id: 9, name: "Odyssey Candee Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/odyssey-candee-les.jpg" },
   { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/yum-yum-les.jpg" },
   { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/island-bliss-les.jpg" },
@@ -56,11 +46,8 @@ const perfumes = [
     "Una fragancia árabe cálida, dulce y envolvente, con un delicioso carácter gourmand. Combina notas especiadas, café, vainilla y ámbar, creando un aroma intenso, elegante y perfecto para ocasiones especiales.",
     duration: "8 - 10 horas",
   fixation: "ALTA",  similarity: "ALTA", img: "/perfumes/khamrah-qahwa.jpg" },
-
   //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
-
   // (MUJERES)
-
   {
     id: 2000,
     name: "DEVOTION",
@@ -68,14 +55,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/devotion.jpg",
-
     inspiredBy: "Dolce & Gabbana Devotion",
     description: "Fragancia dulce y elegante con notas cremosas y un toque gourmand muy femenino.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2001,
     name: "FAME",
@@ -83,14 +68,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/fame.jpg",
-
     inspiredBy: "Paco Rabanne Fame",
     description: "Aroma moderno y brillante, mezcla de frutas y flores con estilo juvenil y llamativo.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2002,
     name: "COCONUT",
@@ -100,14 +83,12 @@ const perfumes = [
     oldPrice: 50,
     bestSeller: true,
     img: "/perfumes/coconut.jpg",
-
     inspiredBy: "Fragancias tropicales tipo Victoria's Secret",
     description: "Aroma tropical dulce a coco, cremoso y relajante ideal para clima cálido.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2003,
     name: "MANGO TEMPTATION",
@@ -117,14 +98,12 @@ const perfumes = [
     oldPrice: 50,
     recommended: true,
     img: "/perfumes/mango-temptation.jpg",
-
     inspiredBy: "Frutales tropicales tipo Escada",
     description: "Fragancia frutal intensa de mango maduro, fresca, dulce y muy veraniega.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2004,
     name: "GOOD GIRL",
@@ -134,14 +113,12 @@ const perfumes = [
     oldPrice: 50,
     bestSeller: true,
     img: "/perfumes/good-girl.jpg",
-
     inspiredBy: "Good Girl Carolina Herrera",
     description: "Aroma sensual y elegante con mezcla de dulzura y notas intensas femeninas.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2005,
     name: "S SHAKIRA",
@@ -151,14 +128,12 @@ const perfumes = [
     oldPrice: 50,
     recommended: true,
     img: "/perfumes/s-shakira.jpg",
-
     inspiredBy: "Shakira perfumes línea Dance",
     description: "Fragancia dulce y juvenil con toque frutal y femenino muy suave.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2006,
     name: "212 HEROES",
@@ -166,14 +141,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/212-heroes.jpg",
-
     inspiredBy: "Carolina Herrera 212 línea femenina",
     description: "Fragancia juvenil y moderna con notas frescas y dulces, ideal para uso diario.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2007,
     name: "AMARIGE",
@@ -181,14 +154,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/amarige.jpg",
-
     inspiredBy: "Givenchy Amarige",
     description: "Aroma floral intenso, clÃ¡sico y elegante con presencia femenina fuerte.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2008,
     name: "AQUA KISS",
@@ -196,14 +167,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/aqua-kiss.jpg",
-
     inspiredBy: "Victoria's Secret Aqua Kiss",
     description: "Fragancia fresca y acuática con toque suave y limpio muy femenino.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2009,
     name: "ACQUA DI GIOIA",
@@ -211,14 +180,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/acqua-di-gioia.jpg",
-
     inspiredBy: "Giorgio Armani Acqua di Gioia",
     description: "Aroma fresco marino con toque cítrico y elegante muy natural.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2010,
     name: "YARA",
@@ -226,14 +193,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/yara.jpg",
-
     inspiredBy: "Lattafa Yara",
     description: "Fragancia dulce, cremosa y suave con toque oriental moderno.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2011,
     name: "BORN IN ROMA YELLOW",
@@ -241,14 +206,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/born-in-roma-yellow.jpg",
-
     inspiredBy: "Valentino Born in Roma Yellow Dream",
     description: "Aroma floral frutal brillante, juvenil y elegante.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2012,
     name: "BURBERRY",
@@ -256,14 +219,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/burberry.jpg",
-
     inspiredBy: "Burberry Her",
     description: "Fragancia dulce frutal con fresas y notas suaves muy femeninas.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2013,
     name: "CAROLINA HERRERA",
@@ -271,14 +232,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/carolina-herrera.jpg",
-
     inspiredBy: "Good Girl Carolina Herrera línea femenina",
     description: "Aroma elegante, sensual y sofisticado con presencia fuerte.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2014,
     name: "CLOUD PINK",
@@ -286,14 +245,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/cloud-pink.jpg",
-
     inspiredBy: "Ariana Grande Cloud Pink",
     description: "Fragancia dulce, cremosa y moderna con toque juvenil y suave.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2015,
     name: "COCO CHANEL",
@@ -301,14 +258,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/coco-chanel.jpg",
-
     inspiredBy: "Chanel Coco Mademoiselle",
     description: "Aroma elegante, clásico y sofisticado con toque cítrico floral.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2016,
     name: "FANTASY",
@@ -316,14 +271,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/fantasy.jpg",
-
     inspiredBy: "Britney Spears Fantasy",
     description: "Fragancia dulce frutal con toque de caramelo y frutas rojas.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2017,
     name: "GOOD GIRL BLUSH",
@@ -331,14 +284,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/good-girl-blush.jpg",
-
     inspiredBy: "Good Girl Blush Carolina Herrera",
     description: "Aroma floral suave, elegante y moderno con toque femenino delicado.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2018,
     name: "J ADORE",
@@ -346,14 +297,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/j-adore.jpg",
-
     inspiredBy: "Dior J’adore",
     description: "Fragancia floral elegante y lujosa con presencia femenina clásica.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2019,
     name: "MISS DIOR",
@@ -361,14 +310,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/miss-dior.jpg",
-
     inspiredBy: "Miss Dior Eau de Parfum 2017",
     description: "Aroma romántico, floral y dulce con elegancia juvenil.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2020,
     name: "MOD VANILLA",
@@ -376,14 +323,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/mod-vanilla.jpg",
-
     inspiredBy: "Ariana Grande Mod Vanilla",
     description: "Fragancia dulce cremosa con vainilla intensa y moderna.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2021,
     name: "OLYMPEA",
@@ -391,14 +336,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/olympea.jpg",
-
     inspiredBy: "Paco Rabanne Olympea",
     description: "Aroma dulce salado Ãºnico con presencia fuerte y femenina.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2022,
     name: "PARIS HILTON",
@@ -406,14 +349,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/paris-hilton.jpg",
-
     inspiredBy: "Paris Hilton Women",
     description: "Fragancia frutal dulce juvenil con estilo glamoroso.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2023,
     name: "SCANDAL",
@@ -421,14 +362,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/scandal.jpg",
-
     inspiredBy: "Jean Paul Gaultier Scandal",
     description: "Aroma dulce intenso con miel y flores muy sensual.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2024,
     name: "SWEET LIKE CANDY",
@@ -436,14 +375,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/sweet-like-candy.jpg",
-
     inspiredBy: "Ariana Grande Sweet Like Candy",
     description: "Fragancia dulce tipo golosina con frutas y vainilla suave.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2025,
     name: "VANILLA DIORAMA",
@@ -451,14 +388,12 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/vanilla-diorama.jpg",
-
     inspiredBy: "Dior Vanilla Diorama",
     description: "Aroma cálido de vainilla con toque elegante y dulce sofisticado.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 2028,
     name: "212 VIP",
@@ -466,16 +401,13 @@ const perfumes = [
     category: "Normal",
     price: 45,
     img: "/perfumes/212-vip.jpg",
-
     inspiredBy: "Carolina Herrera 212 VIP Women",
     description: "Aroma dulce elegante de fiesta con estilo moderno y atractivo.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   // (HOMBRES)
-
   {
     id: 1100,
     name: "VALENTINO",
@@ -494,7 +426,6 @@ const perfumes = [
       "/perfumes/valentino.jpg"
       ],
   },
-
   {
     id: 1101,
     name: "SAUVAGE ELIXIR",
@@ -513,7 +444,6 @@ const perfumes = [
       "/perfumes/sauvage-elixir.jpg"
       ],
   },
-
   {
     id: 1102,
     name: "LE BEAU",
@@ -524,7 +454,6 @@ const perfumes = [
     recommended: true,
     img: "/perfumes/le-beau.jpg"
   },
-
   {
     id: 1104,
     name: "KHAMRAH",
@@ -542,7 +471,6 @@ const perfumes = [
       "/perfumes/khamrah-3.jpg"
       ],
   },
-
   {
     id: 1105,
     name: "ACQUA DI GIO PROFUMO",
@@ -551,7 +479,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/acqua-di-gio-profumo.jpg"
   },
-
   {
     id: 1106,
     name: "BAD BOY",
@@ -560,7 +487,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/bad-boy.jpg"
   },
-
   {
     id: 1107,
     name: "BOSS BOTTLED NIGHT",
@@ -569,7 +495,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/boss-bottled-night.jpg"
   },
-
   {
     id: 1108,
     name: "EROS",
@@ -578,7 +503,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/eros.jpg"
   },
-
   {
     id: 1109,
     name: "EROS FLAME",
@@ -587,7 +511,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/eros-flame.jpg"
   },
-
   {
     id: 1110,
     name: "HUGO",
@@ -596,7 +519,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/hugo.jpg"
   },
-
   {
     id: 1111,
     name: "INVICTUS",
@@ -605,7 +527,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/invictus.jpg"
   },
-
   {
     id: 1112,
     name: "INVICTUS VICTORY",
@@ -614,7 +535,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/invictus-victory.jpg"
   },
-
   {
     id: 1113,
     name: "LE MALE",
@@ -623,7 +543,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/le-male.jpg"
   },
-
   {
     id: 1114,
     name: "LE MALE ELIXIR",
@@ -632,7 +551,6 @@ const perfumes = [
     price: 45,
     img: "/perfumes/le-male-elixir.jpg"
   },
-
   {
     id: 1115,
     name: "ODYSSEY MANDARIN SKY",
@@ -647,9 +565,7 @@ gallery: [
   "/perfumes/odyssey-mandarin-sky-2.jpg",
   "/perfumes/odyssey-mandarin-sky.jpg"
       ],
-
   },
-
   {
     id: 2029,
     name: "ACQUA DI GIO",
@@ -657,14 +573,12 @@ gallery: [
     category: "Normal",
     price: 45,
     img: "/perfumes/acqua-di-gio.jpg",
-
     inspiredBy: "Giorgio Armani Acqua di Gio masculino",
     description: "Fragancia fresca acuática con toque limpio y natural.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
-
   {
     id: 1116,
     name: "PLAY INTENSE",
@@ -673,7 +587,6 @@ gallery: [
     price: 45,
     img: "/perfumes/play-intense.jpg"
   },
-
   {
     id: 1117,
     name: "SAUVAGE",
@@ -682,7 +595,6 @@ gallery: [
     price: 45,
     img: "/perfumes/sauvage.jpg"
   },
-
   {
     id: 1118,
     name: "SCANDAL MEN",
@@ -691,7 +603,6 @@ gallery: [
     price: 45,
     img: "/perfumes/scandal-men.jpg"
   },
-
   {
     id: 1119,
     name: "ULTRA MALE",
@@ -700,7 +611,6 @@ gallery: [
     price: 45,
     img: "/perfumes/ultra-male.jpg"
   },
-
   {
     id: 1120,
     name: "THE ONE FOR MEN",
@@ -709,7 +619,6 @@ gallery: [
     price: 45,
     img: "/perfumes/the-one-for-men.jpg"
   },
-
   {
     id: 1122,
     name: "ERBA PURA",
@@ -718,7 +627,6 @@ gallery: [
     price: 45,
     img: "/perfumes/erba-pura.jpg"
   },
-
   {
     id: 1023,
     name: "ONE MILLION ELIXIR",
@@ -727,7 +635,6 @@ gallery: [
     price: 45,
     img: "/perfumes/one-million-elixir.jpg"
   },
-
   {
     id: 1024,
     name: "ONE MILLION",
@@ -743,9 +650,7 @@ gallery: [
       "/perfumes/one-million.jpg",
       ],
   },
-
 ];
-
 const featuredPerfumes = perfumes.filter((p) =>
   [
     "VALENTINO",
@@ -755,93 +660,64 @@ const featuredPerfumes = perfumes.filter((p) =>
     "COCONUT",
   ].includes(p.name)
 );
-
 export default function App() {
   const navigate = useNavigate();
   const { perfumeId } = useParams();
   const location = useLocation();
-
 const perfumeFromUrl = perfumes.find(
   (p) => String(p.id) === String(perfumeId)
 );
-
 // =========================
   // PÁGINAS DE CATEGORÍAS
   // =========================
 
-  const isArabesPage = location.pathname === "/arabes";
-  const isEuropeanPage = location.pathname === "/europeos";
-
-  const categoryPerfumes = perfumes.filter((p) => {
-    if (isArabesPage) return p.type === "Arabes";
-    if (isEuropeanPage) return p.type === "Europeos";
-    return false;
-  });
 
 console.log("perfumeId:", perfumeId);
 console.log("perfume encontrado:", perfumeFromUrl);
-
   /* =========================
      1. ESTADOS PRINCIPALES
   ========================= */
-
   const [selectedPerfume] = useState(null);
   const [selectedSize, setSelectedSize] = useState("30 ml");
-
   const [currentImage, setCurrentImage] = useState(0);
-
-
   const [quantity, setQuantity] = useState(1);
   const [query, setQuery] = useState("");
-  const [activeStory, setActiveStory] = useState("Dama");
+  
   const [filter, setFilter] = useState("Todos");
   const [showCart, setShowCart] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [showCartNotification, setShowCartNotification] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
   const [commentText, setCommentText] = useState("");
-
   const [cart, setCart] = useState(() => {
     return JSON.parse(localStorage.getItem("cart")) || [];
   });
-
   const [ratingData, setRatingData] = useState(() => {
     return JSON.parse(localStorage.getItem("ratingData")) || {};
   });
-
   const [comments, setComments] = useState(() => {
     return JSON.parse(localStorage.getItem("comments")) || {};
   });
-
-
-
 console.log("ID de URL:", perfumeId);
 console.log("Perfume encontrado:", perfumeFromUrl);
-
   /* =========================
      2. EFFECTS (LOCALSTORAGE)
   ========================= */
-
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
   useEffect(() => {
     localStorage.setItem("ratingData", JSON.stringify(ratingData));
   }, [ratingData]);
-
   useEffect(() => {
     localStorage.setItem("comments", JSON.stringify(comments));
   }, [comments]);
-
   //  NUEVO EFECTO
   useEffect(() => {
     const elements = document.querySelectorAll(".reveal");
     elements.forEach((el) => {
       el.classList.remove("active"); // 🕒 resetear animación
     });
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -852,23 +728,17 @@ console.log("Perfume encontrado:", perfumeFromUrl);
       },
       { threshold: 0.15 }
     );
-
     elements.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, [filter]);
-
-
   /* =========================
      3. CÃLCULOS DERIVADOS
   ========================= */
-
   const total = cart.reduce(
     (acc, item) =>
       acc + (item.selectedPrice ?? item.price) * (item.quantity || 1),
     0
   );
-
   const whatsappMessage = encodeURIComponent(
     `Hola, quiero hacer un pedido:\n\n` +
     cart
@@ -887,68 +757,51 @@ console.log("Perfume encontrado:", perfumeFromUrl);
   const normalizedQuery = query.toLowerCase().trim();
   const filtered = perfumes.filter((p) => {
     const matchName = p.name.toLowerCase().includes(normalizedQuery);
-
     if (filter === "Todos") {
       return matchName;
     }
-
     if (filter === "Nuevos") {
       return matchName && p.category === "Nuevos";
     }
-
     if (filter === "Dama") {
       return matchName && p.gender === "Dama" && p.category !== "Nuevos";
     }
-
     if (filter === "Caballero") {
       return matchName && p.gender === "Caballero" && p.category !== "Nuevos";
     }
-
     if (filter === "Europeos") {
   return matchName && p.type === "Europeos";
 }
-
     if (filter === "Arabes") {
       return matchName && p.type === "Arabes";
     }
-
     return matchName;
   });
-
   /* =========================
      4. FUNCIONES
   ========================= */
-
  const addToCart = (perfume, size = "30 ml", quantityToAdd = 1) => {
-
   const price =
     size === "100 ml"
       ? 80
       : perfume.price;
-
   const cartItem = {
     ...perfume,
     selectedSize: size,
     selectedPrice: price,
     quantity: quantityToAdd
   };
-
   setCart((prev) => [...prev, cartItem]);
-
   // Mostrar aviso de producto agregado
   setShowCartNotification(true);
-
   // Ocultar automaticamente despues de 4 segundos
   setTimeout(() => {
     setShowCartNotification(false);
   }, 4000);
-
 };
-
   const removeFromCart = (index) => {
     setCart((prev) => prev.filter((_, i) => i !== index));
   };
-
   const handleRating = (perfumeId, value) => {
     setRatingData((prev) => {
       const current = prev[perfumeId] || {
@@ -956,11 +809,9 @@ console.log("Perfume encontrado:", perfumeFromUrl);
         sum: 0,
         average: 0,
       };
-
       const newTotal = current.total + 1;
       const newSum = current.sum + value;
       const newAverage = newSum / newTotal;
-
       return {
         ...prev,
         [perfumeId]: {
@@ -971,31 +822,24 @@ console.log("Perfume encontrado:", perfumeFromUrl);
       };
     });
   };
-
   const addComment = (perfumeId) => {
     if (!commentText.trim()) return;
-
     setComments((prev) => ({
       ...prev,
       [perfumeId]: [...(prev[perfumeId] || []), commentText],
     }));
-
     setCommentText("");
   };
-
 const arabicPerfumes = perfumes.filter(
     (p) => p.type === "Arabes"
   );
-
 const europeanPerfumes = perfumes.filter(
   (p) => p.type === "Europeos"
 );
   
   return (
     <>
-
         {/* ================= HEADER PREMIUM ================= */}
-
         <div
           style={{
             position: "fixed",
@@ -1007,9 +851,7 @@ const europeanPerfumes = perfumes.filter(
             color: "#fff"
           }}
         >
-
           {/* Barra superior */}
-
           <div
             style={{
               height: "34px",
@@ -1021,64 +863,43 @@ const europeanPerfumes = perfumes.filter(
               letterSpacing: "1px"
             }}
           >
-
             MAISON VENEXIS
-
             <a
-
               href="https://www.tiktok.com/@masion_venexis.18"
-
               target="_blank"
-
               rel="noreferrer"
-
               style={{
                 color: "#fff",
                 marginLeft: "8px",
                 textDecoration: "none"
               }}
-
             >
-
               CONÓCENOS
             </a>
-
           </div>
-
           {/* Barra principal */}
-
           <div
             style={{
               position: "fixed",
               top: "30px",
               left: 0,
               width: "100%",
-
               zIndex: 9999,
-
               background: "rgba(255,255,255,.95)",
-
               backdropFilter: "blur(15px)",
               WebkitBackdropFilter: "blur(15px)",
-
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-
               padding: "10px 40px",
-
               boxShadow: "0 8px 25px rgba(0,0,0,.10)"
             }}
           >
-
             {/* LOGO */}
-
 <img
   src="/logo-maison-venexis.png"
   alt="Maison Venexis"
-
   onClick={() => navigate("/")}
-
   style={{
     width: "75px",
     height: "75px",
@@ -1087,17 +908,14 @@ const europeanPerfumes = perfumes.filter(
     transition: ".35s",
     userSelect: "none"
   }}
-
   onMouseEnter={(e) => {
     e.currentTarget.style.transform = "scale(1.08)";
   }}
-
   onMouseLeave={(e) => {
     e.currentTarget.style.transform = "scale(1)";
   }}
 />
             {/* MENÃš */}
-
             <div
               style={{
                 display: "flex",
@@ -1108,7 +926,6 @@ const europeanPerfumes = perfumes.filter(
                 justifyContent: "center"
               }}
             >
-
            <div
   style={{ cursor: "pointer" }}
   onClick={() => {
@@ -1124,7 +941,6 @@ const europeanPerfumes = perfumes.filter(
 >
   Inicio
 </div>
-
               <div
                 style={{
                   position: "relative",
@@ -1136,7 +952,6 @@ const europeanPerfumes = perfumes.filter(
                 >
                   Categorías
                 </div>
-
                 {showCategories && (
                   <div
                     style={{
@@ -1154,7 +969,6 @@ const europeanPerfumes = perfumes.filter(
                       overflow: "hidden"
                     }}
                   >
-
                     {/* PERFUMES EUROPEOS*/}
                     <div
                       onClick={() => {
@@ -1189,13 +1003,10 @@ const europeanPerfumes = perfumes.filter(
                           flexShrink: 0
                         }}
                       />
-
                       <span>
                         Perfumes Europeos
                       </span>
                     </div>
-
-
                     {/* PERFUMES ÁRABES */}
                     <div
                       onClick={() => {
@@ -1230,20 +1041,15 @@ const europeanPerfumes = perfumes.filter(
                           flexShrink: 0
                         }}
                       />
-
                       <span>
                         Perfumes Árabes
                       </span>
                     </div>
-
                   </div>
                 )}
               </div>
-
             </div>
-
             {/* ICONOS */}
-
             <div
               style={{
                 display: "flex",
@@ -1254,9 +1060,7 @@ const europeanPerfumes = perfumes.filter(
                 paddingRight: "60px"
               }}
             >
-
              {/* LUPA */}
-
 <div
   onClick={() => {
     setShowSearch(!showSearch);
@@ -1276,9 +1080,7 @@ const europeanPerfumes = perfumes.filter(
 >
   🔍
 </div>
-
               {/* CARRITO */}
-
               <div
                 onClick={() => setShowCart(!showCart)}
                 style={{
@@ -1295,51 +1097,35 @@ const europeanPerfumes = perfumes.filter(
                 }}
               >
                 🛒
-
                 {cart.length > 0 && (
                   <div
                     style={{
                       position: "absolute",
                       top: "-8px",
                       right: "-10px",
-
                       minWidth: "20px",
                       height: "20px",
-
                       padding: "0 5px",
-
                       borderRadius: "50%",
-
                       background: "#ff2b2b",
-
                       color: "#fff",
-
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
-
                       fontSize: "11px",
                       fontWeight: "bold",
-
                       border: "2px solid white",
-
                       boxShadow: "0 3px 10px rgba(255,0,0,.4)"
                     }}
                   >
                     {cart.length}
                   </div>
                 )}
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
 {/* ================= AVISO PRODUCTO AGREGADO ================= */}
-
         {showCartNotification && (
           <div
             style={{
@@ -1359,7 +1145,6 @@ const europeanPerfumes = perfumes.filter(
               boxSizing: "border-box"
             }}
           >
-
             {/* IMAGEN */}
             <div
               style={{
@@ -1387,7 +1172,6 @@ const europeanPerfumes = perfumes.filter(
                 />
               )}
             </div>
-
             {/* INFORMACIÓN */}
             <div
               style={{
@@ -1400,7 +1184,6 @@ const europeanPerfumes = perfumes.filter(
                 setShowCart(true);
               }}
             >
-
               <div
                 style={{
                   fontSize: "14px",
@@ -1411,7 +1194,6 @@ const europeanPerfumes = perfumes.filter(
               >
                 ¡Producto agregado!
               </div>
-
               {cart.length > 0 && (
                 <>
                   <div
@@ -1426,7 +1208,6 @@ const europeanPerfumes = perfumes.filter(
                   >
                     {cart[cart.length - 1].name}
                   </div>
-
                   <div
                     style={{
                       fontSize: "11px",
@@ -1440,7 +1221,6 @@ const europeanPerfumes = perfumes.filter(
                   </div>
                 </>
               )}
-
               <div
                 style={{
                   fontSize: "12px",
@@ -1451,9 +1231,7 @@ const europeanPerfumes = perfumes.filter(
               >
                 Ver carrito →
               </div>
-
             </div>
-
             {/* CERRAR */}
             <button
               onClick={() => setShowCartNotification(false)}
@@ -1471,12 +1249,9 @@ const europeanPerfumes = perfumes.filter(
             >
               ✕
             </button>
-
           </div>
         )}
-
  {/* ================= BUSCADOR ================= */}
-
         {showSearch && (
           <div
             style={{
@@ -1494,9 +1269,7 @@ const europeanPerfumes = perfumes.filter(
               boxSizing: "border-box"
             }}
           >
-
             {/* INPUT */}
-
             <input
               type="text"
               value={query}
@@ -1513,9 +1286,7 @@ const europeanPerfumes = perfumes.filter(
                 boxSizing: "border-box"
               }}
             />
-
             {/* RESULTADOS */}
-
             {query.trim() !== "" && (
               <div
                 style={{
@@ -1524,7 +1295,6 @@ const europeanPerfumes = perfumes.filter(
                   overflowY: "auto"
                 }}
               >
-
                 {perfumes
                   .filter((p) =>
                     p.name
@@ -1533,7 +1303,6 @@ const europeanPerfumes = perfumes.filter(
                   )
                   .slice(0, 8)
                   .map((perfume) => (
-
                     <div
                       key={perfume.id}
                       onClick={() => {
@@ -1550,9 +1319,7 @@ const europeanPerfumes = perfumes.filter(
                         cursor: "pointer"
                       }}
                     >
-
                       {/* IMAGEN */}
-
                       <div
                         style={{
                           width: "50px",
@@ -1576,9 +1343,7 @@ const europeanPerfumes = perfumes.filter(
                           }}
                         />
                       </div>
-
                       {/* INFORMACIÓN */}
-
                       <div>
                         <div
                           style={{
@@ -1589,7 +1354,6 @@ const europeanPerfumes = perfumes.filter(
                         >
                           {perfume.name}
                         </div>
-
                         {perfume.inspiredBy && (
                           <div
                             style={{
@@ -1601,7 +1365,6 @@ const europeanPerfumes = perfumes.filter(
                             Inspirado en {perfume.inspiredBy}
                           </div>
                         )}
-
                         <div
                           style={{
                             fontSize: "13px",
@@ -1613,13 +1376,9 @@ const europeanPerfumes = perfumes.filter(
                           Desde S/ {perfume.price}
                         </div>
                       </div>
-
                     </div>
-
                   ))}
-
                 {/* SIN RESULTADOS */}
-
                 {perfumes.filter((p) =>
                   p.name
                     .toLowerCase()
@@ -1636,45 +1395,34 @@ const europeanPerfumes = perfumes.filter(
                     No encontramos ese perfume 😔
                   </div>
                 )}
-
               </div>
             )}
-
           </div>
         )}
-
        {location.pathname === "/europeos" ? (
   <>
-
     {/* ================= PÁGINA PERFUMES EUROPEOS ================= */}
-
     <div
       style={{
         minHeight: "100vh",
-
 background:
   "radial-gradient(circle at 20% 10%, rgba(201,169,110,.18), transparent 25%)," +
   "radial-gradient(circle at 85% 85%, rgba(201,169,110,.12), transparent 30%)," +
   "linear-gradient(135deg, #050505 0%, #111111 45%, #080808 100%)",
-
         paddingTop: "130px",
         paddingBottom: "60px",
         paddingLeft: "30px",
         paddingRight: "30px",
-
         boxSizing: "border-box"
       }}
     >
-
       <div
         style={{
           maxWidth: "1200px",
           margin: "0 auto"
         }}
       >
-
         {/* ================= BANNER EUROPEOS ================= */}
-
         <img
           src="/categorias/europeos-banner.jpg"
           alt="Perfumes Europeos"
@@ -1688,16 +1436,13 @@ background:
             boxShadow: "0 10px 35px rgba(0,0,0,.35)"
           }}
         />
-
         {/* ================= TÍTULO ================= */}
-
         <div
           style={{
             textAlign: "center",
             marginBottom: "40px"
           }}
         >
-
           <h1
             style={{
               fontSize: "32px",
@@ -1708,7 +1453,6 @@ background:
           >
             Perfumes Europeos
           </h1>
-
           <p
             style={{
               marginTop: "10px",
@@ -1718,11 +1462,8 @@ background:
           >
             Descubre nuestra selección de perfumes europeos
           </p>
-
         </div>
-
         {/* ================= LISTA DE PERFUMES ================= */}
-
         <div
           style={{
             display: "grid",
@@ -1730,9 +1471,7 @@ background:
             gap: "25px"
           }}
         >
-
           {europeanPerfumes.map((perfume) => (
-
             <div
               key={perfume.id}
               onClick={() => navigate(`/perfume/${perfume.id}`)}
@@ -1744,18 +1483,14 @@ background:
                 boxShadow: "0 8px 25px rgba(0,0,0,.25)",
                 transition: ".3s"
               }}
-
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-5px)";
               }}
-
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-
               {/* IMAGEN */}
-
               <div
                 style={{
                   width: "100%",
@@ -1768,7 +1503,6 @@ background:
                   overflow: "hidden"
                 }}
               >
-
                 <img
                   src={perfume.img}
                   alt={perfume.name}
@@ -1778,17 +1512,13 @@ background:
                     objectFit: "contain"
                   }}
                 />
-
               </div>
-
               {/* INFORMACIÓN */}
-
               <div
                 style={{
                   marginTop: "15px"
                 }}
               >
-
                 <h3
                   style={{
                     margin: 0,
@@ -1798,7 +1528,6 @@ background:
                 >
                   {perfume.name}
                 </h3>
-
                 {perfume.inspiredBy && (
                   <p
                     style={{
@@ -1810,7 +1539,6 @@ background:
                     Inspirado en {perfume.inspiredBy}
                   </p>
                 )}
-
                 <strong
                   style={{
                     color: "#c9a96e",
@@ -1819,24 +1547,16 @@ background:
                 >
                   Desde S/ {perfume.price}
                 </strong>
-
               </div>
-
             </div>
-
           ))}
-
         </div>
-
       </div>
-
     </div>
-
   </>
 ) : location.pathname === "/arabes" ? (
   <>
     {/* ================= PÁGINA PERFUMES ÁRABES ================= */}
-
     <div
       style={{
         minHeight: "100vh",
@@ -1856,9 +1576,7 @@ background:
           margin: "0 auto"
         }}
       >
-
 {/* ================= BANNER ÁRABES ================= */}
-
         <img
           src="/categorias/arabes-banner.jpg"
           alt="Perfumes Árabes"
@@ -1873,7 +1591,6 @@ background:
             boxShadow: "0 10px 35px rgba(0,0,0,.35)"
           }}
         />
-
         {/* TÍTULO */}
         <div
           style={{
@@ -1891,7 +1608,6 @@ background:
           >
             Perfumes Árabes
           </h1>
-
           <p
             style={{
               marginTop: "10px",
@@ -1902,7 +1618,6 @@ background:
             Descubre nuestra selección de perfumes árabes
           </p>
         </div>
-
         {/* LISTA DE PERFUMES */}
         <div
           style={{
@@ -1911,7 +1626,6 @@ background:
             gap: "25px"
           }}
         >
-
           {arabicPerfumes.map((perfume) => (
             <div
               key={perfume.id}
@@ -1931,7 +1645,6 @@ background:
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-
               {/* IMAGEN */}
               <div
                 style={{
@@ -1955,14 +1668,12 @@ background:
                   }}
                 />
               </div>
-
               {/* INFORMACIÓN */}
               <div
                 style={{
                   marginTop: "15px"
                 }}
               >
-
                 <h3
                   style={{
                     margin: 0,
@@ -1972,7 +1683,6 @@ background:
                 >
                   {perfume.name}
                 </h3>
-
                 {perfume.inspiredBy && (
                   <p
                     style={{
@@ -1984,7 +1694,6 @@ background:
                     Inspirado en {perfume.inspiredBy}
                   </p>
                 )}
-
                 <strong
                   style={{
                     color: "#c9a96e",
@@ -1993,20 +1702,15 @@ background:
                 >
                   Desde S/ {perfume.price}
                 </strong>
-
               </div>
-
             </div>
           ))}
-
         </div>
-
       </div>
     </div>
   </>
 ) : perfumeFromUrl ? (
       <>
-
 {/* ================= CARRITO EN PÁGINA DEL PERFUME ================= */}
 {showCart && (
   <div
@@ -2027,7 +1731,6 @@ background:
       boxSizing: "border-box"
     }}
   >
-
     {/* ENCABEZADO */}
     <div
       style={{
@@ -2039,7 +1742,6 @@ background:
         borderBottom: "1px solid #eee"
       }}
     >
-
       <div>
         <h2
           style={{
@@ -2050,7 +1752,6 @@ background:
         >
           🛒 Mi carrito
         </h2>
-
         <div
           style={{
             fontSize: "12px",
@@ -2062,7 +1763,6 @@ background:
           {cart.length === 1 ? "producto" : "productos"}
         </div>
       </div>
-
       {/* CERRAR */}
       <button
         onClick={() => setShowCart(false)}
@@ -2079,19 +1779,15 @@ background:
       >
         ✕
       </button>
-
     </div>
-
     {/* CARRITO VACÍO */}
     {cart.length === 0 ? (
-
       <div
         style={{
           textAlign: "center",
           padding: "35px 10px"
         }}
       >
-
         <div
           style={{
             fontSize: "45px",
@@ -2100,7 +1796,6 @@ background:
         >
           🛒
         </div>
-
         <h3
           style={{
             margin: "0 0 8px",
@@ -2109,7 +1804,6 @@ background:
         >
           Tu carrito está vacío
         </h3>
-
         <p
           style={{
             margin: 0,
@@ -2119,16 +1813,11 @@ background:
         >
           Agrega tus perfumes favoritos para continuar.
         </p>
-
       </div>
-
     ) : (
-
       <>
-
         {/* PRODUCTOS */}
         {cart.map((item, index) => (
-
           <div
             key={index}
             style={{
@@ -2138,7 +1827,6 @@ background:
               borderBottom: "1px solid #eee"
             }}
           >
-
             {/* IMAGEN */}
             <div
               style={{
@@ -2163,7 +1851,6 @@ background:
                 }}
               />
             </div>
-
             {/* INFORMACIÓN */}
             <div
               style={{
@@ -2171,7 +1858,6 @@ background:
                 minWidth: 0
               }}
             >
-
               {/* NOMBRE */}
               <div
                 style={{
@@ -2183,7 +1869,6 @@ background:
               >
                 {item.name}
               </div>
-
               {/* INSPIRADO EN */}
               {item.inspiredBy && (
                 <div
@@ -2196,7 +1881,6 @@ background:
                   Inspirado en {item.inspiredBy}
                 </div>
               )}
-
               {/* TAMAÑO */}
               <div
                 style={{
@@ -2207,7 +1891,6 @@ background:
               >
                 📏 {item.selectedSize || "30 ml"}
               </div>
-
               {/* PRECIO */}
               <div
                 style={{
@@ -2218,7 +1901,6 @@ background:
               >
                 S/ {item.selectedPrice ?? item.price}
               </div>
-
               {/* CANTIDAD + ELIMINAR */}
               <div
                 style={{
@@ -2228,7 +1910,6 @@ background:
                   marginTop: "10px"
                 }}
               >
-
                 {/* CANTIDAD */}
                 <div
                   style={{
@@ -2237,7 +1918,6 @@ background:
                     gap: "8px"
                   }}
                 >
-
                   <button
                     onClick={() => {
                       if ((item.quantity || 1) > 1) {
@@ -2265,7 +1945,6 @@ background:
                   >
                     −
                   </button>
-
                   <strong
                     style={{
                       fontSize: "14px",
@@ -2275,7 +1954,6 @@ background:
                   >
                     {item.quantity || 1}
                   </strong>
-
                   <button
                     onClick={() =>
                       setCart((prev) =>
@@ -2302,9 +1980,7 @@ background:
                   >
                     +
                   </button>
-
                 </div>
-
                 {/* ELIMINAR */}
                 <button
                   onClick={() => removeFromCart(index)}
@@ -2319,9 +1995,7 @@ background:
                 >
                   🗑️
                 </button>
-
               </div>
-
               {/* SUBTOTAL */}
               <div
                 style={{
@@ -2338,13 +2012,9 @@ background:
                     (item.quantity || 1)}
                 </strong>
               </div>
-
             </div>
-
           </div>
-
         ))}
-
         {/* TOTAL */}
         <div
           style={{
@@ -2355,7 +2025,6 @@ background:
             marginBottom: "15px"
           }}
         >
-
           <span
             style={{
               fontSize: "15px",
@@ -2364,7 +2033,6 @@ background:
           >
             Total del pedido
           </span>
-
           <strong
             style={{
               fontSize: "22px",
@@ -2373,9 +2041,7 @@ background:
           >
             S/ {total}
           </strong>
-
         </div>
-
         {/* WHATSAPP */}
         <a
           href={`https://wa.me/51974374060?text=${whatsappMessage}`}
@@ -2385,7 +2051,6 @@ background:
             textDecoration: "none"
           }}
         >
-
           <button
             style={{
               width: "100%",
@@ -2401,16 +2066,11 @@ background:
           >
             📱 Finalizar pedido por WhatsApp
           </button>
-
         </a>
-
       </>
-
     )}
-
   </div>
 )}
-
         {/* PÁGINA DEL PERFUME */}
         
         <div
@@ -2420,8 +2080,6 @@ background:
             padding: "150px 20px 20px"
           }}
         >
-
-
           <div
             style={{
               maxWidth: "1100px",
@@ -2432,7 +2090,6 @@ background:
               boxShadow: "0 10px 40px rgba(0,0,0,.12)"
             }}
           >
-
 <div
   style={{
     display: "grid",
@@ -2441,7 +2098,6 @@ background:
     alignItems: "start"
   }}
 >
-
 {/* COLUMNA IZQUIERDA - GALERÍA */}
 <div
   style={{
@@ -2458,7 +2114,6 @@ background:
       position: "relative"
     }}
   >
-
     {/* IMAGEN PRINCIPAL */}
     <div
       style={{
@@ -2485,7 +2140,6 @@ background:
         }}
       />
     </div>
-
     {/* FLECHA IZQUIERDA */}
     {perfumeFromUrl.gallery?.length > 1 && (
       <button
@@ -2515,7 +2169,6 @@ background:
         ‹
       </button>
     )}
-
     {/* FLECHA DERECHA */}
     {perfumeFromUrl.gallery?.length > 1 && (
       <button
@@ -2545,7 +2198,6 @@ background:
         ›
       </button>
     )}
-
 {/* INDICADORES + MINIATURAS */}
 {perfumeFromUrl.gallery?.length > 1 && (
   <>
@@ -2576,7 +2228,6 @@ background:
         />
       ))}
     </div>
-
     {/* MINIATURAS */}
     <div
       style={{
@@ -2622,18 +2273,13 @@ background:
     </div>
   </>
 )}
-
   </div>
 </div>
-
               {/* COLUMNA DERECHA - INFORMACIÓN */}
               <div>
-
-
             <h1 style={{ textAlign: "center", marginTop: "20px" }}>
               {perfumeFromUrl.name}
             </h1>
-
             {perfumeFromUrl.inspiredBy && (
               <p
                 style={{
@@ -2645,7 +2291,6 @@ background:
                 Inspirado en {perfumeFromUrl.inspiredBy}
               </p>
             )}
-
             <h2
               style={{
                 textAlign: "center",
@@ -2654,7 +2299,6 @@ background:
             >
               S/ {selectedSize === "100 ml" ? 80 : perfumeFromUrl.price}
             </h2>
-
             {/* TAMAÑOS */}
             <div
               style={{
@@ -2684,7 +2328,6 @@ background:
                 </button>
               ))}
             </div>
-
             {/* ESTRELLAS */}
             <div
               style={{
@@ -2695,7 +2338,6 @@ background:
             >
              ★★★★★⭐ {ratingData[perfumeFromUrl.id]?.average?.toFixed(2) || "5.00"} / 5
             </div>
-
             {/* DESCRIPCIÓN */}
             <div
               style={{
@@ -2706,32 +2348,26 @@ background:
               }}
             >
               <h3>Descripción</h3>
-
               <p>
                 {perfumeFromUrl.description ||
                   "Una fragancia elegante y sofisticada, creada para destacar en cualquier ocasión."}
               </p>
-
               <p>
                 <strong>⏰ Duración:</strong>{" "}
                 {perfumeFromUrl.duration || "6 - 8 horas"}
               </p>
-
               <p>
                 <strong>🌟 Fijación:</strong>{" "}
                 {perfumeFromUrl.fixation || "ALTA"}
               </p>
-
               <p>
                 <strong>👃 Similaridad:</strong>{" "}
                 {perfumeFromUrl.similarity || "ALTA"}
               </p>
             </div>
-
             {/* CANTIDAD */}
             <div style={{ marginBottom: "20px" }}>
               <h3>Cantidad</h3>
-
               <div
                 style={{
                   display: "flex",
@@ -2755,11 +2391,9 @@ background:
                 >
                   -
                 </button>
-
                 <strong style={{ fontSize: "20px" }}>
                   {quantity}
                 </strong>
-
                 <button
                   onClick={() =>
                     setQuantity((prev) => prev + 1)
@@ -2778,7 +2412,6 @@ background:
                 </button>
               </div>
             </div>
-
             {/* AGREGAR AL CARRITO */}
             <button
               onClick={() =>
@@ -2798,7 +2431,6 @@ background:
             >
               🛒 Agregar al carrito
             </button>
-
             {/* WHATSAPP */}
             <button
               onClick={() => {
@@ -2806,7 +2438,6 @@ background:
                   selectedSize === "100 ml"
                     ? 80
                     : perfumeFromUrl.price;
-
                 const message = encodeURIComponent(
                   `Hola, quiero hacer un pedido:\n\n` +
                   `Perfume: ${perfumeFromUrl.name}\n` +
@@ -2815,7 +2446,6 @@ background:
                   `Precio unitario: S/ ${price}\n` +
                   `Total: S/ ${price * quantity}`
                 );
-
                 window.open(
                   `https://wa.me/51974374060?text=${message}`,
                   "_blank"
@@ -2853,7 +2483,6 @@ background:
           left: 0,
           width: "100%",
           height: "100%",
-
           backgroundImage: `
         linear-gradient(
           rgba(0,0,0,.75),
@@ -2861,11 +2490,9 @@ background:
         ),
         url('/fondo-lujo.jpg')
       `,
-
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-
           zIndex: -2
         }}
       ></div>
@@ -2876,13 +2503,8 @@ background:
         position: "relative",
         zIndex: 1
       }}>
-
         {/* HERO BANNER ANIMADO */}
-
-
-
         <div className="hero">
-
           <img
             src="/hero.jpg"
             alt="Hero"
@@ -2893,7 +2515,6 @@ background:
               transition: "1.5s ease"
             }}
           />
-
           <div
             className="hero-overlay"
             style={{
@@ -2901,17 +2522,13 @@ background:
               backdropFilter: "blur(2px)"
             }}
           >
-
             <h1 className="hero-title">
               MAISON VENEXIS
             </h1>
-
             <p className="hero-subtitle">
               Fragancias exclusivas • Estilo premium
             </p>
-
             <div className="hero-line"></div>
-
             <a
               href="https://wa.me/51974374060?text=Hola quiero información de perfumes"
               target="_blank"
@@ -2921,11 +2538,8 @@ background:
                 Comprar ahora
               </button>
             </a>
-
           </div>
-
         </div>
-
         {/* BARRA DE CONFIANZA */}
         <div style={{
           display: "flex",
@@ -2938,34 +2552,27 @@ background:
           borderRadius: "15px",
           border: "1px solid rgba(255,255,255,0.05)"
         }}>
-
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "20px" }}>🔥</div>
             <div style={{ fontSize: "13px", color: "#fff", fontWeight: "500" }}>
               Más de +100 clientes satisfechos
             </div>
           </div>
-
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "20px" }}>🚚</div>
             <div style={{ fontSize: "13px", color: "#fff", fontWeight: "500" }}>
               Envíos a todo Perú
             </div>
           </div>
-
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "20px" }}>💎</div>
             <div style={{ fontSize: "13px", color: "#fff", fontWeight: "500" }}>
               Calidad garantizada
             </div>
           </div>
-
         </div>
-
         {/* ⭐ PERFUMES MÁS VENDIDOS */}
-
         <div style={{ margin: "25px 0" }}>
-
           <h2
             style={{
               textAlign: "center",
@@ -2977,7 +2584,6 @@ background:
           >
             ⭐ Perfumes más vendidos
           </h2>
-
           <p
             style={{
               textAlign: "center",
@@ -2987,7 +2593,6 @@ background:
           >
             Los favoritos de nuestros clientes
           </p>
-
           <Swiper
             modules={[
               Navigation,
@@ -2995,19 +2600,12 @@ background:
               Autoplay,
               EffectCoverflow
             ]}
-
             effect="coverflow"
-
             grabCursor={true}
-
             centeredSlides={true}
-
             loop={true}
-
             slidesPerView={3}
-
             spaceBetween={25}
-
             coverflowEffect={{
               rotate: 0,
               stretch: 0,
@@ -3016,89 +2614,58 @@ background:
               scale: 0.88,
               slideShadows: false
             }}
-
             autoplay={{
               delay: 2800,
               disableOnInteraction: false
             }}
-
             navigation
-
             pagination={{
               clickable: true
             }}
-
             style={{
               paddingTop: "10px",
               paddingBottom: "20px"
             }}
           >
-
             {featuredPerfumes.map((perfume) => (
-
               <SwiperSlide
                 key={perfume.id}
                 style={{
                   width: "340px"
                 }}
               >
-
                 <div
                   style={{
                     width: "320px",
                     margin: "0 auto",
-
                     background: "linear-gradient(180deg,#ffffff,#f8f8f8)",
-
                     borderRadius: "22px",
-
                     overflow: "hidden",
-
                     position: "relative",
-
                     boxShadow: "0 20px 55px rgba(0,0,0,.25)",
-
                     transition: "all .45s ease",
-
                     cursor: "pointer"
-
                   }}
-
                   onMouseEnter={(e) => {
-
                     e.currentTarget.style.transform = "translateY(-12px) scale(1.03)";
-
                     e.currentTarget.style.boxShadow = "0 35px 80px rgba(201,169,110,.35)";
-
                   }}
-
                   onMouseLeave={(e) => {
-
                     e.currentTarget.style.transform = "translateY(0px) scale(1)";
-
                     e.currentTarget.style.boxShadow = "0 20px 55px rgba(0,0,0,.25)";
-
                   }}
                 >
-
                   <div
                     style={{
                       height: "250px",
-
                       background: "linear-gradient(180deg,#ffffff,#fafafa)",
-
                       display: "flex",
-
                       justifyContent: "center",
-
                       alignItems: "center",
-
                       overflow: "hidden",
-
                       position: "relative"
                     }}
                   >
-
                     <div
                       className="gold-shine"
                       style={{
@@ -3111,7 +2678,6 @@ background:
                         transform: "skewX(-25deg)"
                       }}
                     ></div>
-
                     <img
                       src={perfume.img}
                       alt={perfume.name}
@@ -3122,15 +2688,12 @@ background:
                         transition: "transform .5s ease"
                       }}
                     />
-
                   </div>
-
                   <div
                     style={{
                       padding: "22px"
                     }}
                   >
-
                     <h3
                       style={{
                         margin: "0",
@@ -3141,16 +2704,12 @@ background:
                     >
                       {perfume.name}
                     </h3>
-
                     <div
                       style={{
                         marginTop: "12px"
                       }}
                     >
-
                       {perfume.oldPrice && (
-
-
                         <div
                           style={{
                             textDecoration: "line-through",
@@ -3158,13 +2717,9 @@ background:
                             fontSize: "14px"
                           }}
                         >
-
                           S/ {perfume.oldPrice}
-
                         </div>
-
                       )}
-
                       <div
                         style={{
                           fontSize: "28px",
@@ -3172,21 +2727,15 @@ background:
                           color: "#c9a96e"
                         }}
                       >
-
                         S/ {perfume.price}
-
                       </div>
-
                     </div>
-
                     <button
-
                       onClick={() => {
                         setSelectedSize("30 ml");
                         setQuantity(1);
                         navigate(`/perfume/${perfume.id}`);
                       }}
-
                       style={{
                         marginTop: "18px",
                         width: "100%",
@@ -3198,26 +2747,15 @@ background:
                         cursor: "pointer",
                         fontSize: "15px"
                       }}
-
                     >
-
                       Ver perfume
-
                     </button>
-
                   </div>
-
                 </div>
-
               </SwiperSlide>
-
             ))}
-
           </Swiper>
-
         </div>
-
-
         {/* PARTÍCULAS */}
         {/* HUMO ELEGANTE */}
         <div className="smoke">
@@ -3225,7 +2763,6 @@ background:
             <span key={i} className="smoke-particle"></span>
           ))}
         </div>
-
         {/* PROMOCIÓN CON BOTÓN WHATSAPP */}
         <div style={{
           width: "100%",
@@ -3238,7 +2775,6 @@ background:
             width: "100%",
             maxWidth: "420px"
           }}>
-
             <img
               src="/promocion.jpg"
               alt="PromociÃ³n"
@@ -3249,7 +2785,6 @@ background:
                 animation: "zoomPromo 0.8s ease, floatPromo 3s ease-in-out infinite"
               }}
             />
-
             <a
               href="https://wa.me/51974374060?text=Hola quiero la promociÃ³n"
               target="_blank"
@@ -3274,10 +2809,8 @@ background:
                 Pedir por WhatsApp
               </button>
             </a>
-
           </div>
         </div>
-
         {/* FILTROS */}
         <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "20px" }}>
           {["Todos", "Dama", "Caballero"].map((f) => (
@@ -3296,9 +2829,7 @@ background:
             </button>
           ))}
         </div>
-
         {/* BUSCADOR + CARRITO */}
-
         <div
           style={{
             display: "flex",
@@ -3308,9 +2839,7 @@ background:
             marginBottom: "25px"
           }}
         >
-
           {/* BUSCADOR */}
-
           <div
             style={{
               display: "flex",
@@ -3323,7 +2852,6 @@ background:
               boxShadow: "0 8px 25px rgba(0,0,0,.15)"
             }}
           >
-
             <span
               style={{
                 fontSize: "20px",
@@ -3332,7 +2860,6 @@ background:
             >
               🔍
             </span>
-
             <input
               placeholder="Buscar perfume..."
               value={query}
@@ -3345,11 +2872,8 @@ background:
                 background: "transparent"
               }}
             />
-
           </div>
-
         </div>
-
         {/* GRID ESTILO INSTAGRAM */}
         <div style={{
           display: "grid",
@@ -3360,8 +2884,6 @@ background:
           gap: "20px",
           padding: "10px"
         }}>
-
-
           {filtered.map((perfume) => (
             <div
               key={perfume.id + filter}
@@ -3381,20 +2903,16 @@ background:
                 position: "relative",
                 zIndex: 0,
               }}
-
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-10px) scale(1.03)";
                 e.currentTarget.style.boxShadow = "0 20px 50px rgba(201,169,110,0.25)";
               }}
-
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0) scale(1)";
                 e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.4)";
               }}
             >
-
               {/* ETIQUETAS DINÁMICAS */}
-
               {/* 🕒 MÁS VENDIDO */}
               {perfume.bestSeller && (
                 <div style={{
@@ -3412,7 +2930,6 @@ background:
                   🔥 Más vendido
                 </div>
               )}
-
               {/* RECOMENDADO */}
               {!perfume.bestSeller && perfume.recommended && (
                 <div style={{
@@ -3430,7 +2947,6 @@ background:
                   ⭐ Recomendado
                 </div>
               )}
-
               {/* NUEVO */}
               {!perfume.bestSeller && !perfume.recommended && perfume.category === "Nuevos" && (
                 <div style={{
@@ -3460,7 +2976,6 @@ background:
                 transition: "0.5s",
                 zIndex: 1 // IMPORTANTE
               }} className="shine-effect"></div>
-
               {/* IMAGEN */}
               <div style={{
                 width: "100%",
@@ -3482,7 +2997,6 @@ background:
                   }}
                 />
               </div>
-
               {/* CONTENIDO */}
               <div style={{
                 padding: "15px",
@@ -3490,7 +3004,6 @@ background:
                 position: "relative",
                 zIndex: 2 // IMPORTANTE
               }}>
-
                 {/* NOMBRE */}
                 <h4 style={{
                   margin: "5px 0",
@@ -3501,7 +3014,6 @@ background:
                 }}>
                   {perfume.name}
                 </h4>
-
                 {/* GÃ‰NERO */}
                 <div style={{
                   fontSize: "11px",
@@ -3513,10 +3025,8 @@ background:
                 }}>
                   {perfume.gender}
                 </div>
-
                 {/* PRECIO */}
                 <div style={{ marginBottom: "12px" }}>
-
                   {/* PRECIO ANTIGUO (tachado) */}
                   {perfume.oldPrice && (
                     <div style={{
@@ -3527,7 +3037,6 @@ background:
                       S/ {perfume.oldPrice}
                     </div>
                   )}
-
                   {/* PRECIO NUEVO */}
                   <div style={{
                     color: "#c9a96e",
@@ -3537,9 +3046,7 @@ background:
                   }}>
                     S/ {perfume.price}
                   </div>
-
                 </div>
-
                 {/* BOTONES */}
                 <button
                   onClick={(e) => {
@@ -3561,7 +3068,6 @@ background:
                 >
                   Agregar
                 </button>
-
                 <a
                   href={`https://wa.me/51974374060?text=Hola,%20quiero%20comprar%20${encodeURIComponent(perfume.name)}`}
                   target="_blank"
@@ -3580,9 +3086,7 @@ background:
                     Comprar
                   </button>
                 </a>
-
               </div>
-
             </div>
           ))}
         </div>
@@ -3592,7 +3096,6 @@ background:
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 @keyframes slideUpModal {
   from {
     transform: translateY(100%);
@@ -3603,7 +3106,6 @@ background:
     opacity: 1;
   }
 }
-
 @keyframes slideUp {
   from {
     transform: translateY(40px);
@@ -3614,13 +3116,11 @@ background:
     opacity: 1;
   }
 }
-
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
-
 @keyframes zoomPromo {
   0% {
     transform: scale(0.95);
@@ -3631,13 +3131,11 @@ background:
     opacity: 1;
   }
 }
-
 @keyframes floatPromo {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
   100% { transform: translateY(0px); }
 }
-
 .hero {
   position: relative;
   width: 100%;
@@ -3646,7 +3144,6 @@ background:
   overflow: hidden;
   margin-bottom: 40px;
 }
-
 /* 📱 RESPONSIVE CELULAR */
 @media (max-width: 768px) {
   .hero {
@@ -3654,7 +3151,6 @@ background:
     border-radius: 15px;
   }
 }
-
 .hero-img {
   width: 100%;
   height: 100%;
@@ -3663,7 +3159,6 @@ background:
   transform: scale(1.1);
   animation: heroZoom 1.5s ease forwards;
 }
-
 .hero-overlay {
   position: absolute;
   top: 50%;
@@ -3673,7 +3168,6 @@ background:
   color: white;
   width: 100%;
 }
-
 .hero-title {
   font-size: clamp(30px, 6vw, 70px);
   font-weight: 900;
@@ -3683,7 +3177,6 @@ background:
   animation: heroFadeUp 1s ease forwards;
   animation-delay: 0.5s;
 }
-
 .hero-subtitle {
   font-size: clamp(14px, 2vw, 20px);
   margin-top: 10px;
@@ -3692,7 +3185,6 @@ background:
   animation: heroFadeUp 1s ease forwards;
   animation-delay: 0.8s;
 }
-
 .hero-line {
   width: 60px;
   height: 3px;
@@ -3703,7 +3195,6 @@ box-shadow: 0 0 8px #c9a96e;
   animation: fadeIn 1s ease forwards;
   animation-delay: 1s;
 }
-
 .hero-btn {
   background: white;
   color: black;
@@ -3717,18 +3208,15 @@ box-shadow: 0 0 8px #c9a96e;
   animation: heroFadeUp 1s ease forwards;
   animation-delay: 1.2s;
 }
-
 .hero-btn:hover {
   transform: scale(1.05);
 }
-
 @keyframes heroFadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @keyframes heroZoom {
   from {
     transform: scale(1.2);
@@ -3737,11 +3225,9 @@ box-shadow: 0 0 8px #c9a96e;
     transform: scale(1.05);
   }
 }
-
 .hero-img {
   animation: cinematicZoom 6s ease forwards;
 }
-
 @keyframes cinematicZoom {
   0% {
     transform: scale(1.2);
@@ -3750,7 +3236,6 @@ box-shadow: 0 0 8px #c9a96e;
     transform: scale(1.05);
   }
 }
-
 .particles {
   position: absolute;
   width: 100%;
@@ -3760,7 +3245,6 @@ box-shadow: 0 0 8px #c9a96e;
   overflow: hidden;
   pointer-events: none;
 }
-
 .particle {
   position: absolute;
   width: 4px;
@@ -3770,7 +3254,6 @@ box-shadow: 0 0 8px #c9a96e;
   opacity: 0.7;
   animation: floatParticles 8s linear infinite;
 }
-
 /* posiciones aleatorias */
 .particle:nth-child(1) { left: 10%; animation-duration: 6s; }
 .particle:nth-child(2) { left: 20%; animation-duration: 8s; }
@@ -3781,7 +3264,6 @@ box-shadow: 0 0 8px #c9a96e;
 .particle:nth-child(7) { left: 70%; animation-duration: 7s; }
 .particle:nth-child(8) { left: 80%; animation-duration: 8s; }
 .particle:nth-child(9) { left: 90%; animation-duration: 6s; }
-
 /* animaciÃ³n */
 @keyframes floatParticles {
   0% {
@@ -3796,7 +3278,6 @@ box-shadow: 0 0 8px #c9a96e;
     opacity: 0;
   }
 }
-
 .smoke {
   position: absolute;
   width: 100%;
@@ -3806,7 +3287,6 @@ box-shadow: 0 0 8px #c9a96e;
   pointer-events: none;
   overflow: hidden;
 }
-
 .smoke-particle {
   position: absolute;
   bottom: -100px;
@@ -3818,7 +3298,6 @@ box-shadow: 0 0 8px #c9a96e;
   opacity: 0.4;
   animation: smokeRise 12s linear infinite;
 }
-
 /* posiciones distintas */
 .smoke-particle:nth-child(1) { left: 10%; animation-duration: 14s; }
 .smoke-particle:nth-child(2) { left: 25%; animation-duration: 12s; }
@@ -3828,7 +3307,6 @@ box-shadow: 0 0 8px #c9a96e;
 .smoke-particle:nth-child(6) { left: 80%; animation-duration: 11s; }
 .smoke-particle:nth-child(7) { left: 35%; animation-duration: 17s; }
 .smoke-particle:nth-child(8) { left: 60%; animation-duration: 14s; }
-
 /* animaciÃ³n */
 @keyframes smokeRise {
   0% {
@@ -3847,44 +3325,34 @@ box-shadow: 0 0 8px #c9a96e;
     opacity: 0;
   }
 }
-
 .reveal {
   opacity: 0;
   transform: translateY(40px);
   transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
-
 .shine-effect {
   opacity: 0;
 }
-
 .card-premium:hover .shine-effect {
   left: 130%;
   opacity: 1;
   transition: 0.8s;
 }
-
 .gold-shine{
     animation: shineMove 4s infinite;
 }
-
 @keyframes shineMove{
-
 0%{
 left:-120%;
 }
-
 100%{
 left:180%;
 }
-
 }
-
 `}
         </style>
         {/* BOTON FLOTANTE WHATSAPP */}
@@ -3917,8 +3385,6 @@ left:180%;
             }}
           />
         </a>
-
-
         {/* ================= CARRITO DESPLEGABLE ================= */}
 {showCart && (
   <div
@@ -3939,7 +3405,6 @@ left:180%;
       boxSizing: "border-box"
     }}
   >
-
     {/* ENCABEZADO */}
     <div
       style={{
@@ -3961,7 +3426,6 @@ left:180%;
         >
           🛒 Mi carrito
         </h2>
-
         <div
           style={{
             fontSize: "12px",
@@ -3972,7 +3436,6 @@ left:180%;
           {cart.length} {cart.length === 1 ? "producto" : "productos"}
         </div>
       </div>
-
       {/* CERRAR */}
       <button
         onClick={() => setShowCart(false)}
@@ -3990,10 +3453,8 @@ left:180%;
         ✕
       </button>
     </div>
-
     {/* CARRITO VACÍO */}
     {cart.length === 0 ? (
-
       <div
         style={{
           textAlign: "center",
@@ -4008,7 +3469,6 @@ left:180%;
         >
           🛒
         </div>
-
         <h3
           style={{
             margin: "0 0 8px",
@@ -4017,7 +3477,6 @@ left:180%;
         >
           Tu carrito está vacío
         </h3>
-
         <p
           style={{
             margin: 0,
@@ -4028,14 +3487,10 @@ left:180%;
           Agrega tus perfumes favoritos para continuar.
         </p>
       </div>
-
     ) : (
-
       <>
-
         {/* PRODUCTOS */}
         {cart.map((item, index) => (
-
           <div
             key={index}
             style={{
@@ -4045,7 +3500,6 @@ left:180%;
               borderBottom: "1px solid #eee"
             }}
           >
-
             {/* IMAGEN */}
             <div
               style={{
@@ -4070,7 +3524,6 @@ left:180%;
                 }}
               />
             </div>
-
             {/* INFORMACIÓN */}
             <div
               style={{
@@ -4078,7 +3531,6 @@ left:180%;
                 minWidth: 0
               }}
             >
-
               {/* NOMBRE */}
               <div
                 style={{
@@ -4090,7 +3542,6 @@ left:180%;
               >
                 {item.name}
               </div>
-
               {/* INSPIRADO EN */}
               {item.inspiredBy && (
                 <div
@@ -4103,7 +3554,6 @@ left:180%;
                   Inspirado en {item.inspiredBy}
                 </div>
               )}
-
               {/* TAMAÑO */}
               <div
                 style={{
@@ -4114,7 +3564,6 @@ left:180%;
               >
                 📏 {item.selectedSize || "30 ml"}
               </div>
-
               {/* PRECIO */}
               <div
                 style={{
@@ -4125,7 +3574,6 @@ left:180%;
               >
                 S/ {item.selectedPrice ?? item.price}
               </div>
-
               {/* CANTIDAD + ELIMINAR */}
               <div
                 style={{
@@ -4135,7 +3583,6 @@ left:180%;
                   marginTop: "10px"
                 }}
               >
-
                 <div
                   style={{
                     display: "flex",
@@ -4143,7 +3590,6 @@ left:180%;
                     gap: "8px"
                   }}
                 >
-
                   <button
                     onClick={() => {
                       if ((item.quantity || 1) > 1) {
@@ -4171,7 +3617,6 @@ left:180%;
                   >
                     −
                   </button>
-
                   <strong
                     style={{
                       fontSize: "14px",
@@ -4181,7 +3626,6 @@ left:180%;
                   >
                     {item.quantity || 1}
                   </strong>
-
                   <button
                     onClick={() =>
                       setCart((prev) =>
@@ -4207,9 +3651,7 @@ left:180%;
                   >
                     +
                   </button>
-
                 </div>
-
                 {/* ELIMINAR */}
                 <button
                   onClick={() => removeFromCart(index)}
@@ -4224,9 +3666,7 @@ left:180%;
                 >
                   🗑️
                 </button>
-
               </div>
-
               {/* SUBTOTAL */}
               <div
                 style={{
@@ -4241,13 +3681,9 @@ left:180%;
                   S/ {(item.selectedPrice ?? item.price) * (item.quantity || 1)}
                 </strong>
               </div>
-
             </div>
-
           </div>
-
         ))}
-
         {/* TOTAL */}
         <div
           style={{
@@ -4266,7 +3702,6 @@ left:180%;
           >
             Total del pedido
           </span>
-
           <strong
             style={{
               fontSize: "22px",
@@ -4276,7 +3711,6 @@ left:180%;
             S/ {total}
           </strong>
         </div>
-
         {/* WHATSAPP */}
         <a
           href={`https://wa.me/51974374060?text=${whatsappMessage}`}
@@ -4302,14 +3736,10 @@ left:180%;
             📱 Finalizar pedido por WhatsApp
           </button>
         </a>
-
       </>
-
     )}
-
   </div>
 )}
-
         {/* MODAL DEL PERFUME */}
         {false && (
           <div style={{
@@ -4318,19 +3748,14 @@ left:180%;
             left: 0,
             width: "100%",
             height: "100%",
-
             background: "rgba(0,0,0,0.4)",
-
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
-
             zIndex: 2000,
-
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
           }}>
-
             <div style={{
               background: "#1c1c1c",
               color: "white",
@@ -4340,11 +3765,9 @@ left:180%;
               padding: "20px",
               animation: "slideUpModal 0.4s ease",
               boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-
               maxHeight: "90vh",   //  IMPORTANTE
               overflowY: "auto"    //  ESTO ACTIVA EL SCROLL
             }}>
-
               {/* HEADER */}
               <div style={{
                 display: "flex",
@@ -4353,20 +3776,16 @@ left:180%;
               }}>
                 
               </div>
-
               {/* CONTENIDO */}
               <img
                 src={selectedPerfume.img}
                 alt={selectedPerfume.name}
                 style={{ width: "100%", borderRadius: "12px" }}
               />
-
               <h2 style={{ color: "#fff", textAlign: "center", letterSpacing: "1px" }}>
                 {selectedPerfume.name}
               </h2>
-
               <h3>S/ {selectedPerfume.price}</h3>
-
               {selectedPerfume.inspiredBy && (
                 <p style={{
                   color: "#c9a96e",
@@ -4378,7 +3797,6 @@ left:180%;
                   Inspirado en {selectedPerfume.inspiredBy}
                 </p>
               )}
-
               {selectedPerfume.description && (
                 <div style={{
                   background: "#252525",
@@ -4387,25 +3805,17 @@ left:180%;
                   marginBottom: "20px",
                   lineHeight: "1.7"
                 }}>
-
                   <p style={{ marginBottom: "15px" }}>
                     {selectedPerfume.description}
                   </p>
-
                   <div>⏰ <strong>Duración:</strong> {selectedPerfume.duration}</div>
-
                   <div>🌟 <strong>Fijación:</strong> {selectedPerfume.fixation}</div>
-
                   <div>👤 <strong>Similar al original:</strong> {selectedPerfume.similarity}
-
                   </div>
                 </div>
               )}
-
-
               <div style={{ marginTop: "10px" }}>
                 <strong>Califica este perfume:</strong>
-
                 <div style={{ fontSize: "25px", cursor: "pointer" }}>
                   {[1, 2, 3, 4, 5].map((star) => (
                     <span
@@ -4422,15 +3832,12 @@ left:180%;
                     </span>
                   ))}
                 </div>
-
                 <div style={{ fontSize: "14px", marginTop: "5px" }}>
                   ⭐ {ratingData[selectedPerfume.id]?.average?.toFixed(2) || "0.00"} / 5
                 </div>
               </div>
-
               <div style={{ marginTop: "20px" }}>
                 <strong>Comentarios:</strong>
-
                 <input
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
@@ -4443,7 +3850,6 @@ left:180%;
                     border: "1px solid #ccc"
                   }}
                 />
-
                 <button
                   onClick={() => addComment(selectedPerfume.id)}
                   style={{
@@ -4458,7 +3864,6 @@ left:180%;
                 >
                   Enviar comentario
                 </button>
-
                 <div style={{ marginTop: "10px" }}>
                   {(comments[selectedPerfume.id] || []).map((c, i) => (
                     <div
@@ -4475,7 +3880,6 @@ left:180%;
                   ))}
                 </div>
               </div>
-
               <a
                 href={`https://wa.me/51974374060?text=Quiero comprar ${selectedPerfume.name}`}
                 target="_blank"
@@ -4492,11 +3896,9 @@ left:180%;
                   Comprar
                 </button>
               </a>
-
             </div>
           </div>
         )}
-
         {/* 🔥 FOOTER PREMIUM */}
         <div style={{
           width: "100%",
@@ -4506,7 +3908,6 @@ left:180%;
           padding: "40px 20px",
           textAlign: "center"
         }}>
-
           {/* LÍNEA DORADA */}
           <div style={{
             width: "80px",
@@ -4514,7 +3915,6 @@ left:180%;
             background: "#c9a96e",
             margin: "0 auto 20px auto"
           }}></div>
-
           <h3 style={{
             marginBottom: "10px",
             letterSpacing: "4px",
@@ -4522,7 +3922,6 @@ left:180%;
           }}>
             NUESTRA MARCA
           </h3>
-
           <h2 style={{
             marginBottom: "15px",
             color: "#c9a96e",
@@ -4530,15 +3929,12 @@ left:180%;
           }}>
             Maison Venexis
           </h2>
-
           <p style={{ margin: "5px 0" }}>
             +51 974 374 060
           </p>
-
           <p style={{ margin: "5px 0" }}>
             maisonvenexis@gmail.com
           </p>
-
           {/* REDES SOCIALES */}
           <div style={{
             marginTop: "20px",
@@ -4546,7 +3942,6 @@ left:180%;
             justifyContent: "center",
             gap: "25px"
           }}>
-
             {/* INSTAGRAM */}
             <a
               href="https://www.instagram.com/maison_venexis.18/"
@@ -4562,7 +3957,6 @@ left:180%;
                 }}
               />
             </a>
-
             {/* TIKTOK */}
             <a
               href="https://www.tiktok.com/@masion_venexis.18"
@@ -4578,11 +3972,8 @@ left:180%;
                 }}
               />
             </a>
-
           </div>
-
         </div>
-
       </div>
     </>
 )}
