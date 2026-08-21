@@ -722,7 +722,7 @@ console.log("perfume encontrado:", perfumeFromUrl);
      1. ESTADOS PRINCIPALES
   ========================= */
 
-  const [selectedPerfume, setSelectedPerfume] = useState(null);
+  const [selectedPerfume] = useState(null);
   const [selectedSize, setSelectedSize] = useState("30 ml");
   const [quantity, setQuantity] = useState(1);
   const [query, setQuery] = useState("");
