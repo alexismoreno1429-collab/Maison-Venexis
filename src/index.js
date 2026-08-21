@@ -10,10 +10,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 <BrowserRouter>
-  <Routes>
-    <Route path="/" element={<App />} />
-<Route path="/perfume/:perfumeId" element={<App />} />
-  </Routes>
+<Routes>
+  <Route path="/" element={<App />} />
+  <Route path="/arabes" element={<App />} />
+  <Route path="/europeos" element={<App />} />
+  <Route path="/perfume/:perfumeId" element={<App />} />
+</Routes>
 </BrowserRouter>
   </React.StrictMode>
 );

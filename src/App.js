@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -20,10 +20,18 @@ const perfumes = [
     id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/9PM.jpeg", description: "Una fragancia dulce, cálida y seductora, con un inicio afrutado que evoluciona hacia un corazón aromático y una base cremosa de vainilla y ámbar. Ideal para quienes buscan un aroma llamativo, juvenil y perfecto para ocasiones especiales y salidas nocturnas.",
 
     duration: "8 - 10 horas",
+    type: "Arabes",
 
     fixation: "Alta",
 
-    similarity: "Afnan 9PM"
+    similarity: "Afnan 9PM",
+
+    gallery: [
+       "/perfumes/9PM-2.jpg",
+      "/perfumes/9PM-3.jpg",
+      "/perfumes/9PM.jpeg"
+      ],
+
   },
   {
     id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 45, img: "/perfumes/club-de-nuit-intense-les.jpg", description:
@@ -44,7 +52,10 @@ const perfumes = [
   { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/yum-yum-les.jpg" },
   { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 45, img: "/perfumes/island-bliss-les.jpg" },
   { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 45, img: "/perfumes/amber-oud-les.jpg" },
-  { id: 14, name: "Khamrah Qahwa", gender: "Unisex", category: "Nuevos", type: "Arabes", price: 45, img: "/perfumes/khamrah-qahwa.jpg" },
+  { id: 14, name: "Khamrah Qahwa", gender: "Unisex", category: "Nuevos", type: "Arabes", price: 45, inspiredBy: "Lattafa Khamrah Qahwa",description:
+    "Una fragancia árabe cálida, dulce y envolvente, con un delicioso carácter gourmand. Combina notas especiadas, café, vainilla y ámbar, creando un aroma intenso, elegante y perfecto para ocasiones especiales.",
+    duration: "8 - 10 horas",
+  fixation: "ALTA",  similarity: "ALTA", img: "/perfumes/khamrah-qahwa.jpg" },
 
   //  (NUEVOS PERFUMES AGREGADOS PERO NO SE PUEDE ABAJO POR EL " i < 24 " )
 
@@ -472,8 +483,16 @@ const perfumes = [
     category: "Normal",
     price: 45,
     oldPrice: 50,
+    type: "Europeos",
     recommended: true,
-    img: "/perfumes/valentino.jpg"
+    img: "/perfumes/valentino.jpg",
+    gallery: [
+      "/perfumes/valentino-3.jpg",
+      "/perfumes/valentino-4.jpg",
+      "/perfumes/valentino-2.jpg",
+      "/perfumes/valentino-5.jpg",
+      "/perfumes/valentino.jpg"
+      ],
   },
 
   {
@@ -483,8 +502,16 @@ const perfumes = [
     category: "Normal",
     price: 45,
     oldPrice: 50,
+    type: "Europeos",
     bestSeller: true,
-    img: "/perfumes/sauvage-elixir.jpg"
+    img: "/perfumes/sauvage-elixir.jpg",
+    gallery: [
+      "/perfumes/sauvage-elixir-2.jpg",
+      "/perfumes/sauvage-elixir-3.jpg",
+      "/perfumes/sauvage-elixir-4.jpg",
+      "/perfumes/sauvage-elixir-5.jpg",
+      "/perfumes/sauvage-elixir.jpg"
+      ],
   },
 
   {
@@ -506,7 +533,14 @@ const perfumes = [
     price: 45,
     oldPrice: 50,
     bestSeller: true,
-    img: "/perfumes/khamrah.jpg"
+    img: "/perfumes/khamrah.jpg",
+    gallery: [
+      "/perfumes/khamrah-5.jpg",
+      "/perfumes/khamrah-4.jpg",
+      "/perfumes/khamrah.jpg",
+      "/perfumes/khamrah-2.jpg",
+      "/perfumes/khamrah-3.jpg"
+      ],
   },
 
   {
@@ -604,8 +638,16 @@ const perfumes = [
     name: "ODYSSEY MANDARIN SKY",
     gender: "Caballero",
     category: "Normal",
+    type: "Arabes",
     price: 45,
-    img: "/perfumes/odyssey-mandarin-sky.jpg"
+    img: "/perfumes/odyssey-mandarin-sky.jpg",
+gallery: [
+  "/perfumes/odyssey-mandarin-sky-4.jpg",
+  "/perfumes/odyssey-mandarin-sky-3.jpg",
+  "/perfumes/odyssey-mandarin-sky-2.jpg",
+  "/perfumes/odyssey-mandarin-sky.jpg"
+      ],
+
   },
 
   {
@@ -692,7 +734,14 @@ const perfumes = [
     gender: "Caballero",
     category: "Normal",
     price: 45,
-    img: "/perfumes/one-million.jpg"
+    type: "Europeos",
+    img: "/perfumes/one-million.jpg",
+    gallery: [
+      "/perfumes/one-million-2.jpg",
+      "/perfumes/one-million-3.jpg",
+      "/perfumes/one-million-4.jpg",
+      "/perfumes/one-million.jpg",
+      ],
   },
 
 ];
@@ -710,10 +759,24 @@ const featuredPerfumes = perfumes.filter((p) =>
 export default function App() {
   const navigate = useNavigate();
   const { perfumeId } = useParams();
+  const location = useLocation();
 
 const perfumeFromUrl = perfumes.find(
   (p) => String(p.id) === String(perfumeId)
 );
+
+// =========================
+  // PÁGINAS DE CATEGORÍAS
+  // =========================
+
+  const isArabesPage = location.pathname === "/arabes";
+  const isEuropeanPage = location.pathname === "/europeos";
+
+  const categoryPerfumes = perfumes.filter((p) => {
+    if (isArabesPage) return p.type === "Arabes";
+    if (isEuropeanPage) return p.type === "Europeos";
+    return false;
+  });
 
 console.log("perfumeId:", perfumeId);
 console.log("perfume encontrado:", perfumeFromUrl);
@@ -724,6 +787,10 @@ console.log("perfume encontrado:", perfumeFromUrl);
 
   const [selectedPerfume] = useState(null);
   const [selectedSize, setSelectedSize] = useState("30 ml");
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+
   const [quantity, setQuantity] = useState(1);
   const [query, setQuery] = useState("");
   const [activeStory, setActiveStory] = useState("Dama");
@@ -731,6 +798,7 @@ console.log("perfume encontrado:", perfumeFromUrl);
   const [showCart, setShowCart] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [showCartNotification, setShowCartNotification] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const [commentText, setCommentText] = useState("");
 
@@ -836,9 +904,9 @@ console.log("Perfume encontrado:", perfumeFromUrl);
       return matchName && p.gender === "Caballero" && p.category !== "Nuevos";
     }
 
-    if (filter === "Nicho") {
-      return matchName && p.type === "Nicho";
-    }
+    if (filter === "Europeos") {
+  return matchName && p.type === "Europeos";
+}
 
     if (filter === "Arabes") {
       return matchName && p.type === "Arabes";
@@ -915,6 +983,14 @@ console.log("Perfume encontrado:", perfumeFromUrl);
     setCommentText("");
   };
 
+const arabicPerfumes = perfumes.filter(
+    (p) => p.type === "Arabes"
+  );
+
+const europeanPerfumes = perfumes.filter(
+  (p) => p.type === "Europeos"
+);
+  
   return (
     <>
 
@@ -1079,12 +1155,12 @@ console.log("Perfume encontrado:", perfumeFromUrl);
                     }}
                   >
 
-                    {/* PERFUMES NICHO */}
+                    {/* PERFUMES EUROPEOS*/}
                     <div
                       onClick={() => {
-                        setFilter("Nicho");
-                        setShowCategories(false);
-                      }}
+    navigate("/europeos");
+  setShowCategories(false);
+}}
                       style={{
                         padding: "10px 14px",
                         cursor: "pointer",
@@ -1103,8 +1179,8 @@ console.log("Perfume encontrado:", perfumeFromUrl);
                       }}
                     >
                       <img
-                        src="/categorias/nicho.jpg"
-                        alt="Perfumes Nicho"
+                        src="/categorias/europeos.jpg"
+                        alt="Perfumes Europeos"
                         style={{
                           width: "42px",
                           height: "42px",
@@ -1115,17 +1191,17 @@ console.log("Perfume encontrado:", perfumeFromUrl);
                       />
 
                       <span>
-                        Perfumes Nicho
+                        Perfumes Europeos
                       </span>
                     </div>
 
 
-                    {/* PERFUMES ÃRABES */}
+                    {/* PERFUMES ÁRABES */}
                     <div
                       onClick={() => {
-                        setFilter("Arabes");
-                        setShowCategories(false);
-                      }}
+    navigate("/arabes");
+  setShowCategories(false);
+}}
                       style={{
                         padding: "10px 14px",
                         cursor: "pointer",
@@ -1179,23 +1255,27 @@ console.log("Perfume encontrado:", perfumeFromUrl);
               }}
             >
 
-              {/* LUPA */}
+             {/* LUPA */}
 
-              <div
-                style={{
-                  fontSize: "24px",
-                  cursor: "pointer",
-                  transition: ".3s"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.15)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                }}
-              >
-                🔍
-              </div>
+<div
+  onClick={() => {
+    setShowSearch(!showSearch);
+    setShowCart(false);
+  }}
+  style={{
+    fontSize: "24px",
+    cursor: "pointer",
+    transition: ".3s"
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.transform = "scale(1.15)";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.transform = "scale(1)";
+  }}
+>
+  🔍
+</div>
 
               {/* CARRITO */}
 
@@ -1258,8 +1338,1079 @@ console.log("Perfume encontrado:", perfumeFromUrl);
 
         </div>
 
-        {perfumeFromUrl ? (
+{/* ================= AVISO PRODUCTO AGREGADO ================= */}
+
+        {showCartNotification && (
+          <div
+            style={{
+              position: "fixed",
+              bottom: "25px",
+              right: "25px",
+              width: "340px",
+              maxWidth: "calc(100vw - 30px)",
+              background: "#fff",
+              borderRadius: "16px",
+              boxShadow: "0 10px 35px rgba(0,0,0,.25)",
+              zIndex: 999999,
+              display: "flex",
+              alignItems: "center",
+              padding: "12px",
+              animation: "slideInCart 0.5s cubic-bezier(.22,1,.36,1)",
+              boxSizing: "border-box"
+            }}
+          >
+
+            {/* IMAGEN */}
+            <div
+              style={{
+                width: "58px",
+                height: "68px",
+                borderRadius: "12px",
+                background: "#f7f7f7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                flexShrink: 0,
+                marginRight: "12px"
+              }}
+            >
+              {cart.length > 0 && (
+                <img
+                  src={cart[cart.length - 1].img}
+                  alt={cart[cart.length - 1].name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain"
+                  }}
+                />
+              )}
+            </div>
+
+            {/* INFORMACIÓN */}
+            <div
+              style={{
+                flex: 1,
+                cursor: "pointer",
+                minWidth: 0
+              }}
+              onClick={() => {
+                setShowCartNotification(false);
+                setShowCart(true);
+              }}
+            >
+
+              <div
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  color: "#222",
+                  marginBottom: "3px"
+                }}
+              >
+                ¡Producto agregado!
+              </div>
+
+              {cart.length > 0 && (
+                <>
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: "600",
+                      color: "#111",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis"
+                    }}
+                  >
+                    {cart[cart.length - 1].name}
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: "11px",
+                      color: "#888",
+                      marginTop: "3px"
+                    }}
+                  >
+                    {cart[cart.length - 1].selectedSize || "30 ml"}
+                    {" · "}
+                    Cantidad: {cart[cart.length - 1].quantity || 1}
+                  </div>
+                </>
+              )}
+
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: "#c9a96e",
+                  fontWeight: "bold",
+                  marginTop: "5px"
+                }}
+              >
+                Ver carrito →
+              </div>
+
+            </div>
+
+            {/* CERRAR */}
+            <button
+              onClick={() => setShowCartNotification(false)}
+              style={{
+                width: "34px",
+                height: "55px",
+                border: "none",
+                borderLeft: "1px solid #eee",
+                background: "transparent",
+                fontSize: "20px",
+                color: "#777",
+                cursor: "pointer",
+                marginLeft: "5px"
+              }}
+            >
+              ✕
+            </button>
+
+          </div>
+        )}
+
+ {/* ================= BUSCADOR ================= */}
+
+        {showSearch && (
+          <div
+            style={{
+              position: "fixed",
+              top: "130px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "420px",
+              maxWidth: "calc(100vw - 30px)",
+              background: "#fff",
+              borderRadius: "15px",
+              boxShadow: "0 10px 35px rgba(0,0,0,.25)",
+              padding: "15px",
+              zIndex: 9998,
+              boxSizing: "border-box"
+            }}
+          >
+
+            {/* INPUT */}
+
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              autoFocus
+              placeholder="Buscar perfume..."
+              style={{
+                width: "100%",
+                padding: "13px 15px",
+                borderRadius: "10px",
+                border: "1px solid #ddd",
+                outline: "none",
+                fontSize: "14px",
+                boxSizing: "border-box"
+              }}
+            />
+
+            {/* RESULTADOS */}
+
+            {query.trim() !== "" && (
+              <div
+                style={{
+                  marginTop: "10px",
+                  maxHeight: "300px",
+                  overflowY: "auto"
+                }}
+              >
+
+                {perfumes
+                  .filter((p) =>
+                    p.name
+                      .toLowerCase()
+                      .includes(query.toLowerCase())
+                  )
+                  .slice(0, 8)
+                  .map((perfume) => (
+
+                    <div
+                      key={perfume.id}
+                      onClick={() => {
+                        setShowSearch(false);
+                        setQuery("");
+                        navigate(`/perfume/${perfume.id}`);
+                      }}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "10px",
+                        borderBottom: "1px solid #eee",
+                        cursor: "pointer"
+                      }}
+                    >
+
+                      {/* IMAGEN */}
+
+                      <div
+                        style={{
+                          width: "50px",
+                          height: "55px",
+                          borderRadius: "10px",
+                          background: "#f7f7f7",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          overflow: "hidden",
+                          flexShrink: 0
+                        }}
+                      >
+                        <img
+                          src={perfume.img}
+                          alt={perfume.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain"
+                          }}
+                        />
+                      </div>
+
+                      {/* INFORMACIÓN */}
+
+                      <div>
+                        <div
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "14px",
+                            color: "#111"
+                          }}
+                        >
+                          {perfume.name}
+                        </div>
+
+                        {perfume.inspiredBy && (
+                          <div
+                            style={{
+                              fontSize: "11px",
+                              color: "#999",
+                              marginTop: "3px"
+                            }}
+                          >
+                            Inspirado en {perfume.inspiredBy}
+                          </div>
+                        )}
+
+                        <div
+                          style={{
+                            fontSize: "13px",
+                            color: "#c9a96e",
+                            fontWeight: "bold",
+                            marginTop: "4px"
+                          }}
+                        >
+                          Desde S/ {perfume.price}
+                        </div>
+                      </div>
+
+                    </div>
+
+                  ))}
+
+                {/* SIN RESULTADOS */}
+
+                {perfumes.filter((p) =>
+                  p.name
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
+                ).length === 0 && (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      padding: "20px",
+                      color: "#888",
+                      fontSize: "13px"
+                    }}
+                  >
+                    No encontramos ese perfume 😔
+                  </div>
+                )}
+
+              </div>
+            )}
+
+          </div>
+        )}
+
+       {location.pathname === "/europeos" ? (
+  <>
+
+    {/* ================= PÁGINA PERFUMES EUROPEOS ================= */}
+
+    <div
+      style={{
+        minHeight: "100vh",
+
+background:
+  "radial-gradient(circle at 20% 10%, rgba(201,169,110,.18), transparent 25%)," +
+  "radial-gradient(circle at 85% 85%, rgba(201,169,110,.12), transparent 30%)," +
+  "linear-gradient(135deg, #050505 0%, #111111 45%, #080808 100%)",
+
+        paddingTop: "130px",
+        paddingBottom: "60px",
+        paddingLeft: "30px",
+        paddingRight: "30px",
+
+        boxSizing: "border-box"
+      }}
+    >
+
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto"
+        }}
+      >
+
+        {/* ================= BANNER EUROPEOS ================= */}
+
+        <img
+          src="/categorias/europeos-banner.jpg"
+          alt="Perfumes Europeos"
+          style={{
+            width: "100%",
+            height: "280px",
+            objectFit: "cover",
+            borderRadius: "20px",
+            display: "block",
+            margin: "0 auto 40px",
+            boxShadow: "0 10px 35px rgba(0,0,0,.35)"
+          }}
+        />
+
+        {/* ================= TÍTULO ================= */}
+
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "40px"
+          }}
+        >
+
+          <h1
+            style={{
+              fontSize: "32px",
+              margin: 0,
+              color: "#c9a96e",
+              letterSpacing: "1px"
+            }}
+          >
+            Perfumes Europeos
+          </h1>
+
+          <p
+            style={{
+              marginTop: "10px",
+              color: "#d0d0d0",
+              fontSize: "14px"
+            }}
+          >
+            Descubre nuestra selección de perfumes europeos
+          </p>
+
+        </div>
+
+        {/* ================= LISTA DE PERFUMES ================= */}
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))",
+            gap: "25px"
+          }}
+        >
+
+          {europeanPerfumes.map((perfume) => (
+
+            <div
+              key={perfume.id}
+              onClick={() => navigate(`/perfume/${perfume.id}`)}
+              style={{
+                background: "#fff",
+                borderRadius: "18px",
+                padding: "18px",
+                cursor: "pointer",
+                boxShadow: "0 8px 25px rgba(0,0,0,.25)",
+                transition: ".3s"
+              }}
+
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-5px)";
+              }}
+
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+
+              {/* IMAGEN */}
+
+              <div
+                style={{
+                  width: "100%",
+                  height: "230px",
+                  background: "#f7f7f7",
+                  borderRadius: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden"
+                }}
+              >
+
+                <img
+                  src={perfume.img}
+                  alt={perfume.name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain"
+                  }}
+                />
+
+              </div>
+
+              {/* INFORMACIÓN */}
+
+              <div
+                style={{
+                  marginTop: "15px"
+                }}
+              >
+
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: "15px",
+                    color: "#111"
+                  }}
+                >
+                  {perfume.name}
+                </h3>
+
+                {perfume.inspiredBy && (
+                  <p
+                    style={{
+                      margin: "6px 0",
+                      fontSize: "11px",
+                      color: "#999"
+                    }}
+                  >
+                    Inspirado en {perfume.inspiredBy}
+                  </p>
+                )}
+
+                <strong
+                  style={{
+                    color: "#c9a96e",
+                    fontSize: "15px"
+                  }}
+                >
+                  Desde S/ {perfume.price}
+                </strong>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </>
+) : location.pathname === "/arabes" ? (
+  <>
+    {/* ================= PÁGINA PERFUMES ÁRABES ================= */}
+
+    <div
+      style={{
+        minHeight: "100vh",
+        background:
+  "radial-gradient(circle at 20% 10%, rgba(201,169,110,.18), transparent 25%)," +
+  "radial-gradient(circle at 85% 85%, rgba(201,169,110,.12), transparent 30%)," +
+  "linear-gradient(135deg, #050505 0%, #111111 45%, #080808 100%)",
+        paddingTop: "150px",
+        paddingBottom: "60px",
+        paddingLeft: "30px",
+        paddingRight: "30px"
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto"
+        }}
+      >
+
+{/* ================= BANNER ÁRABES ================= */}
+
+        <img
+          src="/categorias/arabes-banner.jpg"
+          alt="Perfumes Árabes"
+          style={{
+            width: "100%",
+            height: "280px",
+            objectFit: "cover",
+            objectPosition: "center 55%",
+            borderRadius: "20px",
+            display: "block",
+            margin: "0 auto 40px",
+            boxShadow: "0 10px 35px rgba(0,0,0,.35)"
+          }}
+        />
+
+        {/* TÍTULO */}
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "40px"
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "32px",
+              margin: 0,
+              color: "#d4af6a",
+              letterSpacing: "1px"
+            }}
+          >
+            Perfumes Árabes
+          </h1>
+
+          <p
+            style={{
+              marginTop: "10px",
+              color: "#d0d0d0",
+              fontSize: "14px"
+            }}
+          >
+            Descubre nuestra selección de perfumes árabes
+          </p>
+        </div>
+
+        {/* LISTA DE PERFUMES */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(210px, 1fr))",
+            gap: "25px"
+          }}
+        >
+
+          {arabicPerfumes.map((perfume) => (
+            <div
+              key={perfume.id}
+              onClick={() => navigate(`/perfume/${perfume.id}`)}
+              style={{
+                background: "#fff",
+                borderRadius: "18px",
+                padding: "18px",
+                cursor: "pointer",
+                boxShadow: "0 6px 20px rgba(0,0,0,.08)",
+                transition: ".3s"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-5px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+
+              {/* IMAGEN */}
+              <div
+                style={{
+                  width: "100%",
+                  height: "230px",
+                  background: "#f7f7f7",
+                  borderRadius: "14px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  overflow: "hidden"
+                }}
+              >
+                <img
+                  src={perfume.img}
+                  alt={perfume.name}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain"
+                  }}
+                />
+              </div>
+
+              {/* INFORMACIÓN */}
+              <div
+                style={{
+                  marginTop: "15px"
+                }}
+              >
+
+                <h3
+                  style={{
+                    margin: 0,
+                    fontSize: "15px",
+                    color: "#111"
+                  }}
+                >
+                  {perfume.name}
+                </h3>
+
+                {perfume.inspiredBy && (
+                  <p
+                    style={{
+                      margin: "6px 0",
+                      fontSize: "11px",
+                      color: "#999"
+                    }}
+                  >
+                    Inspirado en {perfume.inspiredBy}
+                  </p>
+                )}
+
+                <strong
+                  style={{
+                    color: "#c9a96e",
+                    fontSize: "15px"
+                  }}
+                >
+                  Desde S/ {perfume.price}
+                </strong>
+
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+    </div>
+  </>
+) : perfumeFromUrl ? (
       <>
+
+{/* ================= CARRITO EN PÁGINA DEL PERFUME ================= */}
+{showCart && (
+  <div
+    style={{
+      position: "fixed",
+      top: "115px",
+      right: "20px",
+      width: "390px",
+      maxWidth: "calc(100vw - 30px)",
+      maxHeight: "75vh",
+      overflowY: "auto",
+      background: "#fff",
+      color: "#111",
+      borderRadius: "20px",
+      boxShadow: "0 15px 45px rgba(0,0,0,.25)",
+      padding: "20px",
+      zIndex: 999999,
+      boxSizing: "border-box"
+    }}
+  >
+
+    {/* ENCABEZADO */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "18px",
+        paddingBottom: "12px",
+        borderBottom: "1px solid #eee"
+      }}
+    >
+
+      <div>
+        <h2
+          style={{
+            margin: 0,
+            fontSize: "21px",
+            color: "#111"
+          }}
+        >
+          🛒 Mi carrito
+        </h2>
+
+        <div
+          style={{
+            fontSize: "12px",
+            color: "#888",
+            marginTop: "4px"
+          }}
+        >
+          {cart.length}{" "}
+          {cart.length === 1 ? "producto" : "productos"}
+        </div>
+      </div>
+
+      {/* CERRAR */}
+      <button
+        onClick={() => setShowCart(false)}
+        style={{
+          width: "34px",
+          height: "34px",
+          borderRadius: "50%",
+          border: "none",
+          background: "#f3f3f3",
+          color: "#333",
+          fontSize: "18px",
+          cursor: "pointer"
+        }}
+      >
+        ✕
+      </button>
+
+    </div>
+
+    {/* CARRITO VACÍO */}
+    {cart.length === 0 ? (
+
+      <div
+        style={{
+          textAlign: "center",
+          padding: "35px 10px"
+        }}
+      >
+
+        <div
+          style={{
+            fontSize: "45px",
+            marginBottom: "10px"
+          }}
+        >
+          🛒
+        </div>
+
+        <h3
+          style={{
+            margin: "0 0 8px",
+            fontSize: "17px"
+          }}
+        >
+          Tu carrito está vacío
+        </h3>
+
+        <p
+          style={{
+            margin: 0,
+            color: "#888",
+            fontSize: "13px"
+          }}
+        >
+          Agrega tus perfumes favoritos para continuar.
+        </p>
+
+      </div>
+
+    ) : (
+
+      <>
+
+        {/* PRODUCTOS */}
+        {cart.map((item, index) => (
+
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              gap: "12px",
+              padding: "14px 0",
+              borderBottom: "1px solid #eee"
+            }}
+          >
+
+            {/* IMAGEN */}
+            <div
+              style={{
+                width: "82px",
+                height: "105px",
+                borderRadius: "14px",
+                background: "#f7f7f7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                overflow: "hidden"
+              }}
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain"
+                }}
+              />
+            </div>
+
+            {/* INFORMACIÓN */}
+            <div
+              style={{
+                flex: 1,
+                minWidth: 0
+              }}
+            >
+
+              {/* NOMBRE */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#111",
+                  marginBottom: "5px"
+                }}
+              >
+                {item.name}
+              </div>
+
+              {/* INSPIRADO EN */}
+              {item.inspiredBy && (
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "#999",
+                    marginBottom: "7px"
+                  }}
+                >
+                  Inspirado en {item.inspiredBy}
+                </div>
+              )}
+
+              {/* TAMAÑO */}
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: "#666",
+                  marginBottom: "5px"
+                }}
+              >
+                📏 {item.selectedSize || "30 ml"}
+              </div>
+
+              {/* PRECIO */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#c9a96e"
+                }}
+              >
+                S/ {item.selectedPrice ?? item.price}
+              </div>
+
+              {/* CANTIDAD + ELIMINAR */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginTop: "10px"
+                }}
+              >
+
+                {/* CANTIDAD */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
+                  }}
+                >
+
+                  <button
+                    onClick={() => {
+                      if ((item.quantity || 1) > 1) {
+                        setCart((prev) =>
+                          prev.map((cartItem, i) =>
+                            i === index
+                              ? {
+                                  ...cartItem,
+                                  quantity: cartItem.quantity - 1
+                                }
+                              : cartItem
+                          )
+                        );
+                      }
+                    }}
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "8px",
+                      border: "1px solid #ddd",
+                      background: "#fff",
+                      cursor: "pointer",
+                      fontSize: "16px"
+                    }}
+                  >
+                    −
+                  </button>
+
+                  <strong
+                    style={{
+                      fontSize: "14px",
+                      minWidth: "18px",
+                      textAlign: "center"
+                    }}
+                  >
+                    {item.quantity || 1}
+                  </strong>
+
+                  <button
+                    onClick={() =>
+                      setCart((prev) =>
+                        prev.map((cartItem, i) =>
+                          i === index
+                            ? {
+                                ...cartItem,
+                                quantity:
+                                  (cartItem.quantity || 1) + 1
+                              }
+                            : cartItem
+                        )
+                      )
+                    }
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "8px",
+                      border: "1px solid #ddd",
+                      background: "#fff",
+                      cursor: "pointer",
+                      fontSize: "16px"
+                    }}
+                  >
+                    +
+                  </button>
+
+                </div>
+
+                {/* ELIMINAR */}
+                <button
+                  onClick={() => removeFromCart(index)}
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    color: "#999",
+                    cursor: "pointer",
+                    fontSize: "18px"
+                  }}
+                  title="Eliminar producto"
+                >
+                  🗑️
+                </button>
+
+              </div>
+
+              {/* SUBTOTAL */}
+              <div
+                style={{
+                  textAlign: "right",
+                  marginTop: "8px",
+                  fontSize: "12px",
+                  color: "#555"
+                }}
+              >
+                Subtotal:{" "}
+                <strong>
+                  S/{" "}
+                  {(item.selectedPrice ?? item.price) *
+                    (item.quantity || 1)}
+                </strong>
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
+        {/* TOTAL */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "18px",
+            marginBottom: "15px"
+          }}
+        >
+
+          <span
+            style={{
+              fontSize: "15px",
+              color: "#555"
+            }}
+          >
+            Total del pedido
+          </span>
+
+          <strong
+            style={{
+              fontSize: "22px",
+              color: "#c9a96e"
+            }}
+          >
+            S/ {total}
+          </strong>
+
+        </div>
+
+        {/* WHATSAPP */}
+        <a
+          href={`https://wa.me/51974374060?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            textDecoration: "none"
+          }}
+        >
+
+          <button
+            style={{
+              width: "100%",
+              padding: "14px",
+              background: "#25D366",
+              color: "#fff",
+              border: "none",
+              borderRadius: "13px",
+              fontWeight: "bold",
+              fontSize: "15px",
+              cursor: "pointer"
+            }}
+          >
+            📱 Finalizar pedido por WhatsApp
+          </button>
+
+        </a>
+
+      </>
+
+    )}
+
+  </div>
+)}
+
         {/* PÁGINA DEL PERFUME */}
         
         <div
@@ -1291,29 +2442,188 @@ console.log("Perfume encontrado:", perfumeFromUrl);
   }}
 >
 
-              {/* COLUMNA IZQUIERDA - IMAGEN */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  minHeight: "550px"
-                }}
-              >
+{/* COLUMNA IZQUIERDA - GALERÍA */}
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "550px"
+  }}
+>
+  <div
+    style={{
+      width: "100%",
+      maxWidth: "800px",
+      position: "relative"
+    }}
+  >
 
-            <img
-              src={perfumeFromUrl.img}
-              alt={perfumeFromUrl.name}
-              style={{
-                width: "100%",
-                maxWidth: "500px",
-                maxHeight: "550px",
-                objectFit: "contain",
-                display: "block",
-                margin: "0 auto"
-              }}
-            />
+    {/* IMAGEN PRINCIPAL */}
+    <div
+      style={{
+        width: "100%",
+        height: "700px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#f7f7f7",
+        borderRadius: "20px",
+        overflow: "hidden"
+      }}
+    >
+      <img
+        src={
+          perfumeFromUrl.gallery?.[currentImage] ||
+          perfumeFromUrl.img
+        }
+        alt={perfumeFromUrl.name}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "contain"
+        }}
+      />
+    </div>
 
+    {/* FLECHA IZQUIERDA */}
+    {perfumeFromUrl.gallery?.length > 1 && (
+      <button
+        onClick={() => {
+          setCurrentImage((prev) =>
+            prev === 0
+              ? perfumeFromUrl.gallery.length - 1
+              : prev - 1
+          );
+        }}
+        style={{
+          position: "absolute",
+          left: "15px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: "42px",
+          height: "42px",
+          borderRadius: "50%",
+          border: "none",
+          background: "rgba(0,0,0,.65)",
+          color: "#fff",
+          fontSize: "24px",
+          cursor: "pointer",
+          zIndex: 2
+        }}
+      >
+        ‹
+      </button>
+    )}
+
+    {/* FLECHA DERECHA */}
+    {perfumeFromUrl.gallery?.length > 1 && (
+      <button
+        onClick={() => {
+          setCurrentImage((prev) =>
+            prev === perfumeFromUrl.gallery.length - 1
+              ? 0
+              : prev + 1
+          );
+        }}
+        style={{
+          position: "absolute",
+          right: "15px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          width: "42px",
+          height: "42px",
+          borderRadius: "50%",
+          border: "none",
+          background: "rgba(0,0,0,.65)",
+          color: "#fff",
+          fontSize: "24px",
+          cursor: "pointer",
+          zIndex: 2
+        }}
+      >
+        ›
+      </button>
+    )}
+
+{/* INDICADORES + MINIATURAS */}
+{perfumeFromUrl.gallery?.length > 1 && (
+  <>
+    {/* PUNTITOS */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: "7px",
+        marginTop: "12px"
+      }}
+    >
+      {perfumeFromUrl.gallery.map((_, index) => (
+        <div
+          key={index}
+          onClick={() => setCurrentImage(index)}
+          style={{
+            width: "8px",
+            height: "8px",
+            borderRadius: "50%",
+            background:
+              currentImage === index
+                ? "#c9a96e"
+                : "#ccc",
+            cursor: "pointer",
+            transition: ".2s"
+          }}
+        />
+      ))}
+    </div>
+
+    {/* MINIATURAS */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: "10px",
+        marginTop: "15px",
+        overflowX: "auto",
+        padding: "5px"
+      }}
+    >
+      {perfumeFromUrl.gallery.map((image, index) => (
+        <div
+          key={index}
+          onClick={() => setCurrentImage(index)}
+          style={{
+            width: "75px",
+            height: "75px",
+            minWidth: "75px",
+            borderRadius: "10px",
+            overflow: "hidden",
+            cursor: "pointer",
+            border:
+              currentImage === index
+                ? "2px solid #c9a96e"
+                : "2px solid #ddd",
+            background: "#f7f7f7",
+            transition: ".2s",
+            boxSizing: "border-box"
+          }}
+        >
+          <img
+            src={image}
+            alt={`${perfumeFromUrl.name} ${index + 1}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain"
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  </>
+)}
+
+  </div>
 </div>
 
               {/* COLUMNA DERECHA - INFORMACIÓN */}
@@ -1533,96 +2843,7 @@ console.log("Perfume encontrado:", perfumeFromUrl);
       </>
     ) : (
 <>
-    {/* ================= AVISO PRODUCTO AGREGADO ================= */}
-
-    {showCartNotification && (
-      <div
-        style={{
-          position: "fixed",
-          bottom: "25px",
-          right: "25px",
-          width: "340px",
-          background: "#fff",
-          borderRadius: "15px",
-          boxShadow: "0 10px 35px rgba(0,0,0,.25)",
-          zIndex: 999999,
-          display: "flex",
-          alignItems: "center",
-          padding: "12px",
-          animation: "slideInCart 0.5s cubic-bezier(.22,1,.36,1)"
-        }}
-      >
-
-        {/* ICONO DEL CARRITO */}
-        <div
-          style={{
-            width: "55px",
-            height: "55px",
-            borderRadius: "12px",
-            background: "#f1f1f1",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "27px",
-            marginRight: "12px"
-          }}
-        >
-          🛒
-        </div>
-
-        {/* TEXTO */}
-        <div
-          style={{
-            flex: 1,
-            cursor: "pointer"
-          }}
-          onClick={() => {
-            setShowCartNotification(false);
-            setShowCart(true);
-          }}
-        >
-
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              color: "#222"
-            }}
-          >
-            ¡Producto agregado!
-          </div>
-
-          <div
-            style={{
-              fontSize: "13px",
-              color: "#555",
-              marginTop: "4px"
-            }}
-          >
-            Ver carrito
-          </div>
-
-        </div>
-
-        {/* BOTÃ“N X */}
-        <button
-          onClick={() => setShowCartNotification(false)}
-          style={{
-            width: "38px",
-            height: "55px",
-            border: "none",
-            borderLeft: "1px solid #ddd",
-            background: "transparent",
-            fontSize: "25px",
-            color: "#111",
-            cursor: "pointer"
-          }}
-        >
-          ✘
-        </button>
-
-      </div>
-    )}
+    
     
             {/* FONDO FIJO */}
       <div
@@ -2055,71 +3276,6 @@ console.log("Perfume encontrado:", perfumeFromUrl);
             </a>
 
           </div>
-        </div>
-
-        {/* STORIES TIPO INSTAGRAM */}
-        <div style={{
-          display: "flex",
-          gap: "15px",
-          overflowX: "auto",
-          padding: "10px 0",
-          marginBottom: "20px"
-        }}>
-
-          {["Dama", "Caballero", "Nuevos"].map((item, i) => (
-            <div
-              key={i}
-              onClick={() => {
-                setFilter(item);
-                setActiveStory(item);
-              }}
-              style={{
-                minWidth: "70px",
-                textAlign: "center",
-                cursor: "pointer"
-              }}
-            >
-
-              <div style={{
-                width: "72px",
-                height: "72px",
-                borderRadius: "50%",
-                padding: "3px",
-                background: activeStory === item
-                  ? "linear-gradient(45deg, #00f5ff, #0084ff, #6a00ff)"
-                  : "linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)",
-                transition: "0.3s",
-                transform: activeStory === item ? "scale(1.05)" : "scale(1)"
-              }}>
-
-                <div style={{
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "50%",
-                  background: "#fff",
-                  color: "black",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "12px",
-                  fontWeight: "bold"
-                }}>
-                  {item}
-                </div>
-
-              </div>
-
-              <div style={{
-                fontSize: "12px",
-                marginTop: "5px",
-                color: "white"
-              }}>
-                {item}
-              </div>
-
-            </div>
-          ))}
-
         </div>
 
         {/* FILTROS */}
@@ -2763,154 +3919,396 @@ left:180%;
         </a>
 
 
-        {/* CARRITO DESPLEGABLE */}
-        {showCart && (
-          <div style={{
-            position: "fixed",
-            right: "20px",
-            top: "130px",
-            width: "260px",
-            background: "white",
-            color: "#1a1a1a",
-            borderRadius: "10px",
-            boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
-            padding: "10px",
-            zIndex: 1000
-          }}>
+        {/* ================= CARRITO DESPLEGABLE ================= */}
+{showCart && (
+  <div
+    style={{
+      position: "fixed",
+      top: "115px",
+      right: "20px",
+      width: "390px",
+      maxWidth: "calc(100vw - 30px)",
+      maxHeight: "75vh",
+      overflowY: "auto",
+      background: "#fff",
+      color: "#111",
+      borderRadius: "20px",
+      boxShadow: "0 15px 45px rgba(0,0,0,.25)",
+      padding: "20px",
+      zIndex: 99999,
+      boxSizing: "border-box"
+    }}
+  >
 
-            <h4 style={{ textAlign: "center", color: "#c9a96e" }}>
-              🛒 Carrito
-            </h4>
+    {/* ENCABEZADO */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "18px",
+        paddingBottom: "12px",
+        borderBottom: "1px solid #eee"
+      }}
+    >
+      <div>
+        <h2
+          style={{
+            margin: 0,
+            fontSize: "21px",
+            color: "#111"
+          }}
+        >
+          🛒 Mi carrito
+        </h2>
 
-            {cart.length === 0 ? (
-              <p style={{ fontSize: "12px", textAlign: "center" }}>
-                Vacío
-              </p>
-            ) : (
-              <>
-                {cart.map((item, index) => (
-                  <div
-                    key={index}
+        <div
+          style={{
+            fontSize: "12px",
+            color: "#888",
+            marginTop: "4px"
+          }}
+        >
+          {cart.length} {cart.length === 1 ? "producto" : "productos"}
+        </div>
+      </div>
+
+      {/* CERRAR */}
+      <button
+        onClick={() => setShowCart(false)}
+        style={{
+          width: "34px",
+          height: "34px",
+          borderRadius: "50%",
+          border: "none",
+          background: "#f3f3f3",
+          color: "#333",
+          fontSize: "18px",
+          cursor: "pointer"
+        }}
+      >
+        ✕
+      </button>
+    </div>
+
+    {/* CARRITO VACÍO */}
+    {cart.length === 0 ? (
+
+      <div
+        style={{
+          textAlign: "center",
+          padding: "35px 10px"
+        }}
+      >
+        <div
+          style={{
+            fontSize: "45px",
+            marginBottom: "10px"
+          }}
+        >
+          🛒
+        </div>
+
+        <h3
+          style={{
+            margin: "0 0 8px",
+            fontSize: "17px"
+          }}
+        >
+          Tu carrito está vacío
+        </h3>
+
+        <p
+          style={{
+            margin: 0,
+            color: "#888",
+            fontSize: "13px"
+          }}
+        >
+          Agrega tus perfumes favoritos para continuar.
+        </p>
+      </div>
+
+    ) : (
+
+      <>
+
+        {/* PRODUCTOS */}
+        {cart.map((item, index) => (
+
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              gap: "12px",
+              padding: "14px 0",
+              borderBottom: "1px solid #eee"
+            }}
+          >
+
+            {/* IMAGEN */}
+            <div
+              style={{
+                width: "82px",
+                height: "105px",
+                borderRadius: "14px",
+                background: "#f7f7f7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                overflow: "hidden"
+              }}
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain"
+                }}
+              />
+            </div>
+
+            {/* INFORMACIÓN */}
+            <div
+              style={{
+                flex: 1,
+                minWidth: 0
+              }}
+            >
+
+              {/* NOMBRE */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#111",
+                  marginBottom: "5px"
+                }}
+              >
+                {item.name}
+              </div>
+
+              {/* INSPIRADO EN */}
+              {item.inspiredBy && (
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "#999",
+                    marginBottom: "7px"
+                  }}
+                >
+                  Inspirado en {item.inspiredBy}
+                </div>
+              )}
+
+              {/* TAMAÑO */}
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: "#666",
+                  marginBottom: "5px"
+                }}
+              >
+                📏 {item.selectedSize || "30 ml"}
+              </div>
+
+              {/* PRECIO */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#c9a96e"
+                }}
+              >
+                S/ {item.selectedPrice ?? item.price}
+              </div>
+
+              {/* CANTIDAD + ELIMINAR */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginTop: "10px"
+                }}
+              >
+
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
+                  }}
+                >
+
+                  <button
+                    onClick={() => {
+                      if ((item.quantity || 1) > 1) {
+                        setCart((prev) =>
+                          prev.map((cartItem, i) =>
+                            i === index
+                              ? {
+                                  ...cartItem,
+                                  quantity: cartItem.quantity - 1
+                                }
+                              : cartItem
+                          )
+                        );
+                      }
+                    }}
                     style={{
-                      borderBottom: "1px solid #eee",
-                      padding: "10px 0",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center"
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "8px",
+                      border: "1px solid #ddd",
+                      background: "#fff",
+                      cursor: "pointer",
+                      fontSize: "16px"
                     }}
                   >
+                    −
+                  </button>
 
-                    <div>
+                  <strong
+                    style={{
+                      fontSize: "14px",
+                      minWidth: "18px",
+                      textAlign: "center"
+                    }}
+                  >
+                    {item.quantity || 1}
+                  </strong>
 
-                      {/* NOMBRE */}
-                      <div
-                        style={{
-                          fontSize: "13px",
-                          fontWeight: "bold"
-                        }}
-                      >
-                        {item.name}
-                      </div>
+                  <button
+                    onClick={() =>
+                      setCart((prev) =>
+                        prev.map((cartItem, i) =>
+                          i === index
+                            ? {
+                                ...cartItem,
+                                quantity: (cartItem.quantity || 1) + 1
+                              }
+                            : cartItem
+                        )
+                      )
+                    }
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "8px",
+                      border: "1px solid #ddd",
+                      background: "#fff",
+                      cursor: "pointer",
+                      fontSize: "16px"
+                    }}
+                  >
+                    +
+                  </button>
 
-                      {/* TAMAÃ‘O */}
-                      <div
-                        style={{
-                          fontSize: "12px",
-                          color: "#777",
-                          marginTop: "3px"
-                        }}
-                      >
-                        Tamaño: {item.selectedSize || "30 ml"}
-                      </div>
-
-                      {/* CANTIDAD */}
-                      <div
-                        style={{
-                          fontSize: "12px",
-                          color: "#777",
-                          marginTop: "3px"
-                        }}
-                      >
-                        Cantidad: {item.quantity || 1}
-                      </div>
-
-                      {/* PRECIO */}
-                      <div>
-
-                        <strong
-                          style={{
-                            fontSize: "13px",
-                            color: "#c9a96e"
-                          }}
-                        >
-                          S/ {item.selectedPrice ?? item.price} c/u
-                        </strong>
-
-                        <div
-                          style={{
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            color: "#333",
-                            marginTop: "3px"
-                          }}
-                        >
-                          Total: S/{" "}
-                          {(item.selectedPrice ?? item.price) * (item.quantity || 1)}
-                        </div>
-
-                      </div>
-
-                    </div>
-
-                    {/* ELIMINAR */}
-                    <button
-                      onClick={() => removeFromCart(index)}
-                      style={{
-                        background: "red",
-                        color: "white",
-                        border: "none",
-                        borderRadius: "5px",
-                        padding: "3px 6px",
-                        fontSize: "10px",
-                        cursor: "pointer"
-                      }}
-                    >
-                      X
-                    </button>
-
-                  </div>
-                ))}
-
-                {/* TOTAL + WHATSAPP */}
-                <div style={{ marginTop: "10px", textAlign: "center" }}>
-                  <strong>Total: S/ {total}</strong>
                 </div>
 
-                <a
-                  href={`https://wa.me/51974374060?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <button style={{
-                    width: "100%",
-                    marginTop: "10px",
-                    padding: "10px",
-                    background: "#25D366",
-                    color: "white",
+                {/* ELIMINAR */}
+                <button
+                  onClick={() => removeFromCart(index)}
+                  style={{
                     border: "none",
-                    borderRadius: "8px",
-                    fontWeight: "bold",
-                    cursor: "pointer"
-                  }}>
-                    Finalizar pedido por WhatsApp
-                  </button>
-                </a>
+                    background: "transparent",
+                    color: "#999",
+                    cursor: "pointer",
+                    fontSize: "18px"
+                  }}
+                  title="Eliminar producto"
+                >
+                  🗑️
+                </button>
 
-              </>
-            )}
+              </div>
+
+              {/* SUBTOTAL */}
+              <div
+                style={{
+                  textAlign: "right",
+                  marginTop: "8px",
+                  fontSize: "12px",
+                  color: "#555"
+                }}
+              >
+                Subtotal:{" "}
+                <strong>
+                  S/ {(item.selectedPrice ?? item.price) * (item.quantity || 1)}
+                </strong>
+              </div>
+
+            </div>
 
           </div>
-        )}
+
+        ))}
+
+        {/* TOTAL */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "18px",
+            marginBottom: "15px"
+          }}
+        >
+          <span
+            style={{
+              fontSize: "15px",
+              color: "#555"
+            }}
+          >
+            Total del pedido
+          </span>
+
+          <strong
+            style={{
+              fontSize: "22px",
+              color: "#c9a96e"
+            }}
+          >
+            S/ {total}
+          </strong>
+        </div>
+
+        {/* WHATSAPP */}
+        <a
+          href={`https://wa.me/51974374060?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            textDecoration: "none"
+          }}
+        >
+          <button
+            style={{
+              width: "100%",
+              padding: "14px",
+              background: "#25D366",
+              color: "#fff",
+              border: "none",
+              borderRadius: "13px",
+              fontWeight: "bold",
+              fontSize: "15px",
+              cursor: "pointer"
+            }}
+          >
+            📱 Finalizar pedido por WhatsApp
+          </button>
+        </a>
+
+      </>
+
+    )}
+
+  </div>
+)}
 
         {/* MODAL DEL PERFUME */}
         {false && (
