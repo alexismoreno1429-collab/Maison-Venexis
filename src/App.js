@@ -155,7 +155,7 @@ const perfumes = [
     price: 45,
     img: "/perfumes/amarige.jpg",
     inspiredBy: "Givenchy Amarige",
-    description: "Aroma floral intenso, clÃ¡sico y elegante con presencia femenina fuerte.",
+    description: "Aroma floral intenso, clásico y elegante con presencia femenina fuerte.",
     duration: "6-8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
@@ -337,7 +337,7 @@ const perfumes = [
     price: 45,
     img: "/perfumes/olympea.jpg",
     inspiredBy: "Paco Rabanne Olympea",
-    description: "Aroma dulce salado Ãºnico con presencia fuerte y femenina.",
+    description: "Aroma dulce salado único con presencia fuerte y femenina.",
     duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
@@ -407,6 +407,46 @@ const perfumes = [
     fixation: "ALTA",
     similarity: "ALTA"
   },
+  {
+    id: 3000,
+    name: "212",
+    gender: "Dama",
+    category: "Normal",
+    price: 45,
+    img: "/perfumes/212-heroes.jpg",
+    inspiredBy: "Carolina Herrera 212 línea femenina",
+    description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
+    duration: "6-8 horas",
+    fixation: "ALTA",
+    similarity: "ALTA"
+  },
+  {
+    id: 3001,
+    name: "212 SEXY",
+    gender: "Dama",
+    category: "Normal",
+    price: 45,
+    img: "/perfumes/212-heroes.jpg",
+    inspiredBy: "Carolina Herrera 212 línea femenina",
+    description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
+    duration: "6-8 horas",
+    fixation: "ALTA",
+    similarity: "ALTA"
+  },
+  {
+    id: 3002,
+    name: "212 VIP ROSE",
+    gender: "Dama",
+    category: "Normal",
+    price: 45,
+    img: "/perfumes/212-heroes.jpg",
+    inspiredBy: "Carolina Herrera 212 línea femenina",
+    description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
+    duration: "6-8 horas",
+    fixation: "ALTA",
+    similarity: "ALTA"
+  },
+
   // (HOMBRES)
   {
     id: 1100,
@@ -2571,6 +2611,239 @@ background:
             </div>
           </div>
         </div>
+
+{/* 💚 GRUPO OFICIAL DE WHATSAPP */}
+<div
+  style={{
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    margin: "30px 0 40px",
+    padding: "0 10px",
+    boxSizing: "border-box"
+  }}
+>
+  <div
+    style={{
+      position: "relative",
+      width: "100%",
+      maxWidth: "850px",
+      overflow: "hidden",
+      borderRadius: "28px",
+      padding: "35px 25px",
+      boxSizing: "border-box",
+      textAlign: "center",
+      background:
+        "radial-gradient(circle at top right, rgba(37,211,102,0.18), transparent 35%), linear-gradient(135deg, #080808, #171717, #0b0b0b)",
+      border: "1px solid rgba(201,169,110,0.45)",
+      boxShadow:
+        "0 20px 60px rgba(0,0,0,0.45), 0 0 35px rgba(37,211,102,0.08)"
+    }}
+  >
+    {/* DESTELLOS DECORATIVOS */}
+    <div
+      style={{
+        position: "absolute",
+        width: "180px",
+        height: "180px",
+        borderRadius: "50%",
+        background: "rgba(37,211,102,0.08)",
+        filter: "blur(40px)",
+        top: "-80px",
+        right: "-50px"
+      }}
+    ></div>
+
+    <div
+      style={{
+        position: "absolute",
+        width: "150px",
+        height: "150px",
+        borderRadius: "50%",
+        background: "rgba(201,169,110,0.08)",
+        filter: "blur(35px)",
+        bottom: "-70px",
+        left: "-40px"
+      }}
+    ></div>
+
+    {/* ETIQUETA */}
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "8px",
+        padding: "7px 15px",
+        borderRadius: "30px",
+        background: "rgba(37,211,102,0.12)",
+        border: "1px solid rgba(37,211,102,0.35)",
+        color: "#25D366",
+        fontSize: "12px",
+        fontWeight: "bold",
+        letterSpacing: "1px",
+        marginBottom: "15px"
+      }}
+    >
+      🟢 GRUPO OFICIAL DE WHATSAPP
+    </div>
+
+    {/* ICONO */}
+    <div
+      style={{
+        fontSize: "48px",
+        marginBottom: "5px",
+        animation: "pulse 2s infinite"
+      }}
+    >
+      💬
+    </div>
+
+    {/* TITULO */}
+    <h2
+      style={{
+        margin: "5px 0 8px",
+        color: "#fff",
+        fontSize: "30px",
+        fontFamily: "'Playfair Display', serif",
+        letterSpacing: "0.5px"
+      }}
+    >
+      ¡Únete a nuestra comunidad!
+    </h2>
+
+    {/* SUBTITULO */}
+    <p
+      style={{
+        margin: "0 auto",
+        maxWidth: "600px",
+        color: "#cfcfcf",
+        fontSize: "15px",
+        lineHeight: "1.6"
+      }}
+    >
+      Sé parte de la comunidad de{" "}
+      <strong style={{ color: "#c9a96e" }}>
+        MAISON VENEXIS
+      </strong>{" "}
+      y entérate primero de nuestras novedades.
+    </p>
+
+    {/* BENEFICIOS */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        gap: "12px",
+        flexWrap: "wrap",
+        margin: "25px auto",
+        maxWidth: "700px"
+      }}
+    >
+      <div
+        style={{
+          padding: "12px 16px",
+          borderRadius: "14px",
+          background: "rgba(255,255,255,0.05)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          color: "#fff",
+          fontSize: "13px"
+        }}
+      >
+        🔥 Promociones exclusivas
+      </div>
+
+      <div
+        style={{
+          padding: "12px 16px",
+          borderRadius: "14px",
+          background: "rgba(255,255,255,0.05)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          color: "#fff",
+          fontSize: "13px"
+        }}
+      >
+        ✨ Nuevos lanzamientos
+      </div>
+
+      <div
+        style={{
+          padding: "12px 16px",
+          borderRadius: "14px",
+          background: "rgba(255,255,255,0.05)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          color: "#fff",
+          fontSize: "13px"
+        }}
+      >
+        💎 Ofertas especiales
+      </div>
+    </div>
+
+    {/* LLAMADA A LA ACCIÓN */}
+    <p
+      style={{
+        color: "#aaa",
+        fontSize: "13px",
+        marginBottom: "15px"
+      }}
+    >
+      👇 Haz clic y únete ahora 👇
+    </p>
+
+    {/* BOTÓN WHATSAPP */}
+    <a
+      href="https://chat.whatsapp.com/EaBwbtswMXN6LtZyEIe2NZ"
+      target="_blank"
+      rel="noreferrer"
+      style={{
+        textDecoration: "none"
+      }}
+    >
+      <button
+        style={{
+          background:
+            "linear-gradient(135deg, #25D366, #20bd5a)",
+          color: "#fff",
+          border: "none",
+          padding: "15px 32px",
+          borderRadius: "35px",
+          fontWeight: "bold",
+          fontSize: "16px",
+          cursor: "pointer",
+          boxShadow:
+            "0 10px 30px rgba(37,211,102,0.35)",
+          transition: "all 0.3s ease"
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform =
+            "translateY(-3px) scale(1.04)";
+          e.currentTarget.style.boxShadow =
+            "0 15px 35px rgba(37,211,102,0.5)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform =
+            "translateY(0) scale(1)";
+          e.currentTarget.style.boxShadow =
+            "0 10px 30px rgba(37,211,102,0.35)";
+        }}
+      >
+        💚 UNIRME AL GRUPO DE WHATSAPP
+      </button>
+    </a>
+
+    <p
+      style={{
+        marginTop: "15px",
+        marginBottom: "0",
+        color: "#777",
+        fontSize: "11px"
+      }}
+    >
+      Maison Venexis • Fragancias exclusivas
+    </p>
+  </div>
+</div>
+
         {/* ⭐ PERFUMES MÁS VENDIDOS */}
         <div style={{ margin: "25px 0" }}>
           <h2
