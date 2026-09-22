@@ -589,12 +589,12 @@ const perfumes = [
   },
   {
     id: 4011,
-    name: "ECLAIRE",
+    name: "ECLAIRE BANOFFI",
     gender: "Caballero",
     type: "Arabes",
     category: "Normal",
     price: 35,
-    img: "/perfumes/eclaire.jpg",
+    img: "/perfumes/eclaire-banoffi.jpg",
     inspiredBy: "está inspirado en la famosa fragancia nicho Bianco Latte de Giardini Di Toscana.",
     description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
     duration: "6-8 horas",
@@ -1477,22 +1477,13 @@ gallery: [
     img: "/perfumes/l-eau-d-issey-sport.jpg",
   },
   {
-    id: 1041,
-    name: "LE MALE PARFUM",
-    gender: "Caballero",
-    category: "Normal",
-    price: 35,
-    type: "Europeos",
-    img: "/perfumes/one-million.jpg",
-  },
-  {
     id: 1042,
     name: "SCANDAL ABSOLUT",
     gender: "Caballero",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/scandal-absolut.jpg",
   },
   {
     id: 1043,
@@ -1501,7 +1492,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/halloween-man.jpg",
   },
   {
     id: 1044,
@@ -1510,7 +1501,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/homme-lacoste.jpg",
   },
   {
     id: 1045,
@@ -1519,7 +1510,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lacoste-blanc.jpg",
   },
   {
     id: 1046,
@@ -1528,7 +1519,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lacoste-energized.jpg",
   },
   {
     id: 1047,
@@ -1537,7 +1528,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lacoste-magnetic.jpg",
   },
   {
     id: 1048,
@@ -1546,7 +1537,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lacoste-noir.jpg",
   },
   {
     id: 1049,
@@ -1555,7 +1546,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lacoste-red.jpg",
   },
   {
     id: 1050,
@@ -1564,7 +1555,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/asad-elixir.jpg",
   },
   {
     id: 1051,
@@ -1573,7 +1564,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/musaman-white-intense.jpg",
   },
   {
     id: 1052,
@@ -1582,7 +1573,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/musaman-black-intense.jpg",
   },
   {
     id: 1053,
@@ -1591,7 +1582,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/solo-loewe.jpg",
   },
   {
     id: 1054,
@@ -1600,7 +1591,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/imagination.jpg",
   },
   {
     id: 1055,
@@ -1609,7 +1600,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/meteore.jpg",
   },
   {
     id: 1056,
@@ -1618,7 +1609,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/l-immensite.jpg",
   },
   {
     id: 1057,
@@ -1627,7 +1618,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/mercedes-benz-club.jpg",
   },
   {
     id: 1058,
@@ -1636,7 +1627,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/emblem.jpg",
   },
   {
     id: 1059,
@@ -1645,7 +1636,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/legend.jpg",
   },
   {
     id: 1060,
@@ -1654,7 +1645,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/legend-night.jpg",
   },
   {
     id: 1061,
@@ -1663,7 +1654,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/legend-spirit.jpg",
   },
   {
     id: 1062,
@@ -1672,7 +1663,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/star-walker.jpg",
   },
   {
     id: 1063,
@@ -1681,7 +1672,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/toy-boy.jpg",
   },
   {
     id: 1064,
@@ -1690,7 +1681,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/toy-boy-2.jpg",
   },
   {
     id: 1065,
@@ -1699,7 +1690,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/nautica-voyage.jpg",
   },
   {
     id: 1066,
@@ -1708,7 +1699,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/oscar-de-la-renta-pour-lui.jpg",
   },
   {
     id: 1067,
@@ -1717,7 +1708,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/9pm-rebel.jpg",
   },
   {
     id: 1068,
@@ -1726,7 +1717,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/animale-for-men.jpg",
   },
   {
     id: 1069,
@@ -1735,7 +1726,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/blue-seduction.jpg",
   },
   {
     id: 1070,
@@ -1744,7 +1735,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/azzaro-pour-home.jpg",
   },
   {
     id: 1071,
@@ -1753,7 +1744,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/wanted-eau-de-parfum.jpg",
   },
   {
     id: 1072,
@@ -1762,7 +1753,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bharara-onyx.jpg",
   },
   {
     id: 1073,
@@ -1771,7 +1762,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/the-scent-of-peace-for-him-bond-n9.jpg",
   },
   {
     id: 1074,
@@ -1780,7 +1771,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/aqua-pour-homme.jpg",
   },
   {
     id: 1075,
@@ -1789,7 +1780,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/aqua-pour-homme-marine.jpg",
   },
   {
     id: 1076,
@@ -1798,7 +1789,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/blvgari-man-wood-essence.jpg",
   },
   {
     id: 1077,
@@ -1807,7 +1798,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/man-in-black.jpg",
   },
   {
     id: 1078,
@@ -1816,7 +1807,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ck-in2u-for-him.jpg",
   },
   {
     id: 1079,
@@ -1825,7 +1816,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ck-one.jpg",
   },
   {
     id: 1080,
@@ -1834,7 +1825,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/escape-for-men.jpg",
   },
   {
     id: 1081,
@@ -1843,7 +1834,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/eternity.jpg",
   },
   {
     id: 1082,
@@ -1852,7 +1843,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-heroes-men.jpg",
   },
   {
     id: 1083,
@@ -1861,7 +1852,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-men-aqua.jpg",
   },
   {
     id: 1084,
@@ -1870,7 +1861,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-men.jpg",
   },
   {
     id: 1085,
@@ -1879,7 +1870,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-sexy-men.jpg",
   },
   {
     id: 1086,
@@ -1888,7 +1879,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-black.jpg",
   },
   {
     id: 1087,
@@ -1897,7 +1888,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-black-red.jpg",
   },
   {
     id: 1088,
@@ -1906,7 +1897,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-men.jpg",
   },
   {
     id: 1089,
@@ -1915,7 +1906,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-men-wins.jpg",
   },
   {
     id: 1090,
@@ -1924,7 +1915,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-men-wild-party.jpg",
   },
   {
     id: 1091,
@@ -1933,7 +1924,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/santos.jpg",
   },
   {
     id: 1092,
@@ -1942,7 +1933,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/allure-home-sport.jpg",
   },
   {
     id: 1093,
@@ -1951,7 +1942,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bleu.jpg",
   },
   {
     id: 1094,
@@ -1960,7 +1951,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/happy-clinique.jpg",
   },
   {
     id: 1095,
@@ -1969,7 +1960,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/aventus.jpg",
   },
   {
     id: 1096,
@@ -1978,7 +1969,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/silver-mountain.jpg",
   },
   {
     id: 1097,
@@ -1987,7 +1978,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/cr7.jpg",
   },
   {
     id: 1098,
@@ -1996,7 +1987,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/legacy-cristiano-ronaldo.jpg",
   },
   {
     id: 1099,
@@ -2005,7 +1996,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bad-diesel.jpg",
   },
   {
     id: 1200,
@@ -2014,7 +2005,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/diesel-plus-plus.jpg",
   },
   {
     id: 1201,
@@ -2023,7 +2014,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/only-the-brave.jpg",
   },
   {
     id: 1202,
@@ -2032,7 +2023,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/spirit-of-the-brave.jpg",
   },
   {
     id: 1203,
@@ -2041,7 +2032,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/fahrenheit.jpg",
   },
   {
     id: 1204,
@@ -2050,7 +2041,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/dolce-gabbana-pour-homme.jpg",
   },
   {
     id: 1205,
@@ -2059,7 +2050,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/k-by-dg-gabbana.jpg",
   },
   {
     id: 1206,
@@ -2068,7 +2059,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/light-blue.jpg",
   },
   {
     id: 1207,
@@ -2077,7 +2068,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/adrenalina-night.jpg",
   },
   {
     id: 1208,
@@ -2086,7 +2077,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ferrari-black.jpg",
   },
   {
     id: 1209,
@@ -2095,16 +2086,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
-  },
-  {
-    id: 1210,
-    name: "ACQUA DI GIO",
-    gender: "Caballero",
-    category: "Normal",
-    price: 35,
-    type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/arsenal-blue.jpg",
   },
   {
     id: 1211,
@@ -2113,16 +2095,16 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/armani-black.jpg",
   },
   {
     id: 1212,
-    name: "STRONGER WHIT YOU",
+    name: "STRONGER WITH YOU",
     gender: "Caballero",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/stronger-with-you.jpg",
   },
   {
     id: 1213,
@@ -2131,7 +2113,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/stronger-intensely.jpg",
   },
   {
     id: 1214,
@@ -2140,7 +2122,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/white-for-him.jpg",
   },
   {
     id: 1215,
@@ -2149,7 +2131,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/one-million-golden.jpg",
   },
   {
     id: 1216,
@@ -2158,7 +2140,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/one-million-intense.jpg",
   },
   {
     id: 1217,
@@ -2167,7 +2149,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/one-million-lucky.jpg",
   },
   {
     id: 1218,
@@ -2176,7 +2158,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/one-million-prive.jpg",
   },
   {
     id: 1219,
@@ -2185,7 +2167,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/one-million-night-elixir.jpg",
   },
   {
     id: 1220,
@@ -2194,7 +2176,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/black-xs-l-excess.jpg",
   },
   {
     id: 1221,
@@ -2203,7 +2185,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/black-xs-l-aphrodisiaque.jpg",
   },
   {
     id: 1222,
@@ -2212,7 +2194,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/black-xs.jpg",
   },
   {
     id: 1223,
@@ -2221,7 +2203,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/invictus-aqua.jpg",
   },
   {
     id: 1224,
@@ -2230,7 +2212,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/invictus-intense.jpg",
   },
   {
     id: 1225,
@@ -2239,7 +2221,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/invictus-legend.jpg",
   },
   {
     id: 1226,
@@ -2248,7 +2230,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/invictus-onyx.jpg",
   },
   {
     id: 1227,
@@ -2257,7 +2239,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/invictus-victory-elixir.jpg",
   },
   {
     id: 1228,
@@ -2266,7 +2248,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/paco-rabanne-pour-homme.jpg",
   },
   {
     id: 1229,
@@ -2275,7 +2257,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/phantom.jpg",
   },
   {
     id: 1230,
@@ -2284,7 +2266,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/phantom-red.jpg",
   },
   {
     id: 1231,
@@ -2293,7 +2275,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/pure-xs.jpg",
   },
   {
     id: 1232,
@@ -2302,7 +2284,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/althair.jpg",
   },
   {
     id: 1233,
@@ -2311,7 +2293,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/pegasus.jpg",
   },
   {
     id: 1234,
@@ -2320,7 +2302,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/paris-hilton-for-men.jpg",
   },
   {
     id: 1235,
@@ -2329,7 +2311,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/perry-ellis-360.jpg",
   },
   {
     id: 1236,
@@ -2338,7 +2320,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/perry-ellis-360-red.jpg",
   },
   {
     id: 1237,
@@ -2347,7 +2329,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/polo-blue.jpg",
   },
   {
     id: 1238,
@@ -2356,7 +2338,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/polo-red.jpg",
   },
   {
     id: 1239,
@@ -2365,7 +2347,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/polo-sport.jpg",
   },
   {
     id: 1240,
@@ -2374,7 +2356,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/onyx-royalty-by-maluma.jpg",
   },
   {
     id: 1241,
@@ -2383,7 +2365,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lapidus-pour-homme.jpg",
   },
   {
     id: 1242,
@@ -2392,7 +2374,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/angel-men.jpg",
   },
   {
     id: 1243,
@@ -2401,7 +2383,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/myself.jpg",
   },
   {
     id: 1244,
@@ -2410,7 +2392,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/new-york.jpg",
   },
   {
     id: 1245,
@@ -2419,7 +2401,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/clive-christian-no-1.jpg",
   },
   {
     id: 1246,
@@ -2428,7 +2410,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/impact.jpg",
   },
   {
     id: 1247,
@@ -2437,7 +2419,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/tommy.jpg",
   },
   {
     id: 1248,
@@ -2446,7 +2428,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/valentino-intense.jpg",
   },
   {
     id: 1249,
@@ -2455,7 +2437,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/blue-jeans.jpg",
   },
   {
     id: 1250,
@@ -2464,7 +2446,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/eros-energy.jpg",
   },
   {
     id: 1251,
@@ -2473,7 +2455,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/versace-eau-fraiche.jpg",
   },
   {
     id: 1252,
@@ -2482,7 +2464,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/versace-pour-homme.jpg",
   },
   {
     id: 1253,
@@ -2491,7 +2473,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/swiss-army-altitude.jpg",
   },
   {
     id: 1254,
@@ -2500,7 +2482,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/swiss-army.jpg",
   },
   {
     id: 1255,
@@ -2509,7 +2491,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/spicebomb.jpg",
   },
   {
     id: 1256,
@@ -2518,7 +2500,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/zlatan-pour-homme.jpg",
   },
   // PERFUMES MUJERES
   {
@@ -2528,7 +2510,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/paloma-picasso.jpg",
   },
   {
     id: 1258,
@@ -2537,7 +2519,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/delina.jpg",
   },
   {
     id: 1259,
@@ -2546,7 +2528,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/can-can-burlesque.jpg",
   },
   {
     id: 1260,
@@ -2555,7 +2537,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/can-can.jpg",
   },
   {
     id: 1261,
@@ -2564,7 +2546,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/dazzle.jpg",
   },
   {
     id: 1262,
@@ -2573,7 +2555,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/gold-rush.jpg",
   },
   {
     id: 1263,
@@ -2582,7 +2564,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/heiress.jpg",
   },
   {
     id: 1264,
@@ -2591,7 +2573,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/just-me.jpg",
   },
   {
     id: 1265,
@@ -2600,7 +2582,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/rose-rush.jpg",
   },
   {
     id: 1266,
@@ -2609,7 +2591,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/360-coral.jpg",
   },
   {
     id: 1267,
@@ -2618,7 +2600,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/360.jpg",
   },
   {
     id: 1268,
@@ -2627,7 +2609,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/prada-candy.jpg",
   },
   {
     id: 1269,
@@ -2636,7 +2618,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bigpony-2-for-women.jpg",
   },
   {
     id: 1270,
@@ -2645,7 +2627,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ralph.jpg",
   },
   {
     id: 1271,
@@ -2654,7 +2636,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/sweet-tooth.jpg",
   },
   {
     id: 1272,
@@ -2663,16 +2645,16 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/selena-gomez.jpg",
   },
   {
     id: 1273,
-    name: "ROCK",
+    name: "SHAKIRA ROCK",
     gender: "Dama",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/shakira-rock.jpg",
   },
   {
     id: 1274,
@@ -2681,7 +2663,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/sofia.jpg",
   },
   {
     id: 1275,
@@ -2690,7 +2672,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/cheirosa-40.jpg",
   },
   {
     id: 1276,
@@ -2699,7 +2681,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/cheirosa-59.jpg",
   },
   {
     id: 1277,
@@ -2708,7 +2690,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/cheirosa-62.jpg",
   },
   {
     id: 1278,
@@ -2717,7 +2699,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/rio-radiance.jpg",
   },
   {
     id: 1279,
@@ -2726,7 +2708,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/alien.jpg",
   },
   {
     id: 1280,
@@ -2735,7 +2717,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/angel.jpg",
   },
   {
     id: 1281,
@@ -2744,7 +2726,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/tommy-girl.jpg",
   },
   {
     id: 1282,
@@ -2753,7 +2735,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/valentino-born-in-roma-donna.jpg",
   },
   {
     id: 1283,
@@ -2762,7 +2744,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/valentino-born-in-roma-extradoses-donna.jpg",
   },
   {
     id: 1284,
@@ -2771,7 +2753,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bright-crysta.jpg",
   },
   {
     id: 1285,
@@ -2780,7 +2762,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/eros-pour-femme.jpg",
   },
   {
     id: 1286,
@@ -2789,7 +2771,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/beauty-rush.jpg",
   },
   {
     id: 1287,
@@ -2798,7 +2780,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bomb-shell.jpg",
   },
   {
     id: 1288,
@@ -2807,7 +2789,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/love-spell.jpg",
   },
   {
     id: 1289,
@@ -2816,7 +2798,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/pure-daydream.jpg",
   },
   {
     id: 1290,
@@ -2825,7 +2807,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/pure-seduction.jpg",
   },
   {
     id: 1291,
@@ -2834,7 +2816,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/scandalous.jpg",
   },
   {
     id: 1292,
@@ -2843,7 +2825,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/sheer-love.jpg",
   },
   {
     id: 1293,
@@ -2852,7 +2834,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/vanilla-lace.jpg",
   },
   {
     id: 1294,
@@ -2861,7 +2843,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/swiss-army-for-her.jpg",
   },
   {
     id: 1295,
@@ -2870,7 +2852,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bon-bon.jpg",
   },
   {
     id: 1296,
@@ -2879,7 +2861,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/black-opium.jpg",
   },
   {
     id: 1297,
@@ -2888,7 +2870,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/5th-avenue.jpg",
   },
   {
     id: 1298,
@@ -2897,7 +2879,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/sorbetto-rosso.jpg",
   },
   {
     id: 1299,
@@ -2906,7 +2888,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/taj-sunset.jpg",
   },
   {
     id: 1300,
@@ -2915,7 +2897,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/my-way.jpg",
   },
   {
     id: 1301,
@@ -2924,7 +2906,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/power-of-you.jpg",
   },
   {
     id: 1302,
@@ -2933,7 +2915,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ange-ou-demon.jpg",
   },
   {
     id: 1303,
@@ -2942,7 +2924,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/organza.jpg",
   },
   {
     id: 1304,
@@ -2951,7 +2933,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/play-intense-woman.jpg",
   },
   {
     id: 1305,
@@ -2960,7 +2942,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/gucci-guilt-absolute.jpg",
   },
   {
     id: 1306,
@@ -2969,7 +2951,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/gucci-guilt.jpg",
   },
   {
     id: 1307,
@@ -2978,7 +2960,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/gucci-rush.jpg",
   },
   {
     id: 1308,
@@ -2987,7 +2969,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/guess-for-women.jpg",
   },
   {
     id: 1309,
@@ -2996,7 +2978,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/guess-gold.jpg",
   },
   {
     id: 1310,
@@ -3005,7 +2987,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/hugo-woman.jpg",
   },
   {
     id: 1311,
@@ -3014,7 +2996,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/hugo-xx.jpg",
   },
   {
     id: 1312,
@@ -3023,7 +3005,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/the-scent-for-her.jpg",
   },
   {
     id: 1313,
@@ -3032,7 +3014,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/l-eau-dissey.jpg",
   },
   {
     id: 1314,
@@ -3041,16 +3023,16 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/gaultier-divine.jpg",
   },
   {
     id: 1315,
-    name: "JEAN PAUL",
+    name: "JEAN PAUL LA BELLE",
     gender: "Dama",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/jean-paul-la-belle.jpg",
   },
   {
     id: 1316,
@@ -3059,7 +3041,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/scandal-by-night.jpg",
   },
   {
     id: 1317,
@@ -3068,7 +3050,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/live.jpg",
   },
   {
     id: 1318,
@@ -3077,7 +3059,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/halloween-woman.jpg",
   },
   {
     id: 1319,
@@ -3086,7 +3068,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/meow.jpg",
   },
   {
     id: 1320,
@@ -3095,7 +3077,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/bff.jpg",
   },
   {
     id: 1321,
@@ -3104,7 +3086,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/touch-of-pink.jpg",
   },
   {
     id: 1322,
@@ -3113,7 +3095,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/la-vida-es-bella.jpg",
   },
   {
     id: 1323,
@@ -3122,7 +3104,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/eclaire-woman.jpg",
   },
   {
     id: 1324,
@@ -3131,7 +3113,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/habik-for-women.jpg",
   },
   {
     id: 1325,
@@ -3140,16 +3122,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
-  },
-  {
-    id: 1326,
-    name: "MAYAR WOMAN",
-    gender: "Dama",
-    category: "Normal",
-    price: 35,
-    type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/mallow-madnes.jpg",
   },
   {
     id: 1327,
@@ -3158,7 +3131,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/yara-elixir.jpg",
   },
   {
     id: 1328,
@@ -3167,7 +3140,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lolita-lempicka.jpg",
   },
   {
     id: 1329,
@@ -3176,7 +3149,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/perfect.jpg",
   },
   {
     id: 1330,
@@ -3185,7 +3158,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/malizia-bon-bons-cotton-flower.jpg",
   },
   {
     id: 1331,
@@ -3194,7 +3167,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/signature.jpg",
   },
   {
     id: 1332,
@@ -3203,7 +3176,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/funny.jpg",
   },
   {
     id: 1333,
@@ -3212,7 +3185,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/toy-2-bubble-gum.jpg",
   },
   {
     id: 1334,
@@ -3221,7 +3194,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/toy-2.jpg",
   },
   {
     id: 1335,
@@ -3230,7 +3203,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/toy-2-gummy.jpg",
   },
   {
     id: 1336,
@@ -3239,7 +3212,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/toy-2-yummy.jpg",
   },
   {
     id: 1337,
@@ -3248,7 +3221,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ricci-ricci.jpg",
   },
   {
     id: 1338,
@@ -3257,7 +3230,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/lady-million.jpg",
   },
   {
     id: 1339,
@@ -3266,7 +3239,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/pure-xs-for-her.jpg",
   },
   {
     id: 1340,
@@ -3275,7 +3248,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ari.jpg",
   },
   {
     id: 1341,
@@ -3284,7 +3257,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/cloud.jpg",
   },
   {
     id: 1342,
@@ -3293,7 +3266,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/thank-u-next.jpg",
   },
   {
     id: 1343,
@@ -3302,7 +3275,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/mad-about-you.jpg",
   },
   {
     id: 1344,
@@ -3311,7 +3284,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/wild-madagascar-vanilla.jpg",
   },
   {
     id: 1345,
@@ -3320,7 +3293,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/tribu.jpg",
   },
   {
     id: 1346,
@@ -3329,7 +3302,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/fantasy-in-bloom.jpg",
   },
   {
     id: 1347,
@@ -3338,7 +3311,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/midnight-fantasy.jpg",
   },
   {
     id: 1348,
@@ -3347,7 +3320,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/burberry-her.jpg",
   },
   {
     id: 1349,
@@ -3356,7 +3329,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/omnia-coral.jpg",
   },
   {
     id: 1350,
@@ -3365,7 +3338,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/omnia-crystal.jpg",
   },
   {
     id: 1351,
@@ -3374,7 +3347,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/amor-amor.jpg",
   },
   {
     id: 1352,
@@ -3383,7 +3356,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ck-in2u-for-her.jpg",
   },
   {
     id: 1353,
@@ -3392,7 +3365,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/eternity-woman.jpg",
   },
   {
     id: 1354,
@@ -3401,7 +3374,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/euphoria.jpg",
   },
   {
     id: 1355,
@@ -3410,7 +3383,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-rose-elixir.jpg",
   },
   {
     id: 1356,
@@ -3419,7 +3392,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/212-vip-rose-red.jpg",
   },
   {
     id: 1357,
@@ -3428,7 +3401,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/ch-carolina.jpg",
   },
   {
     id: 1358,
@@ -3437,7 +3410,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/good-girl-blush-tweed-talk.jpg",
   },
   {
     id: 1359,
@@ -3446,7 +3419,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/good-girl-dazzling-garden.jpg",
   },
   {
     id: 1360,
@@ -3455,7 +3428,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/good-girl-leger.jpg",
   },
   {
     id: 1361,
@@ -3464,7 +3437,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/good-girl-supreme.jpg",
   },
   {
     id: 1362,
@@ -3473,7 +3446,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/la-bomba.jpg",
   },
   {
     id: 1363,
@@ -3482,7 +3455,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/very-good-girl.jpg",
   },
   {
     id: 1364,
@@ -3491,7 +3464,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/chance-eau-tendre.jpg",
   },
   {
     id: 1365,
@@ -3500,7 +3473,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/chance.jpg",
   },
   {
     id: 1366,
@@ -3509,7 +3482,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/chanel-5.jpg",
   },
   {
     id: 1367,
@@ -3518,7 +3491,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/coco.jpg",
   },
   {
     id: 1368,
@@ -3527,7 +3500,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/coco-modemousse.jpg",
   },
   {
     id: 1369,
@@ -3536,7 +3509,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/happy-clinique-woman.jpg",
   },
   {
     id: 1370,
@@ -3545,7 +3518,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/hypnotic-poison.jpg",
   },
   {
     id: 1371,
@@ -3554,7 +3527,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/joy-by-dior.jpg",
   },
   {
     id: 1372,
@@ -3563,7 +3536,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/miss-dior-blooming-bouquet.jpg",
   },
   {
     id: 1373,
@@ -3572,7 +3545,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/light-blue-woman.jpg",
   },
   {
     id: 1374,
@@ -3581,7 +3554,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/q-bye-dolce-gabbana.jpg",
   },
   {
     id: 1375,
@@ -3590,7 +3563,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/the-one.jpg",
   },
   {
     id: 1376,
@@ -3599,7 +3572,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/be-delicious.jpg",
   },
   {
     id: 1377,
@@ -3608,7 +3581,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/odyssey-bahia-masclf.jpg",
   },
   {
     id: 1378,
@@ -3617,7 +3590,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/libre.jpg",
   },
   {
     id: 1379,
@@ -3626,7 +3599,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/one-million.jpg",
+    img: "/perfumes/libre-berry-crush.jpg",
   },
 ];
 const featuredPerfumes = perfumes.filter((p) =>
