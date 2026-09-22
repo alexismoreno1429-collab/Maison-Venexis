@@ -1370,7 +1370,7 @@ gallery: [
   },
   {
     id: 1031,
-    name: "OBOSS ORANGE",
+    name: "BOSS ORANGE",
     gender: "Caballero",
     category: "Normal",
     price: 35,
