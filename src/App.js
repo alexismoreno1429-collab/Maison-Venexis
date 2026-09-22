@@ -13,35 +13,30 @@ import "swiper/css/pagination";
 const perfumes = [
   // 🆕 NUEVOS (SOLO AQUÍ)
   {
-    id: 3, name: "9PM Les", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/9PM.jpeg", description: "Una fragancia dulce, cálida y seductora, con un inicio afrutado que evoluciona hacia un corazón aromático y una base cremosa de vainilla y ámbar. Ideal para quienes buscan un aroma llamativo, juvenil y perfecto para ocasiones especiales y salidas nocturnas.",
+    id: 3, name: "9PM", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/9pm.jpg", description: "Una fragancia dulce, cálida y seductora, con un inicio afrutado que evoluciona hacia un corazón aromático y una base cremosa de vainilla y ámbar. Ideal para quienes buscan un aroma llamativo, juvenil y perfecto para ocasiones especiales y salidas nocturnas.",
     duration: "8 - 10 horas",
     type: "Arabes",
     fixation: "Alta",
     similarity: "Afnan 9PM",
-    gallery: [
-       "/perfumes/9PM-2.jpg",
-      "/perfumes/9PM-3.jpg",
-      "/perfumes/9PM.jpeg"
-      ],
   },
   {
-    id: 4, name: "Club de Nuit Intense Les", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/club-de-nuit-intense-les.jpg", description:
+    id: 4, name: "Club de Nuit Intense", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/club-de-nuit-intense.jpg", description:
       "Una fragancia masculina intensa y elegante, con un aroma fresco, cítrico y ligeramente amaderado. Ideal para quienes buscan proyectar seguridad, presencia y sofisticación. Perfecta para usar tanto de día como de noche."
   },
   {
     id: 5, name: "Odyssey Mega Man", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/odyssey-mega-man.jpg", description:
       "Una fragancia masculina moderna y energética, perfecta para destacar con un aroma fresco, elegante y de gran presencia.", duration: "8 - 10 horas", fixation: "ALTA", similarity: "ALTA"
   },
-  { id: 6, name: "Asad Les", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/asad-les.jpg" },
+  { id: 6, name: "Asad", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/asad.jpg" },
   {
     id: 7, name: "Asad Bourbon", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/asad-bourbon.jpg", description:
       "Una fragancia cálida, envolvente y sofisticada, ideal para quienes disfrutan de aromas intensos y elegantes.", duration: "8 - 10 horas", fixation: "ALTA", similarity: "ALTA"
   },
-  { id: 8, name: "Asad Zanzíbar Les", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/asad-zanzíbar-les.jpg" },
-  { id: 9, name: "Odyssey Candee Les", gender: "Dama", category: "Nuevos", price: 35, img: "/perfumes/odyssey-candee-les.jpg" },
-  { id: 10, name: "Yum Yum Les", gender: "Dama", category: "Nuevos", price: 35, img: "/perfumes/yum-yum-les.jpg" },
-  { id: 11, name: "Island Bliss Les", gender: "Dama", category: "Nuevos", price: 35, img: "/perfumes/island-bliss-les.jpg" },
-  { id: 12, name: "Amber Oud Les", gender: "Unisex", category: "Nuevos", price: 35, img: "/perfumes/amber-oud-les.jpg" },
+  { id: 8, name: "Asad Zanzíbar", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/asad-zanzíbar.jpg" },
+  { id: 9, name: "Odyssey Candee", gender: "Dama", category: "Nuevos", price: 35, img: "/perfumes/odyssey-candee.jpg" },
+  { id: 10, name: "Yum Yum", gender: "Dama", category: "Nuevos", price: 35, img: "/perfumes/yum-yum.jpg" },
+  { id: 11, name: "Island Bliss", gender: "Dama", category: "Nuevos", price: 35, img: "/perfumes/island-bliss.jpg" },
+  { id: 12, name: "Amber Oud", gender: "Unisex", category: "Nuevos", price: 35, img: "/perfumes/amber-oud.jpg" },
   { id: 14, name: "Khamrah Qahwa", gender: "Unisex", category: "Nuevos", type: "Arabes", price: 35, inspiredBy: "Lattafa Khamrah Qahwa",description:
     "Una fragancia árabe cálida, dulce y envolvente, con un delicioso carácter gourmand. Combina notas especiadas, café, vainilla y ámbar, creando un aroma intenso, elegante y perfecto para ocasiones especiales.",
     duration: "8 - 10 horas",
@@ -201,11 +196,11 @@ const perfumes = [
   },
   {
     id: 2011,
-    name: "BORN IN ROMA YELLOW",
+    name: "VALENTINO BORN IN ROMA YELLOW",
     gender: "Dama",
     category: "Normal",
     price: 35,
-    img: "/perfumes/born-in-roma-yellow.jpg",
+    img: "/perfumes/valentino-born-in-roma-yellow.jpg",
     inspiredBy: "Valentino Born in Roma Yellow Dream",
     description: "Aroma floral frutal brillante, juvenil y elegante.",
     duration: "6-8 horas",
@@ -248,19 +243,6 @@ const perfumes = [
     inspiredBy: "Ariana Grande Cloud Pink",
     description: "Fragancia dulce, cremosa y moderna con toque juvenil y suave.",
     duration: "6-8 horas",
-    fixation: "ALTA",
-    similarity: "ALTA"
-  },
-  {
-    id: 2015,
-    name: "COCO CHANEL",
-    gender: "Dama",
-    category: "Normal",
-    price: 35,
-    img: "/perfumes/coco-chanel.jpg",
-    inspiredBy: "Chanel Coco Mademoiselle",
-    description: "Aroma elegante, clásico y sofisticado con toque cítrico floral.",
-    duration: "6–8 horas",
     fixation: "ALTA",
     similarity: "ALTA"
   },
@@ -414,7 +396,7 @@ const perfumes = [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    img: "/perfumes/212-heroes.jpg",
+    img: "/perfumes/212.jpg",
     inspiredBy: "Carolina Herrera 212 línea femenina",
     description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
     duration: "6-8 horas",
@@ -427,7 +409,7 @@ const perfumes = [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    img: "/perfumes/212-heroes.jpg",
+    img: "/perfumes/212-sexy.jpg",
     inspiredBy: "Carolina Herrera 212 línea femenina",
     description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
     duration: "6-8 horas",
@@ -440,7 +422,7 @@ const perfumes = [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    img: "/perfumes/212-heroes.jpg",
+    img: "/perfumes/212-vip-rose.jpg",
     inspiredBy: "Carolina Herrera 212 línea femenina",
     description: "Fragancia juvenil, cítrico y atalcado para uso diario.",
     duration: "6-8 horas",
@@ -3243,12 +3225,12 @@ gallery: [
   },
   {
     id: 1340,
-    name: "ARI",
+    name: "ARI ARIANA GRANDE",
     gender: "Dama",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/ari.jpg",
+    img: "/perfumes/ari-ariana-grande.jpg",
   },
   {
     id: 1341,
@@ -3428,7 +3410,7 @@ gallery: [
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/good-girl-leger.jpg",
+    img: "/perfumes/good-girl-legere.jpg",
   },
   {
     id: 1361,
@@ -3495,12 +3477,12 @@ gallery: [
   },
   {
     id: 1368,
-    name: "COCO MODEMOISELLE",
+    name: "COCO MADEMOISELLE",
     gender: "Dama",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/coco-modemousse.jpg",
+    img: "/perfumes/coco-mademoiselle.jpg",
   },
   {
     id: 1369,
@@ -3558,30 +3540,21 @@ gallery: [
   },
   {
     id: 1375,
-    name: "THE ONE",
+    name: "THE ONE WOMAN",
     gender: "Dama",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/the-one.jpg",
+    img: "/perfumes/the-one-woman.jpg",
   },
   {
     id: 1376,
-    name: "BE DELICIOUS",
+    name: "DDKNY BE DELICIOUS",
     gender: "Dama",
     category: "Normal",
     price: 35,
     type: "Europeos",
-    img: "/perfumes/be-delicious.jpg",
-  },
-  {
-    id: 1377,
-    name: "ODYSSEY BAHIA MASLCF",
-    gender: "Dama",
-    category: "Normal",
-    price: 35,
-    type: "Europeos",
-    img: "/perfumes/odyssey-bahia-masclf.jpg",
+    img: "/perfumes/ddkny-be-delicious.jpg",
   },
   {
     id: 1378,
