@@ -20,7 +20,14 @@ const perfumes = [
     similarity: "Afnan 9PM",
   },
   {
-    id: 4, name: "Club de Nuit Intense", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/club-de-nuit-intense.jpg", description:
+    id: 4, name: "9PM NIGHT OUT", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/9-night-out.jpg", description: "Un perfume unisex de la familia olfativa oriental especiada lanzado en 2026. Diseñado específicamente para destacar en eventos nocturnos y fiestas, destaca por su carácter frutal, cálido y alicorado.",
+    duration: "8 - 10 horas",
+    type: "Arabes",
+    fixation: "Alta",
+    similarity: "Afnan 9PM",
+  },
+  {
+    id: 1380, name: "Club de Nuit Intense", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/club-de-nuit-intense.jpg", description:
       "Una fragancia masculina intensa y elegante, con un aroma fresco, cítrico y ligeramente amaderado. Ideal para quienes buscan proyectar seguridad, presencia y sofisticación. Perfecta para usar tanto de día como de noche."
   },
   {
@@ -1534,27 +1541,27 @@ gallery: [
     id: 1050,
     name: "ASAD ELIXIR",
     gender: "Caballero",
+    type: "Arabes",
     category: "Normal",
     price: 35,
-    type: "Europeos",
     img: "/perfumes/asad-elixir.jpg",
   },
   {
     id: 1051,
     name: "MUSAMAM WHITE INTENSE",
     gender: "Caballero",
+    type: "Arabes",
     category: "Normal",
     price: 35,
-    type: "Europeos",
     img: "/perfumes/musaman-white-intense.jpg",
   },
   {
     id: 1052,
     name: "MUSAMAM BLACK INTENSE",
     gender: "Caballero",
+    type: "Arabes",
     category: "Normal",
     price: 35,
-    type: "Europeos",
     img: "/perfumes/musaman-black-intense.jpg",
   },
   {
@@ -1687,9 +1694,9 @@ gallery: [
     id: 1067,
     name: "9PM REBEL",
     gender: "Caballero",
+    type: "Arabes",
     category: "Normal",
     price: 35,
-    type: "Europeos",
     img: "/perfumes/9pm-rebel.jpg",
   },
   {
@@ -1712,7 +1719,7 @@ gallery: [
   },
   {
     id: 1070,
-    name: "AZZARO POUR HOME",
+    name: "AZZARO POUR HOMME",
     gender: "Caballero",
     category: "Normal",
     price: 35,
@@ -1732,9 +1739,9 @@ gallery: [
     id: 1072,
     name: "BHARARA ONYX",
     gender: "Caballero",
+    type: "Arabes",
     category: "Normal",
     price: 35,
-    type: "Europeos",
     img: "/perfumes/bharara-onyx.jpg",
   },
   {
@@ -3085,7 +3092,7 @@ gallery: [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    type: "Europeos",
+    type: "Arabes",
     img: "/perfumes/eclaire-woman.jpg",
   },
   {
@@ -3094,7 +3101,7 @@ gallery: [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    type: "Europeos",
+    type: "Arabes",
     img: "/perfumes/habik-for-women.jpg",
   },
   {
@@ -3103,7 +3110,7 @@ gallery: [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    type: "Europeos",
+    type: "Arabes",
     img: "/perfumes/mallow-madnes.jpg",
   },
   {
@@ -3112,7 +3119,7 @@ gallery: [
     gender: "Dama",
     category: "Normal",
     price: 35,
-    type: "Europeos",
+    type: "Arabes",
     img: "/perfumes/yara-elixir.jpg",
   },
   {
@@ -3574,6 +3581,24 @@ gallery: [
     type: "Europeos",
     img: "/perfumes/libre-berry-crush.jpg",
   },
+  {
+    id: 1381,
+    name: "KHAMRAH WAHA",
+    gender: "Caballero",
+    category: "Normal",
+    price: 35,
+    type: "Arabes",
+    img: "/perfumes/khamrah-waha.jpg",
+  },
+  {
+    id: 1382,
+    name: "ODYSSEY AQUA",
+    gender: "Caballero",
+    category: "Normal",
+    price: 35,
+    type: "Arabes",
+    img: "/perfumes/odyssey-aqua.jpg",
+  },
 ];
 const featuredPerfumes = perfumes.filter((p) =>
   [
@@ -3608,6 +3633,7 @@ console.log("perfume encontrado:", perfumeFromUrl);
   const [query, setQuery] = useState("");
   
   const [filter, setFilter] = useState("Todos");
+  const [selectedSizes, setSelectedSizes] = useState({});
   const [showCart, setShowCart] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [showCartNotification, setShowCartNotification] = useState(false);
@@ -4995,15 +5021,20 @@ background:
     )}
   </div>
 )}
-        {/* PÁGINA DEL PERFUME */}
-        
-        <div
-          style={{
-            minHeight: "100vh",
-            background: "#f5f5f5",
-            padding: "150px 20px 20px"
-          }}
-        >
+{/* PÁGINA DEL PERFUME */}
+
+<div
+  style={{
+    minHeight: "100vh",
+    backgroundImage: "url('/fondo-perfume.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    padding: "150px 20px 20px",
+    boxSizing: "border-box"
+  }}
+>
           <div
             style={{
               maxWidth: "1100px",
@@ -5913,6 +5944,30 @@ background:
             ))}
           </Swiper>
         </div>
+
+{/* Franja informativa animada */}
+<div className="info-marquee">
+  <div className="info-marquee-content">
+
+    {/* Primer grupo */}
+    <div className="info-marquee-group">
+      <span>Perfumes Importados desde EEUU</span>
+      <span>100% Originales y confiables</span>
+      <span>Entregas entre 1-3 días hábiles</span>
+      <span>Contáctanos a nuestro WhatsApp para coordinar las entregas</span>
+    </div>
+
+    {/* Segundo grupo - repetición */}
+    <div className="info-marquee-group">
+      <span>Perfumes Importados desde EEUU</span>
+      <span>100% Originales y confiables</span>
+      <span>Entregas entre 1-3 días hábiles</span>
+      <span>Contáctanos a nuestro WhatsApp para coordinar las entregas</span>
+    </div>
+
+  </div>
+</div>
+
         {/* PARTÍCULAS */}
         {/* HUMO ELEGANTE */}
         <div className="smoke">
@@ -5920,56 +5975,8 @@ background:
             <span key={i} className="smoke-particle"></span>
           ))}
         </div>
-        {/* PROMOCIÓN CON BOTÓN WHATSAPP */}
-        <div style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: "30px"
-        }}>
-          <div style={{
-            position: "relative",
-            width: "100%",
-            maxWidth: "420px"
-          }}>
-            <img
-              src="/promocion.jpg"
-              alt="PromociÃ³n"
-              style={{
-                width: "100%",
-                borderRadius: "20px",
-                objectFit: "contain",
-                animation: "zoomPromo 0.8s ease, floatPromo 3s ease-in-out infinite"
-              }}
-            />
-            <a
-              href="https://wa.me/51974374060?text=Hola quiero la promociÃ³n"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                position: "absolute",
-                bottom: "15px",
-                left: "50%",
-                transform: "translateX(-50%)"
-              }}
-            >
-              <button style={{
-                background: "#25D366",
-                animation: "pulse 1.5s infinite",
-                color: "white",
-                border: "none",
-                padding: "10px 20px",
-                borderRadius: "25px",
-                fontWeight: "bold",
-                cursor: "pointer"
-              }}>
-                Pedir por WhatsApp
-              </button>
-            </a>
-          </div>
-        </div>
         {/* FILTROS */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "20px" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "15px", marginTop: "40px", marginBottom: "25px" }}>
           {["Todos", "Dama", "Caballero"].map((f) => (
             <button
               key={f}
@@ -6182,67 +6189,129 @@ background:
                 }}>
                   {perfume.gender}
                 </div>
-                {/* PRECIO */}
-                <div style={{ marginBottom: "12px" }}>
-                  {/* PRECIO ANTIGUO (tachado) */}
-                  {perfume.oldPrice && (
-                    <div style={{
-                      textDecoration: "line-through",
-                      color: "#888",
-                      fontSize: "13px"
-                    }}>
-                      S/ {perfume.oldPrice}
-                    </div>
-                  )}
-                  {/* PRECIO NUEVO */}
-                  <div style={{
-                    color: "#c9a96e",
-                    fontSize: "18px",
-                    fontWeight: "bold",
-                    letterSpacing: "1px"
-                  }}>
-                    S/ {perfume.price}
-                  </div>
-                </div>
-                {/* BOTONES */}
-                <button
-                  onClick={(e) => {
-  e.stopPropagation();
-  addToCart(perfume, "30 ml", 1);
-}}
-                  style={{
-                    width: "100%",
-                    padding: "10px",
-                    borderRadius: "10px",
-                    border: "none",
-                    background: "linear-gradient(45deg, #c9a96e, #f5d28c)",
-                    color: "#000",
-                    fontWeight: "bold",
-                    marginBottom: "8px",
-                    cursor: "pointer",
-                    transition: "0.3s"
-                  }}
-                >
-                  Agregar
-                </button>
-                <a
-                  href={`https://wa.me/51974374060?text=Hola,%20quiero%20comprar%20${encodeURIComponent(perfume.name)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <button style={{
-                    width: "100%",
-                    padding: "10px",
-                    borderRadius: "10px",
-                    border: "1px solid #c9a96e",
-                    background: "transparent",
-                    color: "#c9a96e",
-                    fontWeight: "bold",
-                    cursor: "pointer"
-                  }}>
-                    Comprar
-                  </button>
-                </a>
+{/* PRECIO DINÁMICO */}
+<div style={{ marginBottom: "12px" }}>
+
+  {/* PRECIO */}
+  <div
+    style={{
+      color: "#c9a96e",
+      fontSize: "18px",
+      fontWeight: "bold",
+      letterSpacing: "1px",
+      marginBottom: "12px"
+    }}
+  >
+    S/ {
+      selectedSizes[perfume.id] === "100 ml"
+        ? 80
+        : perfume.price
+    }
+  </div>
+
+  {/* TAMAÑOS */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      gap: "8px",
+      marginBottom: "12px"
+    }}
+  >
+
+    {/* 30 ML */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+
+        setSelectedSizes((prev) => ({
+          ...prev,
+          [perfume.id]: "30 ml"
+        }));
+      }}
+      style={{
+        padding: "8px 14px",
+        borderRadius: "8px",
+        border:
+          (selectedSizes[perfume.id] || "30 ml") === "30 ml"
+            ? "2px solid #c9a96e"
+            : "1px solid #777",
+        background:
+          (selectedSizes[perfume.id] || "30 ml") === "30 ml"
+            ? "#c9a96e"
+            : "transparent",
+        color:
+          (selectedSizes[perfume.id] || "30 ml") === "30 ml"
+            ? "#000"
+            : "#fff",
+        fontWeight: "bold",
+        cursor: "pointer"
+      }}
+    >
+      30 ML
+    </button>
+
+    {/* 100 ML */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+
+        setSelectedSizes((prev) => ({
+          ...prev,
+          [perfume.id]: "100 ml"
+        }));
+      }}
+      style={{
+        padding: "8px 14px",
+        borderRadius: "8px",
+        border:
+          selectedSizes[perfume.id] === "100 ml"
+            ? "2px solid #c9a96e"
+            : "1px solid #777",
+        background:
+          selectedSizes[perfume.id] === "100 ml"
+            ? "#c9a96e"
+            : "transparent",
+        color:
+          selectedSizes[perfume.id] === "100 ml"
+            ? "#000"
+            : "#fff",
+        fontWeight: "bold",
+        cursor: "pointer"
+      }}
+    >
+      100 ML
+    </button>
+
+  </div>
+
+</div>
+
+{/* AGREGAR AL CARRITO */}
+<button
+  onClick={(e) => {
+    e.stopPropagation();
+
+    const size =
+      selectedSizes[perfume.id] || "30 ml";
+
+    addToCart(perfume, size, 1);
+  }}
+  style={{
+    width: "100%",
+    padding: "10px",
+    borderRadius: "10px",
+    border: "none",
+    background:
+      "linear-gradient(45deg, #c9a96e, #f5d28c)",
+    color: "#000",
+    fontWeight: "bold",
+    cursor: "pointer",
+    transition: "0.3s"
+  }}
+>
+  🛒 Agregar al carrito
+</button>
               </div>
             </div>
           ))}
@@ -6509,6 +6578,50 @@ left:-120%;
 100%{
 left:180%;
 }
+}
+/* =========================================
+   FRANJA INFORMATIVA ANIMADA
+   ========================================= */
+
+.info-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 14px 0;
+  margin-top: 25px;
+  white-space: nowrap;
+}
+
+.info-marquee-content {
+  display: flex;
+  width: max-content;
+  animation: moverTexto 30s linear infinite;
+}
+
+.info-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding-right: 60px;
+}
+
+.info-marquee-content span {
+  color: #111;
+  font-size: 15px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+@keyframes moverTexto {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 `}
         </style>
