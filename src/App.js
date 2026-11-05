@@ -10,7 +10,26 @@ import {
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+// ================= PRECIOS DE DECANTS DE 5 ML =================
+// Cambia los precios manualmente.
+// El nombre debe coincidir exactamente con perfume.name.
+
+const preciosDecants = {
+  "9PM NIGHT OUT": 20,
+  "NOBLE BLUSH": 16,
+  "YARA": 16,
+  "Khamrah Qahwa": 18,
+  "ODYSSEY AQUA": 18,
+  "INVICTUS PARFUM": 40,
+  "HAWAS ICE": 20,
+
+  // Agrega más perfumes aquí:
+  // "NOMBRE EXACTO DEL PERFUME":  precio,
+};
+
 const perfumes = [
+  
   // 🆕 NUEVOS (SOLO AQUÍ)
   {
     id: 3, name: "9PM", gender: "Caballero", category: "Nuevos", price: 35, img: "/perfumes/9pm.jpg", description: "Una fragancia dulce, cálida y seductora, con un inicio afrutado que evoluciona hacia un corazón aromático y una base cremosa de vainilla y ámbar. Ideal para quienes buscan un aroma llamativo, juvenil y perfecto para ocasiones especiales y salidas nocturnas.",
@@ -3595,9 +3614,45 @@ gallery: [
     name: "ODYSSEY AQUA",
     gender: "Caballero",
     category: "Normal",
-    price: 35,
+    price: 240,
     type: "Arabes",
     img: "/perfumes/odyssey-aqua.jpg",
+  },
+  {
+    id: 1383,
+    name: "HAWAS VERDE",
+    gender: "Caballero",
+    category: "Normal",
+    price: 185,
+    type: "Arabes",
+    img: "/perfumes/hawas-verde.jpg",
+  },
+  {
+    id: 1384,
+    name: "HAWAS PINK",
+    gender: "Dama",
+    category: "Normal",
+    price: 180,
+    type: "Arabes",
+    img: "/perfumes/hawas-pink.jpg",
+  },
+  {
+    id: 1385,
+    name: "HAWAS ICE",
+    gender: "Caballero",
+    category: "Normal",
+    price: 160,
+    type: "Arabes",
+    img: "/perfumes/hawas-ice.jpg",
+  },
+  {
+    id: 1386,
+    name: "INVICTUS PARFUM",
+    gender: "Caballero",
+    category: "Normal",
+    price: 470,
+    type: "Europeos",
+    img: "/perfumes/invictus-parfum.jpg",
   },
 ];
 const featuredPerfumes = perfumes.filter((p) =>
@@ -3725,6 +3780,12 @@ console.log("Perfume encontrado:", perfumeFromUrl);
     if (filter === "Arabes") {
       return matchName && p.type === "Arabes";
     }
+    if (filter === "DECANTS") {
+  return (
+    matchName &&
+    (p.type === "Europeos" || p.type === "Arabes")
+  );
+}
     return matchName;
   });
   /* =========================
@@ -3734,6 +3795,8 @@ console.log("Perfume encontrado:", perfumeFromUrl);
   const price =
     size === "100 ml"
       ? 80
+      : size === "5 ml"
+      ? preciosDecants[perfume.name]
       : perfume.price;
   const cartItem = {
     ...perfume,
@@ -3785,6 +3848,13 @@ const arabicPerfumes = perfumes.filter(
   );
 const europeanPerfumes = perfumes.filter(
   (p) => p.type === "Europeos"
+);
+// ================= CATALOGO DE DECANTS =================
+const decantPerfumes = perfumes.filter((p) =>
+  Object.prototype.hasOwnProperty.call(
+    preciosDecants,
+    p.name
+  )
 );
   
   return (
@@ -3960,9 +4030,9 @@ const europeanPerfumes = perfumes.filter(
                     {/* PERFUMES ÁRABES */}
                     <div
                       onClick={() => {
-    navigate("/arabes");
-  setShowCategories(false);
-}}
+                       navigate("/arabes");
+                           setShowCategories(false);
+                          }}
                       style={{
                         padding: "10px 14px",
                         cursor: "pointer",
@@ -3995,6 +4065,44 @@ const europeanPerfumes = perfumes.filter(
                         Perfumes Árabes
                       </span>
                     </div>
+
+{/* DECANTS */}
+                    <div
+                      onClick={() => {
+                        navigate("/decants");
+                        setShowCategories(false);
+                      }}
+                      style={{
+                        padding: "10px 14px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        whiteSpace: "nowrap",
+                        transition: "0.2s"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#f3f3f3";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "white";
+                      }}
+                    >
+                      <img
+                        src="/categorias/decants.jpg"
+                        alt="Decants"
+                        style={{
+                          width: "42px",
+                          height: "42px",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                          flexShrink: 0
+                        }}
+                      />
+                      <span>Decants</span>
+                    </div>
+
                   </div>
                 )}
               </div>
@@ -4658,6 +4766,516 @@ background:
         </div>
       </div>
     </div>
+  </>
+) : location.pathname === "/decants" ? (
+  <>
+    {/* ================= PAGINA DECANTS ================= */}
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f8f7f4",
+        paddingTop: "130px",
+        paddingBottom: "60px",
+        paddingLeft: "20px",
+        paddingRight: "20px",
+        boxSizing: "border-box"
+      }}
+    >
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "35px" }}>
+          <h1
+            style={{
+              margin: 0,
+              color: "#111",
+              fontSize: "32px",
+              letterSpacing: "2px"
+            }}
+          >
+            DECANTS
+          </h1>
+          <p style={{ color: "#777", fontSize: "14px", marginTop: "10px" }}>
+            Tus fragancias favoritas en presentación de 5 ml
+          </p>
+        </div>
+
+        {/* BUSCADOR */}
+        <div
+          style={{
+            maxWidth: "450px",
+            margin: "0 auto 30px",
+            background: "#fff",
+            border: "1px solid #eee",
+            borderRadius: "30px",
+            padding: "12px 18px"
+          }}
+        >
+          <input
+            placeholder="Buscar decant..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            style={{
+              width: "100%",
+              border: "none",
+              outline: "none",
+              fontSize: "14px",
+              background: "transparent",
+              color: "#111"
+            }}
+          />
+        </div>
+
+        {/* TARJETAS */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
+            gap: "20px"
+          }}
+        >
+          {decantPerfumes
+            .filter((perfume) =>
+              perfume.name.toLowerCase().includes(query.toLowerCase().trim())
+            )
+            .map((perfume) => (
+              <div
+                key={perfume.id}
+                style={{
+                  background: "#fff",
+                  borderRadius: "16px",
+                  padding: "12px",
+                  boxShadow: "0 5px 20px rgba(0,0,0,.07)",
+                  display: "flex",
+                  flexDirection: "column"
+                }}
+              >
+                <div
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    background: "#f7f7f7",
+                    borderRadius: "12px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden"
+                  }}
+                >
+                  <img
+                    src={perfume.img}
+                    alt={perfume.name}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain"
+                    }}
+                  />
+                </div>
+
+                <h3 style={{ margin: "12px 0 5px", fontSize: "15px", color: "#111" }}>
+                  {perfume.name}
+                </h3>
+
+                <p style={{ margin: "0 0 10px", fontSize: "12px", color: "#777" }}>
+                  Decant de 5 ml
+                </p>
+
+                <strong
+                  style={{
+                    color: "#c9a96e",
+                    fontSize: "18px",
+                    marginBottom: "12px"
+                  }}
+                >
+                  S/ {Number(preciosDecants[perfume.name]).toFixed(2)}
+                </strong>
+
+                <button
+                  onClick={() => addToCart(perfume, "5 ml", 1)}
+                  style={{
+                    marginTop: "auto",
+                    width: "100%",
+                    padding: "11px 8px",
+                    border: "none",
+                    borderRadius: "10px",
+                    background: "#111",
+                    color: "#fff",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    fontSize: "12px"
+                  }}
+                >
+                  Agregar al carrito
+                </button>
+              </div>
+            ))}
+        </div>
+
+        {decantPerfumes.filter((perfume) =>
+          perfume.name.toLowerCase().includes(query.toLowerCase().trim())
+        ).length === 0 && (
+          <p style={{ textAlign: "center", color: "#777", padding: "30px" }}>
+            No hay decants disponibles con ese nombre.
+          </p>
+        )}
+      </div>
+    </div>
+
+{/* ================= CARRITO DESPLEGABLE ================= */}
+{showCart && (
+  <div
+    style={{
+      position: "fixed",
+      top: "115px",
+      right: "20px",
+      width: "390px",
+      maxWidth: "calc(100vw - 30px)",
+      maxHeight: "75vh",
+      overflowY: "auto",
+      background: "#fff",
+      color: "#111",
+      borderRadius: "20px",
+      boxShadow: "0 15px 45px rgba(0,0,0,.25)",
+      padding: "20px",
+      zIndex: 99999,
+      boxSizing: "border-box"
+    }}
+  >
+    {/* ENCABEZADO */}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "18px",
+        paddingBottom: "12px",
+        borderBottom: "1px solid #eee"
+      }}
+    >
+      <div>
+        <h2
+          style={{
+            margin: 0,
+            fontSize: "21px",
+            color: "#111"
+          }}
+        >
+          🛒 Mi carrito
+        </h2>
+        <div
+          style={{
+            fontSize: "12px",
+            color: "#888",
+            marginTop: "4px"
+          }}
+        >
+          {cart.length} {cart.length === 1 ? "producto" : "productos"}
+        </div>
+      </div>
+      {/* CERRAR */}
+      <button
+        onClick={() => setShowCart(false)}
+        style={{
+          width: "34px",
+          height: "34px",
+          borderRadius: "50%",
+          border: "none",
+          background: "#f3f3f3",
+          color: "#333",
+          fontSize: "18px",
+          cursor: "pointer"
+        }}
+      >
+        ✕
+      </button>
+    </div>
+    {/* CARRITO VACÍO */}
+    {cart.length === 0 ? (
+      <div
+        style={{
+          textAlign: "center",
+          padding: "35px 10px"
+        }}
+      >
+        <div
+          style={{
+            fontSize: "45px",
+            marginBottom: "10px"
+          }}
+        >
+          🛒
+        </div>
+        <h3
+          style={{
+            margin: "0 0 8px",
+            fontSize: "17px"
+          }}
+        >
+          Tu carrito está vacío
+        </h3>
+        <p
+          style={{
+            margin: 0,
+            color: "#888",
+            fontSize: "13px"
+          }}
+        >
+          Agrega tus perfumes favoritos para continuar.
+        </p>
+      </div>
+    ) : (
+      <>
+        {/* PRODUCTOS */}
+        {cart.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              gap: "12px",
+              padding: "14px 0",
+              borderBottom: "1px solid #eee"
+            }}
+          >
+            {/* IMAGEN */}
+            <div
+              style={{
+                width: "82px",
+                height: "105px",
+                borderRadius: "14px",
+                background: "#f7f7f7",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                overflow: "hidden"
+              }}
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain"
+                }}
+              />
+            </div>
+            {/* INFORMACIÓN */}
+            <div
+              style={{
+                flex: 1,
+                minWidth: 0
+              }}
+            >
+              {/* NOMBRE */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#111",
+                  marginBottom: "5px"
+                }}
+              >
+                {item.name}
+              </div>
+              {/* INSPIRADO EN */}
+              {item.inspiredBy && (
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "#999",
+                    marginBottom: "7px"
+                  }}
+                >
+                  Inspirado en {item.inspiredBy}
+                </div>
+              )}
+              {/* TAMAÑO */}
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: "#666",
+                  marginBottom: "5px"
+                }}
+              >
+                📏 {item.selectedSize || "30 ml"}
+              </div>
+              {/* PRECIO */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#c9a96e"
+                }}
+              >
+                S/ {item.selectedPrice ?? item.price}
+              </div>
+              {/* CANTIDAD + ELIMINAR */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginTop: "10px"
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px"
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      if ((item.quantity || 1) > 1) {
+                        setCart((prev) =>
+                          prev.map((cartItem, i) =>
+                            i === index
+                              ? {
+                                  ...cartItem,
+                                  quantity: cartItem.quantity - 1
+                                }
+                              : cartItem
+                          )
+                        );
+                      }
+                    }}
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "8px",
+                      border: "1px solid #ddd",
+                      background: "#fff",
+                      cursor: "pointer",
+                      fontSize: "16px"
+                    }}
+                  >
+                    −
+                  </button>
+                  <strong
+                    style={{
+                      fontSize: "14px",
+                      minWidth: "18px",
+                      textAlign: "center"
+                    }}
+                  >
+                    {item.quantity || 1}
+                  </strong>
+                  <button
+                    onClick={() =>
+                      setCart((prev) =>
+                        prev.map((cartItem, i) =>
+                          i === index
+                            ? {
+                                ...cartItem,
+                                quantity: (cartItem.quantity || 1) + 1
+                              }
+                            : cartItem
+                        )
+                      )
+                    }
+                    style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "8px",
+                      border: "1px solid #ddd",
+                      background: "#fff",
+                      cursor: "pointer",
+                      fontSize: "16px"
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+                {/* ELIMINAR */}
+                <button
+                  onClick={() => removeFromCart(index)}
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    color: "#999",
+                    cursor: "pointer",
+                    fontSize: "18px"
+                  }}
+                  title="Eliminar producto"
+                >
+                  🗑️
+                </button>
+              </div>
+              {/* SUBTOTAL */}
+              <div
+                style={{
+                  textAlign: "right",
+                  marginTop: "8px",
+                  fontSize: "12px",
+                  color: "#555"
+                }}
+              >
+                Subtotal:{" "}
+                <strong>
+                  S/ {(item.selectedPrice ?? item.price) * (item.quantity || 1)}
+                </strong>
+              </div>
+            </div>
+          </div>
+        ))}
+        {/* TOTAL */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "18px",
+            marginBottom: "15px"
+          }}
+        >
+          <span
+            style={{
+              fontSize: "15px",
+              color: "#555"
+            }}
+          >
+            Total del pedido
+          </span>
+          <strong
+            style={{
+              fontSize: "22px",
+              color: "#c9a96e"
+            }}
+          >
+            S/ {total}
+          </strong>
+        </div>
+        {/* WHATSAPP */}
+        <a
+          href={`https://wa.me/51974374060?text=${whatsappMessage}`}
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            textDecoration: "none"
+          }}
+        >
+          <button
+            style={{
+              width: "100%",
+              padding: "14px",
+              background: "#25D366",
+              color: "#fff",
+              border: "none",
+              borderRadius: "13px",
+              fontWeight: "bold",
+              fontSize: "15px",
+              cursor: "pointer"
+            }}
+          >
+            📱 Finalizar pedido por WhatsApp
+          </button>
+        </a>
+      </>
+    )}
+  </div>
+)}
+    
   </>
 ) : perfumeFromUrl ? (
       <>
@@ -5485,7 +6103,7 @@ background:
             </p>
             <div className="hero-line"></div>
             <a
-              href="https://wa.me/51974374060?text=Hola quiero información de perfumes"
+              href="https://wa.me/51974374060?text= Hola quiero información de perfumes"
               target="_blank"
               rel="noreferrer"
             >
@@ -6627,7 +7245,7 @@ left:180%;
         </style>
         {/* BOTON FLOTANTE WHATSAPP */}
         <a
-          href="https://wa.me/51974374060?text=Hola quiero informaciÃ³n de perfumes"
+          href="https://wa.me/51974374060?text= Hola quiero información de perfumes"
           target="_blank"
           rel="noreferrer"
           style={{
