@@ -3889,13 +3889,6 @@ const perfumesOriginales = [
   "odyssey-acqua",
 ];
 
-// Precios individuales de perfumes originales
-const preciosOriginales = {
-  "Sauvage Dior": 250,
-  "One Million": 280,
-  "Invictus": 230
-};
-
 const filteredDecants = decantPerfumes.filter((perfume) =>
   perfume.name.toLowerCase().includes(query.toLowerCase().trim())
 );
