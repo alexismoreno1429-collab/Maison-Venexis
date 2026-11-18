@@ -16,13 +16,13 @@ import "swiper/css/pagination";
 // El nombre debe coincidir exactamente con perfume.name.
 
 const preciosDecants = {
-  "9PM NIGHT OUT": 20,
-  "NOBLE BLUSH": 16,
-  "YARA": 16,
-  "Khamrah Qahwa": 18,
+  "9PM NIGHT OUT": 18,
+  "NOBLE BLUSH": 14,
+  "YARA": 12,
+  "Khamrah Qahwa": 14,
   "ODYSSEY AQUA": 18,
-  "INVICTUS PARFUM": 40,
-  "HAWAS ICE": 20,
+  "INVICTUS PARFUM": 32,
+  "HAWAS ICE": 18,
 
   // Agrega más perfumes aquí:
   // "NOMBRE EXACTO DEL PERFUME":  precio,
@@ -3668,9 +3668,25 @@ export default function App() {
   const navigate = useNavigate();
   const { perfumeId } = useParams();
   const location = useLocation();
-const perfumeFromUrl = perfumes.find(
-  (p) => String(p.id) === String(perfumeId)
-);
+const slugify = (name) =>
+  name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+const isDecantDetail = location.pathname.startsWith("/decants/");
+
+const perfumeFromUrl = isDecantDetail
+  ? perfumes.find(
+      (p) =>
+        Object.prototype.hasOwnProperty.call(preciosDecants, p.name) &&
+        slugify(p.name) === perfumeId
+    )
+  : perfumes.find(
+      (p) => String(p.id) === String(perfumeId)
+    );
 // =========================
   // PÁGINAS DE CATEGORÍAS
   // =========================
@@ -3690,6 +3706,7 @@ console.log("perfume encontrado:", perfumeFromUrl);
   const [filter, setFilter] = useState("Todos");
   const [selectedSizes, setSelectedSizes] = useState({});
   const [showCart, setShowCart] = useState(false);
+  const [decantPage, setDecantPage] = useState(1);
   const [showCategories, setShowCategories] = useState(false);
   const [showCartNotification, setShowCartNotification] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -3856,7 +3873,23 @@ const decantPerfumes = perfumes.filter((p) =>
     p.name
   )
 );
-  
+
+const filteredDecants = decantPerfumes.filter((perfume) =>
+  perfume.name.toLowerCase().includes(query.toLowerCase().trim())
+);
+
+const decantsPerPage = 8;
+
+const totalDecantPages = Math.max(
+  1,
+  Math.ceil(filteredDecants.length / decantsPerPage)
+);
+
+const paginatedDecants = filteredDecants.slice(
+  (decantPage - 1) * decantsPerPage,
+  decantPage * decantsPerPage
+);
+
   return (
     <>
         {/* ================= HEADER PREMIUM ================= */}
@@ -4769,157 +4802,277 @@ background:
   </>
 ) : location.pathname === "/decants" ? (
   <>
-    {/* ================= PAGINA DECANTS ================= */}
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#f8f7f4",
-        paddingTop: "130px",
-        paddingBottom: "60px",
-        paddingLeft: "20px",
-        paddingRight: "20px",
-        boxSizing: "border-box"
-      }}
-    >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: "35px" }}>
-          <h1
-            style={{
-              margin: 0,
-              color: "#111",
-              fontSize: "32px",
-              letterSpacing: "2px"
-            }}
-          >
-            DECANTS
-          </h1>
-          <p style={{ color: "#777", fontSize: "14px", marginTop: "10px" }}>
-            Tus fragancias favoritas en presentación de 5 ml
-          </p>
-        </div>
+{/* ================= PAGINA DECANTS ================= */}
+<div
+  style={{
+    minHeight: "100vh",
+    background: "#100f08",
+    paddingTop: "130px",
+    paddingBottom: "60px",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    boxSizing: "border-box"
+  }}
+>
+  <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
-        {/* BUSCADOR */}
-        <div
-          style={{
-            maxWidth: "450px",
-            margin: "0 auto 30px",
-            background: "#fff",
-            border: "1px solid #eee",
-            borderRadius: "30px",
-            padding: "12px 18px"
-          }}
-        >
-          <input
-            placeholder="Buscar decant..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            style={{
-              width: "100%",
-              border: "none",
-              outline: "none",
-              fontSize: "14px",
-              background: "transparent",
-              color: "#111"
-            }}
-          />
-        </div>
+    {/* TITULO */}
+    <div style={{ textAlign: "center", marginBottom: "30px" }}>
+      <h1
+        style={{
+          margin: 0,
+          color: "#fff",
+          fontSize: "40px",
+          fontWeight: "800",
+          letterSpacing: "4px"
+        }}
+      >
+        DECANTS
+      </h1>
 
-        {/* TARJETAS */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))",
-            gap: "20px"
-          }}
-        >
-          {decantPerfumes
-            .filter((perfume) =>
-              perfume.name.toLowerCase().includes(query.toLowerCase().trim())
-            )
-            .map((perfume) => (
-              <div
-                key={perfume.id}
-                style={{
-                  background: "#fff",
-                  borderRadius: "16px",
-                  padding: "12px",
-                  boxShadow: "0 5px 20px rgba(0,0,0,.07)",
-                  display: "flex",
-                  flexDirection: "column"
-                }}
-              >
-                <div
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    background: "#f7f7f7",
-                    borderRadius: "12px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    overflow: "hidden"
-                  }}
-                >
-                  <img
-                    src={perfume.img}
-                    alt={perfume.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain"
-                    }}
-                  />
-                </div>
-
-                <h3 style={{ margin: "12px 0 5px", fontSize: "15px", color: "#111" }}>
-                  {perfume.name}
-                </h3>
-
-                <p style={{ margin: "0 0 10px", fontSize: "12px", color: "#777" }}>
-                  Decant de 5 ml
-                </p>
-
-                <strong
-                  style={{
-                    color: "#c9a96e",
-                    fontSize: "18px",
-                    marginBottom: "12px"
-                  }}
-                >
-                  S/ {Number(preciosDecants[perfume.name]).toFixed(2)}
-                </strong>
-
-                <button
-                  onClick={() => addToCart(perfume, "5 ml", 1)}
-                  style={{
-                    marginTop: "auto",
-                    width: "100%",
-                    padding: "11px 8px",
-                    border: "none",
-                    borderRadius: "10px",
-                    background: "#111",
-                    color: "#fff",
-                    cursor: "pointer",
-                    fontWeight: "bold",
-                    fontSize: "12px"
-                  }}
-                >
-                  Agregar al carrito
-                </button>
-              </div>
-            ))}
-        </div>
-
-        {decantPerfumes.filter((perfume) =>
-          perfume.name.toLowerCase().includes(query.toLowerCase().trim())
-        ).length === 0 && (
-          <p style={{ textAlign: "center", color: "#777", padding: "30px" }}>
-            No hay decants disponibles con ese nombre.
-          </p>
-        )}
-      </div>
+      <p style={{ color: "#aaa", fontSize: "14px" }}>
+        Tus fragancias favoritas en presentación de 5 ml
+      </p>
     </div>
 
+    {/* BUSCADOR */}
+    <div
+      style={{
+        maxWidth: "450px",
+        margin: "0 auto 35px",
+        background: "#fff",
+        borderRadius: "30px",
+        padding: "12px 18px"
+      }}
+    >
+      <input
+        placeholder="Buscar decant..."
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setDecantPage(1);
+        }}
+        style={{
+          width: "100%",
+          border: "none",
+          outline: "none",
+          fontSize: "14px",
+          background: "transparent",
+          color: "#111"
+        }}
+      />
+    </div>
+
+    {/* PRODUCTOS */}
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
+        gap: "14px"
+      }}
+    >
+      {paginatedDecants.map((perfume) => (
+        <div
+          key={perfume.id}
+            style={{
+            position: "relative",
+            cursor: "default",
+            background: "#92908e",
+            borderRadius: "13px",
+            padding: "7px",
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0
+          }}
+        >
+          {/* IMAGEN */}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: "250px",
+              background: "#fff",
+              borderRadius: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden"
+            }}
+          >
+            <img
+              src={perfume.img}
+              alt={perfume.name}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain"
+              }}
+            />
+
+            {/* VOLUMENES */}
+            <span
+              style={{
+                position: "absolute",
+                right: "7px",
+                bottom: "7px",
+                background: "#fff0b8",
+                color: "#222",
+                padding: "5px 10px",
+                borderRadius: "4px",
+                fontSize: "11px",
+                fontWeight: "500"
+              }}
+            >
+              Tamaño unico 5 ML
+            </span>
+          </div>
+
+          {/* BOTON AGREGAR */}
+          <button
+            onClick={() => addToCart(perfume, "5 ml", 1)}
+            title="Agregar al carrito"
+            style={{
+              position: "absolute",
+              top: "3px",
+              right: "3px",
+              width: "38px",
+              height: "38px",
+              borderRadius: "50%",
+              border: "none",
+              background: "#100f08",
+              color: "#fff",
+              fontSize: "25px",
+              fontWeight: "300",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 2
+            }}
+          >
+            +
+          </button>
+
+          {/* NOMBRE */}
+          <h3
+            style={{
+              margin: "12px 0 7px",
+              fontSize: "20px",
+              lineHeight: "19px",
+              fontWeight: "400",
+              color: "#111",
+              minHeight: "38px"
+            }}
+          >
+            {perfume.name}
+          </h3>
+
+          {/* PRECIO */}
+          <strong
+            style={{
+              color: "#111",
+              fontSize: "20px",
+              fontWeight: "500",
+              marginBottom: "3px"
+            }}
+          >
+            S/ {Number(preciosDecants[perfume.name]).toFixed(2)}
+          </strong>
+        </div>
+      ))}
+    </div>
+
+    {/* SIN RESULTADOS */}
+    {filteredDecants.length === 0 && (
+      <p
+        style={{
+          textAlign: "center",
+          color: "#ccc",
+          padding: "30px"
+        }}
+      >
+        No hay decants disponibles con ese nombre.
+      </p>
+    )}
+
+    {/* PAGINACION */}
+    {filteredDecants.length > 0 && totalDecantPages > 1 && (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "12px",
+          marginTop: "35px",
+          flexWrap: "wrap"
+        }}
+      >
+        <button
+          onClick={() => setDecantPage((prev) => Math.max(1, prev - 1))}
+          disabled={decantPage === 1}
+          style={{
+            width: "34px",
+            height: "34px",
+            borderRadius: "50%",
+            border: "none",
+            background: "#92908e",
+            color: "#111",
+            fontSize: "19px",
+            cursor: "pointer",
+            opacity: decantPage === 1 ? 0.4 : 1
+          }}
+        >
+          ‹
+        </button>
+
+        {Array.from(
+          { length: totalDecantPages },
+          (_, index) => index + 1
+        ).map((page) => (
+          <button
+            key={page}
+            onClick={() => setDecantPage(page)}
+            style={{
+              width: "34px",
+              height: "34px",
+              borderRadius: "50%",
+              border: "none",
+              background: decantPage === page ? "#fff" : "#92908e",
+              color: decantPage === page ? "#111" : "#222",
+              fontSize: "13px",
+              cursor: "pointer",
+              fontWeight: decantPage === page ? "bold" : "normal"
+            }}
+          >
+            {page}
+          </button>
+        ))}
+
+        <button
+          onClick={() =>
+            setDecantPage((prev) =>
+              Math.min(totalDecantPages, prev + 1)
+            )
+          }
+          disabled={decantPage === totalDecantPages}
+          style={{
+            width: "34px",
+            height: "34px",
+            borderRadius: "50%",
+            border: "none",
+            background: "#92908e",
+            color: "#111",
+            fontSize: "19px",
+            cursor: "pointer",
+            opacity: decantPage === totalDecantPages ? 0.4 : 1
+          }}
+        >
+          ›
+        </button>
+      </div>
+    )}
+  </div>
+</div>
 {/* ================= CARRITO DESPLEGABLE ================= */}
 {showCart && (
   <div

@@ -15,6 +15,7 @@ root.render(
   <Route path="/arabes" element={<App />} />
   <Route path="/europeos" element={<App />} />
   <Route path="/decants" element={<App />} />
+  <Route path="/decants/:perfumeId" element={<App />} />
   <Route path="/perfume/:perfumeId" element={<App />} />
 </Routes>
 </BrowserRouter>
