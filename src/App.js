@@ -23,6 +23,8 @@ const preciosDecants = {
   "ODYSSEY AQUA": 18,
   "INVICTUS PARFUM": 32,
   "HAWAS ICE": 18,
+  "Asad": 14,
+  "Hawas pink": 15,
 
   // Agrega más perfumes aquí:
   // "NOMBRE EXACTO DEL PERFUME":  precio,
@@ -3809,12 +3811,16 @@ console.log("Perfume encontrado:", perfumeFromUrl);
      4. FUNCIONES
   ========================= */
  const addToCart = (perfume, size = "30 ml", quantityToAdd = 1) => {
+    const esOriginal = perfumesOriginales.includes(slugify(perfume.name));
+
   const price =
-    size === "100 ml"
-      ? 80
-      : size === "5 ml"
+    size === "5 ml"
       ? preciosDecants[perfume.name]
-      : perfume.price;
+      : esOriginal
+      ? perfume.price
+      : size === "100 ml"
+      ? 80
+      : 35;
   const cartItem = {
     ...perfume,
     selectedSize: size,
@@ -3873,6 +3879,22 @@ const decantPerfumes = perfumes.filter((p) =>
     p.name
   )
 );
+
+// Perfumes originales y sellados
+const perfumesOriginales = [
+  "hawas-pink",
+  "hawas-ice",
+  "hawas-verde",
+  "9pm-night-out",
+  "odyssey-acqua",
+];
+
+// Precios individuales de perfumes originales
+const preciosOriginales = {
+  "Sauvage Dior": 250,
+  "One Million": 280,
+  "Invictus": 230
+};
 
 const filteredDecants = decantPerfumes.filter((perfume) =>
   perfume.name.toLowerCase().includes(query.toLowerCase().trim())
@@ -4739,6 +4761,7 @@ background:
               {/* IMAGEN */}
               <div
                 style={{
+                  position: "relative",
                   width: "100%",
                   height: "230px",
                   background: "#f7f7f7",
@@ -4758,6 +4781,25 @@ background:
                     objectFit: "contain"
                   }}
                 />
+{perfumesOriginales.includes(perfume.name) && (
+  <span
+    style={{
+      position: "absolute",
+      top: "10px",
+      right: "10px",
+      background: "#c9a96e",
+      color: "#fff",
+      padding: "6px 12px",
+      borderRadius: "20px",
+      fontSize: "10px",
+      fontWeight: "bold",
+      letterSpacing: "1px",
+      boxShadow: "0 2px 8px rgba(0,0,0,0.15)"
+    }}
+  >
+    ORIGINAL
+  </span>
+)}
               </div>
               {/* INFORMACIÓN */}
               <div
@@ -6023,7 +6065,13 @@ background:
                 color: "#c9a96e"
               }}
             >
-              S/ {selectedSize === "100 ml" ? 80 : perfumeFromUrl.price}
+              S/ {
+  perfumesOriginales.includes(slugify(perfumeFromUrl.name))
+    ? perfumeFromUrl.price
+    : selectedSize === "100 ml"
+    ? 80
+    : 35
+}
             </h2>
             {/* TAMAÑOS */}
             <div
@@ -6034,7 +6082,11 @@ background:
                 margin: "25px 0"
               }}
             >
-              {["30 ml", "100 ml"].map((size) => (
+              {(
+  perfumesOriginales.includes(slugify(perfumeFromUrl.name))
+    ? ["100 ml"]
+    : ["30 ml", "100 ml"]
+).map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
